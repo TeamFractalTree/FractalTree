@@ -1,2 +1,2 @@
 # FractalTree
-Bridging the digital divide, write code on paper and run it with nothing but a smartphone
+Bridging the digital divide, dive into the world of coding with just a pen, paper, and a smartphone! 
