@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    background: var(--col-bg) !important;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+    color: var(--col-text);
+
+    --col-bg: hsl(306 28% 7%);
+    --col-overlay: hsl(306 12% 15%);
+    --col-text: #F1ECF3;
+    --col-text-washed: #d8d8d8;
+    --col-text-overlay: rgb(107 114 128);
+    --col-primary: #ff5b94;
+    --col-primary-washed: #00a9bc96;
+    --col-primary-hover: #ff4787;
+    --col-secondary: #BEF264;
+    --col-tertiary: hsl(300 7% 25%);
+    --col-contrast: hsl(306 28% 22%);
+    --col-disabled: #251F29;
+    --col-mask: rgba(0, 0, 0, 0.4);
+    --col-shadow: none;
+    --col-shadow-small: none;
+    --col-border: transparent;
+}
+
+*:not(.overrideFont):not(.overrideFont *), *.enableFont {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+}
+
+.secondaryText {
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.barSeperator {
+    margin-left: auto;
+}
+
+.formDialog {
+    width: 25rem;
+}
+
+.formDialog .p-inputtext {
+    width: 100%;
+    height: 3rem;
+}
+
+.formSplit {
+    display: flex;
+    height: 3rem;
+    gap: 0.5rem;
+}
+
+button {
+    color: var(--col-bg);
+    font-weight: 600;
+}
+
+.leftButton svg {
+    margin-right: 0.5rem;
+    stroke: var(--col-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 0.8rem;
+}
+
+.capitalizeFirstLetter {
+    display: inline;
+    text-transform: capitalize;
+}
