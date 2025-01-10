@@ -39,7 +39,7 @@ def extractImage(url, openai_api_key):
 
 if __name__ == "__main__":
     print(openai_KEY)
-    url = "https://node.samsidparty.com/TestImage.png"
+    url = "https://node.samsidparty.com/Images/TestImage.png"
     code = extractImage(url, openai_KEY)
     if code:
         print("Extracted Code:")
