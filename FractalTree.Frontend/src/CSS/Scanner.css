@@ -28,6 +28,35 @@
     transform: translate(-50%, 0);
 }
 
+.scannerContainer .scanButton {
+    position: absolute;
+    z-index: 11;
+    width: 5rem;
+    height: 5rem;
+    left: calc(50% - 2.5rem);
+    right: calc(50% - 2.5rem);
+    bottom: 7vh;
+    border-radius: 360px;
+    background-color: white;
+    border: none;
+    outline: 5px solid var(--col-primary);
+    outline-offset: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.scannerContainer .scanButton svg {
+    width: 60%;
+    height: 60%;
+}
+
+.scannerContainer .scanButton svg, .scannerContainer .scanButton svg * {
+    color: var(--col-primary);
+    stroke: var(--col-primary) !important;
+}
+
 .scannerOverlay {
     position: absolute;
     height: 100%;
