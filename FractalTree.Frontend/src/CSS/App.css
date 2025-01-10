@@ -13,10 +13,10 @@ body {
     --col-bg: white;
     --col-overlay: white;
     --col-text: #111111;
-    --col-text-washed: #3d3d3d;
-    --col-text-overlay: rgb(107 114 128);
+    --col-text-washed: #4b001b;
+    --col-text-overlay: white;
     --col-primary: #f03a7a;
-    --col-primary-washed: #f79afa8a;
+    --col-primary-washed: #ffd8e5;
     --col-primary-hover: #ff5b94;
     --col-secondary: #95df15;
     --col-secondary-hover: #8cce1b;
