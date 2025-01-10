@@ -1,8 +1,22 @@
 .scannerContainer {
     background-color: black;
     border: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .scannerContainer .p-sidebar-close-icon {
     stroke: white;
+}
+
+
+.scannerContainer * {
+    color: white;
+}
+
+.scannerContainer .camera {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
 }

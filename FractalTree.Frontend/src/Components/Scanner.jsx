@@ -2,8 +2,8 @@ import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
 import { useState } from 'react';
 import "../CSS/Scanner.css"
-import { IconBrandPython } from '@tabler/icons-react';
-import { IconBrandJavascript } from '@tabler/icons-react';
+import { useRef } from 'react';
+import Webcam from "react-webcam";
 
 export default function Scanner() {
 
@@ -11,8 +11,8 @@ export default function Scanner() {
     window.openScanner = () => setScannerVisible(true);
 
     return (
-        <Sidebar fullScreen position="bottom" className="scannerContainer" visible={scannerVisible} onHide={() => setScannerVisible(false)}>
-            
+        <Sidebar style={{ height: "100%" }} position="bottom" className="scannerContainer" visible={scannerVisible} onHide={() => setScannerVisible(false)}>
+            <Webcam className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
         </Sidebar>
     )
 }

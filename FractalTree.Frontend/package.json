@@ -14,7 +14,8 @@
     "primereact": "^10.8.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router": "^7.1.1"
+    "react-router": "^7.1.1",
+    "react-webcam": "^7.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
