@@ -73,3 +73,11 @@
     -webkit-mask-image: url("/Images/ScannerOverlayMask.png"), linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
 }
+
+.scannerContainer .scannerTarget {
+    position: absolute;
+    width: 85.75vw;
+    height: calc(85.75vw * 1.411);
+    top: calc(50% - calc(85.75vw * 0.7055));
+    right: calc(50% - 42.875vw);
+}
