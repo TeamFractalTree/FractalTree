@@ -4,6 +4,9 @@ namespace FractalTree.Backend.API
     {
         public static void Main(string[] args)
         {
+            // Load Environment Variables
+            DotNetEnv.Env.Load();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
