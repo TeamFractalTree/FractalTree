@@ -2417,11 +2417,6 @@
         color: rgba(255, 255, 255, 0.6);
     }
 
-    .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover {
-        background: rgba(255, 255, 255, 0.03);
-        border-color: #424b57;
-        color: rgba(255, 255, 255, 0.87);
-    }
 
     .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover .p-button-icon-left,
     .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover .p-button-icon-right {
@@ -2436,12 +2431,6 @@
 
     .p-selectbutton .p-button.p-highlight .p-button-icon-left,
     .p-selectbutton .p-button.p-highlight .p-button-icon-right {
-        color: #030712;
-    }
-
-    .p-selectbutton .p-button.p-highlight:hover {
-        background: var(--col-primary-hover);
-        border-color: var(--col-primary-hover);
         color: #030712;
     }
 
@@ -2760,18 +2749,6 @@
         border-radius: 6px;
     }
 
-    .p-button:not(:disabled):hover {
-        background: var(--col-primary-hover);
-        color: #030712;
-        border-color: var(--col-primary-hover);
-    }
-
-    .p-button:not(:disabled):active {
-        background: var(--col-primary-hover);
-        color: #030712;
-        border-color: var(--col-primary-hover);
-    }
-
     .p-button.p-button-outlined {
         background-color: transparent;
         color: var(--col-primary);
@@ -2840,7 +2817,6 @@
     .p-button:focus {
         outline: 0 none;
         outline-offset: 0;
-        box-shadow: 0 0 0 0.2rem rgba(255, 91, 148, 0.2);
     }
 
     .p-button .p-button-label {

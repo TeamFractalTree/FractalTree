@@ -1,0 +1,28 @@
+.bottomBar {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.bottomBar .p-button {
+    padding: 1rem 2rem;
+}
+
+.bottomBar .p-selectbutton {
+    width: 100%;
+    display: flex;
+    justify-content: stretch;
+}
+
+.bottomBar .barItem {
+    width: 100%;
+}
+
+.bottomBar .p-button {
+    height: 5rem;
+    width: 100%;
+}
