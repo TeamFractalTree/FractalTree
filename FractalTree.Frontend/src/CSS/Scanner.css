@@ -33,11 +33,14 @@
     height: 100%;
     width: 100%;
     z-index: 5;
-    mask-image: url("/ScannerMask.png"), linear-gradient(#000 0 0);
-    -webkit-mask-image: url("/ScannerMask.png"), linear-gradient(#000 0 0);
+
+    mask-image: url("/ScannerOverlayMask.png"), linear-gradient(#000 0 0);
     mask-mode: alpha;
     mask-position: center;
     mask-repeat: no-repeat;
     mask-composite: exclude;
-    mask-size: contain  ;
+    mask-size: contain;
+
+    -webkit-mask-image: url("/ScannerOverlayMask.png"), linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
 }

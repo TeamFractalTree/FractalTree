@@ -13,7 +13,7 @@ export default function Scanner() {
     return (
         <Sidebar style={{ height: "100%" }} position="bottom" className="scannerContainer" visible={scannerVisible} onHide={() => setScannerVisible(false)}>
             <Webcam className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
-            <img src="/ScannerBackground.png" className="scannerOverlay">
+            <img src="/ScannerOverlayBackground.png" className="scannerOverlay">
 
             </img>
         </Sidebar>
