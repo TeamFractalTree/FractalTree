@@ -1,0 +1,8 @@
+.scannerContainer {
+    background-color: black;
+    border: none;
+}
+
+.scannerContainer .p-sidebar-close-icon {
+    stroke: white;
+}

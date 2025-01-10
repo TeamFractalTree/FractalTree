@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function SandboxPage() {
 
     var onContinue = () => {
-        window.openLanguageSelector();
+        window.openScanner();
     }
 
     return (
