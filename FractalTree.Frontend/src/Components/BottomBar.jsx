@@ -14,8 +14,8 @@ export default function BottomBar() {
     var navigate = useNavigate();
 
     var tabIndexes = [0, 1, 2]
-    var tabNames = ["Sandbox", "Lessons", "Snippets"];
-    var tabIcons = [<IconSandbox/>, <IconSchool/>, <IconCode/>]
+    var tabNames = ["Snippets", "Lessons", "Sandbox"];
+    var tabIcons = [<IconCode/>, <IconSchool/>, <IconSandbox/>]
 
     var isTabSelected = (tabName) => location.toLowerCase().replaceAll("/", "").endsWith(tabName.toLowerCase())
     var selectedTab = (tabNames.map(isTabSelected)).findIndex((t) => !!t);
