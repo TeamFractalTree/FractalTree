@@ -9,9 +9,16 @@
     stroke: white;
 }
 
+.scannerContainer .p-sidebar-content {
+    padding: 0;
+}
 
 .scannerContainer * {
     color: white;
+}
+
+.scannerContainer .p-sidebar-header {
+    display: none;
 }
 
 .scannerContainer .camera {
@@ -19,4 +26,18 @@
     height: 100%;
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+.scannerOverlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    mask-image: url("/ScannerMask.png"), linear-gradient(#000 0 0);
+    -webkit-mask-image: url("/ScannerMask.png"), linear-gradient(#000 0 0);
+    mask-mode: alpha;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-composite: exclude;
+    mask-size: contain  ;
 }
