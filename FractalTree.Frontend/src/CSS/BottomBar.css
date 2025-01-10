@@ -5,11 +5,11 @@
     align-items: center;
     bottom: 0;
     width: 100%;
-    padding: 0.5rem;
 }
 
 .bottomBar .p-button {
     padding: 1rem 2rem;
+    border-radius: 0px;
 }
 
 .bottomBar .p-selectbutton {
