@@ -7,6 +7,11 @@
     width: 100%;
 }
 
+.bottomBar * {
+    text-decoration: none;
+    font-weight: 600;
+}
+
 .bottomBar .p-button {
     padding: 1rem 2rem;
     border-radius: 0px;

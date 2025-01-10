@@ -5702,7 +5702,7 @@
     }
 
     .p-divider.p-divider-horizontal:before {
-        border-top: 1px #424b57;
+        border-top: 1px var(--col-contrast);
     }
 
     .p-divider.p-divider-horizontal .p-divider-content {
