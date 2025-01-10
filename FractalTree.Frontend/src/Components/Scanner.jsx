@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import Webcam from "react-webcam";
 import { IconTextScan2 } from '@tabler/icons-react';
 import { ProgressSpinner } from 'primereact/progressspinner';
+import Vibrate from '../Helpers/Vibrator';
 
 export default function Scanner() {
 
@@ -16,6 +17,7 @@ export default function Scanner() {
 
     var startScan = () => {
         setScanState("loading");
+        Vibrate();
     }
 
     return (
