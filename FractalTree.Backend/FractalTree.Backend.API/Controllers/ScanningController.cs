@@ -13,6 +13,9 @@ namespace FractalTree.Backend.API.Controllers
     [Route("api")]
     public class ScanningController : ControllerBase
     {
+        [HttpOptions("scan")]
+        public void FixCors() { Response.Headers.Append("Access-Control-Allow-Origin", "*"); }
+
         [HttpPost("scan")]
         [DisableRequestSizeLimit]
         [Consumes("multipart/form-data")]
@@ -46,6 +49,7 @@ namespace FractalTree.Backend.API.Controllers
 
                 Response.Headers.Append("X-Tokens-Used", result.Value.Usage.TotalTokenCount.ToString());
                 Response.Headers.Append("X-Scan-ID", scanID);
+                Response.Headers.Append("Access-Control-Allow-Origin", "*");
 
                 return Ok(content);
             }

@@ -45,7 +45,20 @@ export default function Scanner() {
             });
 
             var savedImage = await image.toBlob("image/png");
-            saveAs(savedImage);
+            
+            var formData = new FormData();
+            formData.append("image", savedImage);
+
+            var result = await new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.responseText }));
+                xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
+                xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
+                xhr.open('POST', "https://node.samsidparty.com/api/scan", true);
+                xhr.send(formData);
+            });
+
+            console.log(result);
 
             setScanState("none");
         });
