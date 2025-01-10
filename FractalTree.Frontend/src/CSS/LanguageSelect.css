@@ -1,0 +1,8 @@
+.languageOption {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.languageOption svg {
+    stroke: var(--col-text-overlay);
+}

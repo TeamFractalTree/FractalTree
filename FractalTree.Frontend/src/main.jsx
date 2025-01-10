@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import SandboxPage from "./Components/SandboxPage";
 import LessonsPage from "./Components/LessonsPage";
 import SnippetsPage from "./Components/SnippetsPage";
+import LanguageSelect from './Components/LanguageSelect.jsx';
 
 createRoot(document.getElementById('root')).render(
     (<BrowserRouter>
@@ -15,5 +16,6 @@ createRoot(document.getElementById('root')).render(
             <Route path="/lessons" element={<LessonsPage />} />
             <Route path="/snippets" element={<SnippetsPage />} />
         </Routes>
+        <LanguageSelect></LanguageSelect>
     </BrowserRouter>)
 )
