@@ -58,7 +58,8 @@ export default function Scanner() {
                 xhr.send(formData);
             });
 
-            console.log(result);
+            console.log(result.body);
+            alert(result.body);
 
             setScanState("none");
         });

@@ -40,8 +40,8 @@ namespace FractalTree.Backend.API.Controllers
 
                 var chatClient = new ChatClient("gpt-4o-mini", apiKey: apiKey);
 
-                var textContentPart = ChatMessageContentPart.CreateTextPart("Your goal is to analyze the image and extract the code from it. The code is in html. Send only the extracted code plain text without any additional comments or markdown just the code and without 'formatted code:' make sure to add indents, otherwise your goal has not been achieved. Make sure to do it as is. Only errors fix should be indentations");
-                var imageContentPart = ChatMessageContentPart.CreateImagePart(new Uri("https://node.samsidparty.com/api/scan?scanID=" + scanID), ChatImageDetailLevel.Low);
+                var textContentPart = ChatMessageContentPart.CreateTextPart("Your goal is to analyze the image and extract the code from it. The code may be in any programming language. You may attempt to correct syntax errors but do not correct any functional errors under any circumstances. Return only the extracted code and nothing else, do not add any markdown, backticks, or any formatting except for indentations. If you are unable to achieve your goal, simply return the word \"error\" without any additional context");
+                var imageContentPart = ChatMessageContentPart.CreateImagePart(new Uri("https://node.samsidparty.com/api/scan?scanID=" + scanID), ChatImageDetailLevel.High);
                 var chatMessage = new UserChatMessage(textContentPart, imageContentPart);
 
                 var result = await chatClient.CompleteChatAsync(chatMessage);
