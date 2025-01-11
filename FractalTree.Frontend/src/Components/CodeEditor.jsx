@@ -10,6 +10,7 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/themes/prism.css';
 import { IconPlayerPlay } from '@tabler/icons-react';
+import ExecutePython from '../Helpers/PythonEngine';
 
 export default function CodeEditor() {
 
@@ -32,6 +33,10 @@ export default function CodeEditor() {
         return languages.js;
     }
 
+    var run = () => {
+        ExecutePython(codeState.code, (d) => alert(d));
+    }
+
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible} onHide={() => setEditorVisible(false)}>
             <Header>Scanned Code</Header>
@@ -44,7 +49,7 @@ export default function CodeEditor() {
                     highlight={() => highlight(codeState?.code || "", getLanguage())}
                 />
 
-                <Button className="editorRun">
+                <Button onClick={run} className="editorRun">
                     <IconPlayerPlay/>
                     &nbsp;
                     Run My Code
