@@ -8,6 +8,7 @@ import LessonsPage from "./Components/LessonsPage";
 import SnippetsPage from "./Components/SnippetsPage";
 import LanguageSelect from './Components/LanguageSelect.jsx';
 import Scanner from './Components/Scanner.jsx';
+import CodeEditor from './Components/CodeEditor.jsx';
 
 createRoot(document.getElementById('root')).render(
     (<BrowserRouter>
@@ -20,5 +21,6 @@ createRoot(document.getElementById('root')).render(
 
         <LanguageSelect></LanguageSelect>
         <Scanner></Scanner>
+        <CodeEditor></CodeEditor>
     </BrowserRouter>)
 )
