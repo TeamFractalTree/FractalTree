@@ -4,7 +4,7 @@ import { useState } from 'react';
 import "../CSS/Scanner.css"
 import { useRef } from 'react';
 import Webcam from "react-webcam";
-import { IconTextScan2 } from '@tabler/icons-react';
+import { IconTextScan2, IconX } from '@tabler/icons-react';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import Vibrate from '../Helpers/Vibrator';
 import Image from "image-js"
@@ -67,6 +67,10 @@ export default function Scanner() {
 
     return (
         <Sidebar style={{ height: "100%" }} position="bottom" className="scannerContainer" visible={scannerVisible} onHide={() => setScannerVisible(false)}>
+
+            <Button onClick={() => setScannerVisible(false)} className="scannerCloseButton">
+                <IconX></IconX>
+            </Button>
 
             <Webcam forceScreenshotSourceSize={true} ref={cameraRef} className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
             <img src="/Images/ScannerOverlayBackground.png" className="scannerOverlay"></img>

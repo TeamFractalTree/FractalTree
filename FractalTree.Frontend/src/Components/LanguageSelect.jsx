@@ -14,6 +14,7 @@ export default function LanguageSelect() {
     var onLanguageSelected = (lang) => {
         var callbackToRun = callback[0] || console.log;
         callbackToRun(lang);
+        setTimeout(() => setPickerVisible(false), 0);
     }
 
     return (

@@ -5,6 +5,25 @@
     overflow: hidden;
 }
 
+.scannerContainer .scannerCloseButton {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    height: 3rem;
+    width: 3rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    z-index: 11;
+}
+
+.scannerContainer .scannerCloseButton * {
+    color: white;
+}
+
 .scannerContainer .p-sidebar-close-icon {
     stroke: white;
 }
