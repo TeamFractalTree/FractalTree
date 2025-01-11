@@ -7,8 +7,11 @@ import { IconSchool } from '@tabler/icons-react';
 import { IconCode } from '@tabler/icons-react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 export default function BottomBar() {
+
+    var { t } = useTranslation();
 
     var location = useLocation().pathname;
     var navigate = useNavigate();
@@ -24,7 +27,7 @@ export default function BottomBar() {
         return (
             <NavLink className="barItem" to={"/" + tabNames[option].toLowerCase()} viewTransition>
                 {tabIcons[option]}
-                {tabNames[option]}
+                {t("BOTTOMBAR_" + tabNames[option].toUpperCase())}
             </NavLink>
         )
     }
