@@ -1,5 +1,9 @@
+
 .codeEditorContainer .p-sidebar-header {
-    display: none;
+    position: fixed;
+    width: 100%;
+    height: 6rem;
+    z-index: 11;
 }
 
 .codeEditorContainer .p-sidebar-content {
