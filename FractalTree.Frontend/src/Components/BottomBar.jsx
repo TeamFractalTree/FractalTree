@@ -11,8 +11,6 @@ import { useTranslation } from 'react-i18next';
 
 export default function BottomBar() {
 
-    var { t } = useTranslation();
-
     var location = useLocation().pathname;
     var navigate = useNavigate();
 
@@ -27,7 +25,7 @@ export default function BottomBar() {
         return (
             <NavLink className="barItem" to={"/" + tabNames[option].toLowerCase()} viewTransition>
                 {tabIcons[option]}
-                {t("BOTTOMBAR_" + tabNames[option].toUpperCase())}
+                {t("SECTION_" + tabNames[option].toUpperCase())}
             </NavLink>
         )
     }

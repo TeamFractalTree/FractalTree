@@ -1,5 +1,8 @@
 {
-    "BOTTOMBAR_LESSONS": "Lessons",
-    "BOTTOMBAR_SNIPPETS": "Snippets",
-    "BOTTOMBAR_SANDBOX": "Sandbox"
+    "ACTION_GO": "Go",
+    "ACTION_RUN": "Run My Code",
+    "SECTION_LESSONS": "Lessons",
+    "SECTION_SNIPPETS": "Snippets",
+    "SECTION_SANDBOX": "Sandbox",
+    "SECTION_SANDBOX_DESCRIPTION": "Sandbox mode allows you to quickly scan and run code without saving it."
 }

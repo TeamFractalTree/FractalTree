@@ -22,18 +22,18 @@ export default function SandboxPage() {
 
     return (
         <>
-            <Header>Sandbox</Header>
+            <Header>{t("SECTION_SANDBOX")}</Header>
 
             <div className="sandboxPage">
                 <div className="sandboxSplash">
                     <IconSandbox></IconSandbox>
                 </div>
-                <p className="sandboxDescription">Sandbox mode allows you to quickly scan and run code without saving it.</p>
+                <p className="sandboxDescription">{t("SECTION_SANDBOX_DESCRIPTION")}</p>
 
                 <Button onClick={onContinue} className="sandboxContinue">
                     <IconTextScan2/>
                     &nbsp;
-                    Go
+                    {t("ACTION_GO")}
                 </Button>
             </div>
 

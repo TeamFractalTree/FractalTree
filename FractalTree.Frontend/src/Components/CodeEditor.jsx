@@ -52,7 +52,7 @@ export default function CodeEditor() {
                 <Button onClick={run} className="editorRun">
                     <IconPlayerPlay/>
                     &nbsp;
-                    Run My Code
+                    {t("ACTION_GO")}
                 </Button>
             </div>
         </Sidebar>

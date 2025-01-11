@@ -11,7 +11,7 @@ import Scanner from './Components/Scanner.jsx';
 import CodeEditor from './Components/CodeEditor.jsx';
 import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
-import { initReactI18next } from 'react-i18next';
+import { initReactI18next, useTranslation } from 'react-i18next';
 
 i18n
     .use(Backend)
@@ -26,16 +26,26 @@ i18n
     });
 
 createRoot(document.getElementById('root')).render(
-    (<BrowserRouter>
-        <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/sandbox" element={<SandboxPage />} />
-            <Route path="/lessons" element={<LessonsPage />} />
-            <Route path="/snippets" element={<SnippetsPage />} />
-        </Routes>
-
-        <LanguageSelect></LanguageSelect>
-        <Scanner></Scanner>
-        <CodeEditor></CodeEditor>
-    </BrowserRouter>)
+    <Main/>
 )
+
+function Main() {
+
+    var { t } = useTranslation();
+    window.t = t;
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/sandbox" element={<SandboxPage />} />
+                <Route path="/lessons" element={<LessonsPage />} />
+                <Route path="/snippets" element={<SnippetsPage />} />
+            </Routes>
+
+            <LanguageSelect></LanguageSelect>
+            <Scanner></Scanner>
+            <CodeEditor></CodeEditor>
+        </BrowserRouter>
+    )
+}
