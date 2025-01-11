@@ -1,6 +1,6 @@
 import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Editor from 'react-simple-code-editor';
 import "../CSS/CodeEditor.css"
 import Header from './Header';
@@ -9,11 +9,14 @@ import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
 import 'prismjs/themes/prism.css';
+import '@xterm/xterm/css/xterm.css';
+import { XTerm } from "@pablo-lion/xterm-react";
 import { IconPlayerPlay } from '@tabler/icons-react';
 import ExecutePython from '../Helpers/PythonEngine';
 
 export default function CodeEditor() {
 
+    var xterm = useRef(null);
     var [editorVisible, setEditorVisible] = useState(false);
     var [codeState, setCodeState] = useState({});
     var [callback, setCallback] = useState([]);
@@ -34,7 +37,7 @@ export default function CodeEditor() {
     }
 
     var run = () => {
-        ExecutePython(codeState.code, (d) => alert(d));
+        ExecutePython(codeState.code, (d) => xterm.current.write(d));
     }
 
     return (
@@ -54,6 +57,8 @@ export default function CodeEditor() {
                     &nbsp;
                     {t("ACTION_GO")}
                 </Button>
+
+                <XTerm ref={xterm} options={{ cols: 35 }} />
             </div>
         </Sidebar>
     )

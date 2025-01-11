@@ -21,7 +21,7 @@ i18n
         debug: true,
 
         interpolation: {
-        escapeValue: false, // not needed for react!!
+            escapeValue: false, // not needed for react!!
         },
     });
 

@@ -1,4 +1,9 @@
 
+@font-face {
+    font-family: Code;
+    src: url("/Fonts/JetBrains.woff2") format('woff2');
+}
+
 .codeEditorContainer .p-sidebar-header {
     position: fixed;
     width: 100%;
@@ -25,7 +30,7 @@
     min-height: 50vh;
     margin: auto;
     background-color: var(--col-contrast);
-    border-radius: 15px;
+    border-radius: 5px;
     font-size: 1rem;
 }
 
@@ -38,4 +43,22 @@
 
 .codeEditorContainer .editorRun * {
     color: white;
+}
+
+.codeEditorContainer .xterm {
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 1rem;
+    background-color: var(--col-contrast) !important;
+}
+
+.codeEditorContainer .xterm * {
+    font-family: Code;
+}
+
+.codeEditorContainer .xterm-viewport {
+    background-color: var(--col-contrast) !important;
 }
