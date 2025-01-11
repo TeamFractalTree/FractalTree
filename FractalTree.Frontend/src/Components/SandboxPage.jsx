@@ -10,15 +10,13 @@ import { useState } from "react";
 export default function SandboxPage() {
 
     var onContinue = () => {
-        /*window.openLanguageSelector((lang) => {
-            window.openScanner(() => {
-
+        window.openLanguageSelector((lang) => {
+            window.openScanner((code) => {
+                window.openCodeEditor({
+                    language: lang,
+                    code: code
+                });
             });
-        });*/
-
-        window.openCodeEditor({
-            language: "python",
-            code: "print('hello, world')"
         });
     }
 

@@ -17,7 +17,7 @@
 
 .codeEditorScroller {
     width: 100%;
-    min-height: 200vh;
+    min-height: 100vh;
 }
 
 .codeEditor {
@@ -27,4 +27,15 @@
     background-color: var(--col-contrast);
     border-radius: 15px;
     font-size: 1rem;
+}
+
+.codeEditorContainer .editorRun {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    margin-top: 1rem;
+}
+
+.codeEditorContainer .editorRun * {
+    color: white;
 }

@@ -7,7 +7,9 @@ import Header from './Header';
 import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-python';
 import 'prismjs/themes/prism.css';
+import { IconPlayerPlay } from '@tabler/icons-react';
 
 export default function CodeEditor() {
 
@@ -21,17 +23,32 @@ export default function CodeEditor() {
         setCodeState(Object.assign({}, codeState)); // Sets codeState to a duplicated version of itself
     }
 
+    var getLanguage = () => {
+
+        if (codeState.language == "python") {
+            return languages.python;
+        }
+
+        return languages.js;
+    }
+
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible} onHide={() => setEditorVisible(false)}>
-            <Header>Touch-Up Code</Header>
+            <Header>Scanned Code</Header>
             <div className="codeEditorScroller">
                 <Editor
                     value={codeState?.code || ""}
                     className="codeEditor"
                     onValueChange={updateCode}
                     padding={10}
-                    highlight={() => highlight(codeState?.code || "", languages.js)}
+                    highlight={() => highlight(codeState?.code || "", getLanguage())}
                 />
+
+                <Button className="editorRun">
+                    <IconPlayerPlay/>
+                    &nbsp;
+                    Run My Code
+                </Button>
             </div>
         </Sidebar>
     )
