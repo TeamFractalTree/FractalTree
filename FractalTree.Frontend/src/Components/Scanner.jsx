@@ -14,11 +14,11 @@ export default function Scanner() {
 
     var [scannerVisible, setScannerVisible] = useState(false);
     var [scanState, setScanState] = useState("none");
+    var [callback, setCallback] = useState([]);
+    window.openScanner = (newCallback) => { setCallback([newCallback]); setScannerVisible(true); }
 
     var cameraRef = useRef(null);
     var targetRef = useRef(null);
-
-    window.openScanner = () => setScannerVisible(true);
 
     var startScan = () => {
         if (!cameraRef.current) { return; }
@@ -58,10 +58,22 @@ export default function Scanner() {
                 xhr.send(formData);
             });
 
-            console.log(result.body);
-            alert(result.body);
+            console.log("Scan result: " + result.body);
+
+            // ChatGPT is supposed to just return the string "error" when there's an error
+            // But sometimes it adds random characters around it like ".aerror_", probably from the thing it's trying to scan
+            // Just check if it contains the "error" string and is short enough
+            if (result.body.length < 10 && result.body.toLowerCase().includes("error")) {
+                alert("We couldn't scan your code, please try again with a clearer picture or better handwriting.");
+                setScanState("error");
+                return;
+            }
+
+            var callbackToRun = callback[0] || console.log;
+            callbackToRun(result.body);
 
             setScanState("none");
+            setTimeout(() => setScannerVisible(false), 0);
         });
     }
 
@@ -72,7 +84,7 @@ export default function Scanner() {
                 <IconX></IconX>
             </Button>
 
-            <Webcam forceScreenshotSourceSize={true} ref={cameraRef} className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
+            <Webcam forceScreenshotSourceSize={true} screenshotQuality={1} screenshotFormat="image/png" ref={cameraRef} className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
             <img src="/Images/ScannerOverlayBackground.png" className="scannerOverlay"></img>
             <div ref={targetRef} className="scannerTarget"></div>
 

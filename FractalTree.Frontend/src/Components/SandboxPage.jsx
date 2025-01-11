@@ -11,7 +11,9 @@ export default function SandboxPage() {
 
     var onContinue = () => {
         window.openLanguageSelector((lang) => {
-            window.openScanner();
+            window.openScanner(() => {
+                
+            });
         });
     }
 
