@@ -47,14 +47,24 @@
     transform: translate(-50%, 0);
 }
 
-.scannerContainer .scanButton {
+.scannerContainer .scanButtonRow {
     position: absolute;
     z-index: 11;
+    width: 25rem;
+    height: 5rem;
+    gap: 2rem;
+    left: calc(50% - 12.5rem);
+    right: calc(50% - 12.5rem);
+    bottom: 7vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.scannerContainer .scanButton {
     width: 5rem;
     height: 5rem;
-    left: calc(50% - 2.5rem);
-    right: calc(50% - 2.5rem);
-    bottom: 7vh;
     border-radius: 360px;
     background-color: white;
     border: none;
@@ -64,6 +74,16 @@
     justify-content: center;
     align-items: center;
     padding: 0;
+}
+
+.scannerContainer .skipButton, .scannerContainer .pickButton {
+    background-color: transparent;
+    border: none;
+    width: 6rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .scannerContainer .scanButton svg {

@@ -55,7 +55,7 @@ export default function CodeEditor() {
                 <Button onClick={run} className="editorRun">
                     <IconPlayerPlay/>
                     &nbsp;
-                    {t("ACTION_GO")}
+                    {t("ACTION_RUN")}
                 </Button>
 
                 <XTerm ref={xterm} options={{ cols: 35 }} />

@@ -1,3 +1,7 @@
+html {
+    background: var(--col-bg) !important;
+}
+
 body {
     margin: 0;
     background: var(--col-bg) !important;

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import "../CSS/Scanner.css"
 import { useRef } from 'react';
 import Webcam from "react-webcam";
-import { IconTextScan2, IconX } from '@tabler/icons-react';
+import { IconCodeOff, IconFile, IconFileUpload, IconTextScan2, IconX } from '@tabler/icons-react';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import Vibrate from '../Helpers/Vibrator';
 import Image from "image-js"
@@ -15,7 +15,15 @@ export default function Scanner() {
     var [scannerVisible, setScannerVisible] = useState(false);
     var [scanState, setScanState] = useState("none");
     var [callback, setCallback] = useState([]);
-    window.openScanner = (newCallback) => { setCallback([newCallback]); setScannerVisible(true); }
+    window.openScanner = (newCallback) => { 
+
+        if (!window.matchMedia('(display-mode: standalone)').matches) {
+            document.body.requestFullscreen();
+        }
+
+        setCallback([newCallback]);
+        setScannerVisible(true);
+    }
 
     var cameraRef = useRef(null);
     var targetRef = useRef(null);
@@ -88,14 +96,23 @@ export default function Scanner() {
             <img src="/Images/ScannerOverlayBackground.png" className="scannerOverlay"></img>
             <div ref={targetRef} className="scannerTarget"></div>
 
-            <Button onClick={startScan} disabled={scanState == "loading"} className="scanButton">
-                {
-                    // Show Loading Wheel If Loading State Is Active
-                    scanState == "loading" ?
-                    <ProgressSpinner strokeWidth="8"/> :
-                    <IconTextScan2/>
-                }
-            </Button>
+            <div className="scanButtonRow">
+                <Button className="pickButton">
+                    <IconFileUpload/>&nbsp;{t("ACTION_CHOOSE")}
+                </Button>
+                <Button onClick={startScan} disabled={scanState == "loading"} className="scanButton">
+                    {
+                        // Show Loading Wheel If Loading State Is Active
+                        scanState == "loading" ?
+                        <ProgressSpinner strokeWidth="8"/> :
+                        <IconTextScan2/>
+                    }
+                </Button>
+                <Button onClick={() => (callback[0] || console.log)("")} className="skipButton">
+                    <IconCodeOff/>&nbsp;{t("ACTION_SKIP")}
+                </Button>
+            </div>
+
         </Sidebar>
     )
 }
