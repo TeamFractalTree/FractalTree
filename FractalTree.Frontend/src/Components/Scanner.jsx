@@ -8,7 +8,7 @@ import { IconCodeOff, IconFile, IconFileUpload, IconTextScan2, IconX } from '@ta
 import { ProgressSpinner } from 'primereact/progressspinner';
 import Vibrate from '../Helpers/Vibrator';
 import Image from "image-js"
-import { saveAs } from 'file-saver';
+import IsDevMode from "../Helpers/DevModeDetector";
 
 export default function Scanner() {
 
@@ -17,7 +17,7 @@ export default function Scanner() {
     var [callback, setCallback] = useState([]);
     window.openScanner = (newCallback) => { 
 
-        if (!window.matchMedia('(display-mode: standalone)').matches) {
+        if (!window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
             document.body.requestFullscreen();
         }
 

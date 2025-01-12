@@ -11,7 +11,7 @@ setTimeout(async () => {
             window.pythonPromptString = promptString;
         }
     });
-}, 0);
+}, 1000);
 
 
 

@@ -13,6 +13,7 @@ import i18n from 'i18next';
 import Backend from 'i18next-http-backend';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { registerSW } from "virtual:pwa-register";
+import IsDevMode from "./Helpers/DevModeDetector.js";
 
 i18n
     .use(Backend)
@@ -31,8 +32,10 @@ createRoot(document.getElementById('root')).render(
 )
 
 if ("serviceWorker" in navigator) {
-    // && !/localhost/.test(window.location)) {
-    registerSW();
+    if (!IsDevMode()) {
+        registerSW();
+    }
+
 }
   
 
