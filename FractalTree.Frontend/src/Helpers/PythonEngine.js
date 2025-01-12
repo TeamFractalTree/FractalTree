@@ -1,15 +1,20 @@
 import { loadPyodide } from "pyodide"
 
-window.pyodide = await loadPyodide({
-    indexURL: "/Pyodide",
-});
+setTimeout(async () => {
+    window.pyodide = await loadPyodide({
+        indexURL: "/Pyodide",
+    });
 
-pyodide.setStdin({ stdin: () => prompt(window.pythonPromptString || "Python code is asking for a value:") });
-pyodide.registerJsModule("fractaltree", { 
-    prePrompt: (promptString) => {
-        window.pythonPromptString = promptString;
-    }
-});
+    pyodide.setStdin({ stdin: () => prompt(window.pythonPromptString || "Python code is asking for a value:") });
+    pyodide.registerJsModule("fractaltree", { 
+        prePrompt: (promptString) => {
+            window.pythonPromptString = promptString;
+        }
+    });
+}, 0);
+
+
+
 
 var injectedPythonLib = `
 import builtins

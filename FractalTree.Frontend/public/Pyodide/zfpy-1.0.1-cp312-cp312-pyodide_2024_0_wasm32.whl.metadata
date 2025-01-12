@@ -1,9 +1,0 @@
-Metadata-Version: 2.1
-Name: zfpy
-Version: 1.0.1
-Summary: zfp compression in Python
-Home-page: https://zfp.llnl.gov
-Author-email: Peter Lindstrom <zfp@llnl.gov>, Danielle Asher <zfp@llnl.gov>
-Requires-Python: >=3.0
-License-File: LICENSE
-License-File: NOTICE
