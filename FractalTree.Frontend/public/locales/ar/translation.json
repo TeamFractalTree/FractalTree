@@ -1,8 +1,18 @@
 {
     "ACTION_GO": "اذهب",
     "ACTION_RUN": "قم بتشغيل الكود الخاص بي",
+    "ACTION_SKIP": "تخطي",
+    "ACTION_CHOOSE": "اختر",
+    "ACTION_EDITRUN": "تحرير وتشغيل الكود",
+    "ACTION_SELECTLANG": "اختر لغة البرمجة",
+    "ACTION_SELECTLANG_DESCRIPTION": "قبل فحص الكود الخاص بك، سنحتاج إلى معرفة اللغة التي كتب بها.",
+    "LANG_PYTHON": "بايثون",
+    "LANG_JAVASCRIPT": "جافا سكريبت",
+    "LANG_LUA": "لوا",
+    "ERROR_BADSCAN": "لم نتمكن من فحص الكود الخاص بك، يرجى المحاولة مرة أخرى بصورة أو خط أفضل.",
     "SECTION_LESSONS": "الدروس",
     "SECTION_SNIPPETS": "مقتطفات",
     "SECTION_SANDBOX": "صندوق الرمل",
-    "SECTION_SANDBOX_DESCRIPTION": "يسمح لك وضع صندوق الرمل بفحص تشغيل الكود بسرعة دون حفظه."
+    "SECTION_SANDBOX_DESCRIPTION": "وضع الصندوق الرملي يسمح لك بفحص وتشغيل الكود بسرعة دون حفظه."
 }
+
