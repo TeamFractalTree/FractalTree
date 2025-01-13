@@ -42,7 +42,7 @@ export default function CodeEditor() {
 
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible} onHide={() => setEditorVisible(false)}>
-            <Header>Scanned Code</Header>
+            <Header>{t("ACTION_EDITRUN")}</Header>
             <div className="codeEditorScroller">
                 <Editor
                     value={codeState?.code || ""}

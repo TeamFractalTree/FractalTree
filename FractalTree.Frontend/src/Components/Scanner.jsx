@@ -86,7 +86,7 @@ export default function Scanner() {
                 // But sometimes it adds random characters around it like ".aerror_", probably from the thing it's trying to scan
                 // Just check if it contains the "error" string and is short enough
                 if (result.body.length < 10 && result.body.toLowerCase().includes("error")) {
-                    alert("We couldn't scan your code, please try again with a clearer picture or better handwriting.");
+                    alert(t("ERROR_BADSCAN"));
                     setScanState("error");
                     return;
                 }

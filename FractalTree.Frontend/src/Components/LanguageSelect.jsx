@@ -19,10 +19,10 @@ export default function LanguageSelect() {
 
     return (
         <Sidebar style={{ height: "80vh" }} position="bottom" visible={pickerVisible} onHide={() => setPickerVisible(false)}>
-            <h2>Select Programming Language</h2>
-            <p>Before scanning your code, we'll need to know what programming language it's written in.</p>
-            <Button onClick={() => onLanguageSelected("python")} className="languageOption"><IconBrandPython/> &nbsp; Python</Button>
-            <Button onClick={() => onLanguageSelected("javascript")} className="languageOption"><IconBrandJavascript/> &nbsp; JavaScript</Button>
+            <h2>{t("ACTION_SELECTLANG")}</h2>
+            <p>{t("ACTION_SELECTLANG_DESCRIPTION")}</p>
+            <Button onClick={() => onLanguageSelected("python")} className="languageOption"><IconBrandPython/> &nbsp; {t("LANG_PYTHON")}</Button>
+            <Button onClick={() => onLanguageSelected("javascript")} className="languageOption"><IconBrandJavascript/> &nbsp; {t("LANG_JAVASCRIPT")}</Button>
         </Sidebar>
     )
 }
