@@ -9,18 +9,27 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 import Vibrate from '../Helpers/Vibrator';
 import Image from "image-js"
 import IsDevMode from "../Helpers/DevModeDetector";
+import { createWorker } from 'tesseract.js';
+
+setTimeout(async () => {
+    window.tesseractWorker = await createWorker("eng");
+}, 1000);
+
 
 export default function Scanner() {
 
     var [scannerVisible, setScannerVisible] = useState(false);
     var [scanState, setScanState] = useState("none");
     var [callback, setCallback] = useState([]);
-    window.openScanner = (newCallback) => { 
+    var [scanOptions, setScanOptions] = useState({});
+
+    window.openScanner = (newScanOptions, newCallback) => { 
 
         if (!window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
             document.body.requestFullscreen();
         }
 
+        setScanOptions(newScanOptions);
         setCallback([newCallback]);
         setScannerVisible(true);
     }
@@ -54,28 +63,37 @@ export default function Scanner() {
 
             var savedImage = await image.toBlob("image/png");
             
-            var formData = new FormData();
-            formData.append("image", savedImage);
-
-            var result = await new Promise((resolve, reject) => {
-                const xhr = new XMLHttpRequest();
-                xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.responseText }));
-                xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
-                xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
-                xhr.open('POST', "https://node.samsidparty.com/api/scan", true);
-                xhr.send(formData);
-            });
-
-            console.log("Scan result: " + result.body);
-
-            // ChatGPT is supposed to just return the string "error" when there's an error
-            // But sometimes it adds random characters around it like ".aerror_", probably from the thing it's trying to scan
-            // Just check if it contains the "error" string and is short enough
-            if (result.body.length < 10 && result.body.toLowerCase().includes("error")) {
-                alert("We couldn't scan your code, please try again with a clearer picture or better handwriting.");
-                setScanState("error");
-                return;
+            if (false) {
+                var formData = new FormData();
+                formData.append("image", savedImage);
+    
+                var result = await new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.responseText }));
+                    xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
+                    xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
+                    xhr.open('POST', "https://api.fractal-tree.org/api/scan", true);
+                    xhr.send(formData);
+                });
+    
+                console.log("Scan result: " + result.body);
+    
+                // ChatGPT is supposed to just return the string "error" when there's an error
+                // But sometimes it adds random characters around it like ".aerror_", probably from the thing it's trying to scan
+                // Just check if it contains the "error" string and is short enough
+                if (result.body.length < 10 && result.body.toLowerCase().includes("error")) {
+                    alert("We couldn't scan your code, please try again with a clearer picture or better handwriting.");
+                    setScanState("error");
+                    return;
+                }
             }
+            else {
+                var result = (await tesseractWorker.recognize(URL.createObjectURL(savedImage)));
+                result = {
+                    body: result.data.text
+                }
+            }
+            
 
             var callbackToRun = callback[0] || console.log;
             callbackToRun(result.body);

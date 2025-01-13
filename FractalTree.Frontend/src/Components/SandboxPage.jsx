@@ -11,7 +11,7 @@ export default function SandboxPage() {
 
     var onContinue = () => {
         window.openLanguageSelector((lang) => {
-            window.openScanner((code) => {
+            window.openScanner({}, (code) => {
                 window.openCodeEditor({
                     language: lang,
                     code: code

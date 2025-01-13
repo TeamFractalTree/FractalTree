@@ -9,7 +9,7 @@ export default defineConfig({
     includeAssets: ["**/*.*"],
     workbox: {
       maximumFileSizeToCacheInBytes: 115343360,
-      navigateFallback: '/'
+      navigateFallback: '/index.html'
     },
     client: {
       installPrompt: true,
@@ -38,11 +38,14 @@ export default defineConfig({
       "name": "Fractal Tree",
       "short_name": "Fractal Tree",
       "scope": "https://app.fractal-tree.org/",
-      "start_url": "https://app.fractal-tree.org/",
-      "description": "Bridging the digital divide, dive into the world of coding with just a pen, paper, and a smartphone! ",
+      "start_url": "https://app.fractal-tree.org/index.html",
+      "description": "Bridging the digital divide, dive into the world of coding with just a pen, paper, and a smartphone!",
       "id": "org.fractal-tree.app"
     }
   })],
+  build: {
+    outDir: '..\\..\\Production'
+  },
   server: {
     proxy: {
         "/api": {
