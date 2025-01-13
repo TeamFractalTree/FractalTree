@@ -1,0 +1,68 @@
+.lessonsPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+}
+
+.lessonsSplash {
+    margin-bottom: 2rem;
+    font-size: 3.125rem;
+    color: #4a90e2; 
+}
+
+.lessonsDescription {
+    font-size: 1.125rem;
+    color: #333; 
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.lessonsContinue {
+    background-color: #4a90e2; /* Button background color */
+    color: white; /* Button text color */
+    border: none;
+    padding: 0.625rem 1.25rem; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.lessonsContinue:hover {
+    background-color: #357ab8; /* Darker shade on hover */
+}
+
+.lessonsCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.lessonCard {
+    background-color: #ffffff; /* White background for the card */
+    border: 1px solid #e0e0e0; /* Light border */
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 1rem; /* Padding inside the card */
+    margin: 1rem; /* Margin around the card */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.lessonCard:hover {
+    transform: scale(1.05); /* Scale up on hover */
+}
+
+.lessonCardTitle {
+    font-size: 1.5rem; /* Title font size */
+    color: #333; /* Dark text color */
+}
+
+.lessonCardDescription {
+    font-size: 1rem; /* Description font size */
+    color: #666; /* Lighter text color */
+}
