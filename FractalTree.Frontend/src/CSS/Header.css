@@ -4,3 +4,7 @@
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
+
+.header .p-divider {
+    background-color: var(--col-border);
+}

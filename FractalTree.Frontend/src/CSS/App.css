@@ -14,7 +14,14 @@ body {
     overflow: hidden;
 }
 
+*::-webkit-scrollbar {
+    display: none;
+}
+  
+
 * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     color: var(--col-text);
@@ -29,8 +36,8 @@ body {
     --col-primary-hover: #ff5b94;
     --col-secondary: #95df15;
     --col-secondary-hover: #8cce1b;
-    --col-tertiary: #ffffff;
-    --col-contrast: #ebebeb;
+    --col-tertiary: white;
+    --col-contrast: #f1eff0;
     --col-disabled: #251F29;
     --col-mask: rgba(0, 0, 0, 0.1);
     --col-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;

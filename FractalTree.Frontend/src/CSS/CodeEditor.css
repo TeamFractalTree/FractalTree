@@ -29,8 +29,10 @@
     width: 90%;
     min-height: 50vh;
     margin: auto;
-    background-color: var(--col-contrast);
+    background-color: var(--col-tertiary);
     border-radius: 5px;
+    border: 2px solid var(--col-border);
+    box-shadow: var(--col-shadow);
     font-size: 1rem;
 }
 
@@ -52,7 +54,9 @@
     border-radius: 5px;
     overflow: hidden;
     padding: 1rem;
-    background-color: var(--col-contrast) !important;
+    background-color: var(--col-tertiary) !important;
+    border: 2px solid var(--col-border);
+    box-shadow: var(--col-shadow);
 }
 
 .codeEditorContainer .xterm * {
@@ -60,5 +64,5 @@
 }
 
 .codeEditorContainer .xterm-viewport {
-    background-color: var(--col-contrast) !important;
+    background-color: var(--col-tertiary) !important;
 }
