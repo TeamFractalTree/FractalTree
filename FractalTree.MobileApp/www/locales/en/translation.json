@@ -1,0 +1,10 @@
+{
+    "ACTION_GO": "Go",
+    "ACTION_RUN": "Run My Code",
+    "ACTION_SKIP": "Skip",
+    "ACTION_CHOOSE": "Choose",
+    "SECTION_LESSONS": "Lessons",
+    "SECTION_SNIPPETS": "Snippets",
+    "SECTION_SANDBOX": "Sandbox",
+    "SECTION_SANDBOX_DESCRIPTION": "Sandbox mode allows you to quickly scan and run code without saving it."
+}
