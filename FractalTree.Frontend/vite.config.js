@@ -6,6 +6,11 @@ import { VitePWA } from "vite-plugin-pwa"
 export default defineConfig({
   plugins: [react(), VitePWA({
     registerType: "autoUpdate",
+    workbox: {
+      maximumFileSizeToCacheInBytes: 115343360,
+      navigateFallback: '/index.html',
+      runtimeCaching: []
+    },
     client: {
       installPrompt: true,
     },
@@ -39,7 +44,7 @@ export default defineConfig({
     }
   })],
   build: {
-    outDir: '..\\..\\Production'
+    outDir: '..\\FractalTree.MobileApp\\www'
   },
   server: {
     proxy: {

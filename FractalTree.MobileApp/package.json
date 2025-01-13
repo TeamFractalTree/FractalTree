@@ -1,0 +1,23 @@
+{
+  "name": "org.fractal_tree.mobile",
+  "displayName": "Fractal Tree",
+  "version": "1.0.0",
+  "description": "Fractal Tree for mobile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Fractal Tree Team",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "cordova-android": "^13.0.0"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  }
+}
