@@ -11,13 +11,15 @@ import Image from "image-js"
 import IsDevMode from "../Helpers/DevModeDetector";
 import { createWorker } from 'tesseract.js';
 
-setTimeout(async () => {
+window.addEventListener("load", async () => {
     window.tesseractWorker = await createWorker("eng", 1, {
         workerPath: '/Tesseract/worker.js',
         langPath: "/Tesseract",
         corePath: '/Tesseract',
     });
-}, 1000);
+
+    window.doneInitStep();
+});
 
 
 export default function Scanner() {

@@ -1,6 +1,6 @@
 import { loadPyodide } from "pyodide"
 
-setTimeout(async () => {
+window.addEventListener("load", async () => {
     window.pyodide = await loadPyodide({
         indexURL: "/Pyodide",
     });
@@ -11,7 +11,9 @@ setTimeout(async () => {
             window.pythonPromptString = promptString;
         }
     });
-}, 1000);
+
+    window.doneInitStep();
+});
 
 
 

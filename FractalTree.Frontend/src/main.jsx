@@ -34,15 +34,18 @@ i18n
         },
     });
 
-createRoot(document.getElementById('root')).render(
-    <Main/>
-)
+window.startReact = () => {
+    createRoot(document.getElementById('root')).render(
+        <Main/>
+    )
+}
+window.doneInitStep();
+
 
 if ("serviceWorker" in navigator) {
     if (!IsDevMode()) {
         registerSW();
     }
-
 }
   
 
