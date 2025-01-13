@@ -14,10 +14,17 @@ import Backend from 'i18next-http-backend';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { registerSW } from "virtual:pwa-register";
 import IsDevMode from "./Helpers/DevModeDetector.js";
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+localStorage.i18nextLng = navigator.language.split("-")[0];
+if (navigator.language.toLowerCase().startsWith("ar")) {
+    document.body.setAttribute("dir", "rtl"); // Make The Page Right-To-Left In Arabic
+}
 
 i18n
+    .use(LanguageDetector)
     .use(Backend)
-    .use(initReactI18next) // bind react-i18next to the instance
+    .use(initReactI18next)
     .init({
         fallbackLng: 'en',
         debug: true,
