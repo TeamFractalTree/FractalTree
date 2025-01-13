@@ -25,7 +25,7 @@ export default function Scanner() {
 
     window.openScanner = (newScanOptions, newCallback) => { 
 
-        if (!window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
+        if (!!document.body.requestFullscreen && !window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
             document.body.requestFullscreen();
         }
 
@@ -110,7 +110,7 @@ export default function Scanner() {
                 <IconX></IconX>
             </Button>
 
-            <Webcam forceScreenshotSourceSize={true} screenshotQuality={1} screenshotFormat="image/png" ref={cameraRef} className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
+            <Webcam onUserMediaError={console.log} forceScreenshotSourceSize={true} screenshotQuality={1} screenshotFormat="image/png" ref={cameraRef} className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
             <img src="/Images/ScannerOverlayBackground.png" className="scannerOverlay"></img>
             <div ref={targetRef} className="scannerTarget"></div>
 

@@ -44,7 +44,7 @@ export default defineConfig({
     }
   })],
   build: {
-    outDir: '..\\FractalTree.MobileApp\\www'
+    outDir: '../FractalTree.MobileApp/www'
   },
   server: {
     proxy: {
