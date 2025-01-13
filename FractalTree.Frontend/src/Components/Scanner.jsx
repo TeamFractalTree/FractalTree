@@ -12,7 +12,11 @@ import IsDevMode from "../Helpers/DevModeDetector";
 import { createWorker } from 'tesseract.js';
 
 setTimeout(async () => {
-    window.tesseractWorker = await createWorker("eng");
+    window.tesseractWorker = await createWorker("eng", 1, {
+        workerPath: '/Tesseract/worker.js',
+        langPath: "/Tesseract",
+        corePath: '/Tesseract',
+    });
 }, 1000);
 
 
