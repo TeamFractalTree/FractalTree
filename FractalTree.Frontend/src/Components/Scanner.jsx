@@ -132,7 +132,7 @@ export default function Scanner() {
                         <IconTextScan2/>
                     }
                 </Button>
-                <Button onClick={() => (callback[0] || console.log)("")} className="skipButton">
+                <Button onClick={() => { (callback[0] || console.log)(""); setScannerVisible(false); }} className="skipButton">
                     <IconCodeOff/>&nbsp;{t("ACTION_SKIP")}
                 </Button>
             </div>

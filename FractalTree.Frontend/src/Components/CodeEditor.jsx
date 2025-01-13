@@ -13,6 +13,7 @@ import '@xterm/xterm/css/xterm.css';
 import { XTerm } from "@pablo-lion/xterm-react";
 import { IconPlayerPlay } from '@tabler/icons-react';
 import ExecutePython from '../Helpers/PythonEngine';
+import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
 
 export default function CodeEditor() {
 
@@ -37,7 +38,12 @@ export default function CodeEditor() {
     }
 
     var run = () => {
-        ExecutePython(codeState.code, (d) => xterm.current.write(d));
+        if (codeState.language == "python") {
+            ExecutePython(codeState.code, (d) => xterm.current.write(d));
+        }
+        else if (codeState.language == "javascript") {
+            ExecuteJavaScript(codeState.code, (d) => xterm.current.write(d));
+        }
     }
 
     return (
