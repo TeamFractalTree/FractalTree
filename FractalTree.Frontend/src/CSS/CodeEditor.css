@@ -67,3 +67,18 @@
 .codeEditorContainer .xterm-viewport {
     background-color: var(--col-tertiary) !important;
 }
+
+.codeEditorContainer .guiOutputWindow {
+    display: none;
+}
+
+.codeEditorContainer .guiOutputWindow.enabledOutput {
+    display: flex;
+    margin: auto;
+    margin-top: 1rem;
+    width: 90%;
+    border-radius: 5px;
+    background-color: var(--col-tertiary);
+    border: 2px solid var(--col-border);
+    box-shadow: var(--col-shadow);
+}

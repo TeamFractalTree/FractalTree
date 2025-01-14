@@ -21,7 +21,17 @@ export default function CodeEditor() {
     var [editorVisible, setEditorVisible] = useState(false);
     var [codeState, setCodeState] = useState({});
     var [callback, setCallback] = useState([]);
+    var guiOutputRef = useRef(null);
+
     window.openCodeEditor = (newCodeState, newCallback) => { setCodeState(newCodeState); setCallback([newCallback]); setEditorVisible(true); }
+
+    window.enableGUIOutput = () => {
+        guiOutputRef.current?.classList.add("enabledOutput");
+    }
+
+    window.disableGUIOutput = () => {
+        guiOutputRef.current?.setAttribute("class", "guiOutputWindow");
+    }
 
     var updateCode = (newCode) => {
         codeState.code = newCode;
@@ -38,6 +48,7 @@ export default function CodeEditor() {
     }
 
     var run = () => {
+        window.disableGUIOutput();
         if (codeState.language == "python") {
             ExecutePython(codeState.code, (d) => xterm.current.write(d));
         }
@@ -63,6 +74,8 @@ export default function CodeEditor() {
                     &nbsp;
                     {t("ACTION_RUN")}
                 </Button>
+
+                <div ref={guiOutputRef} id="guiOutputWindow" className="guiOutputWindow"></div>
 
                 <XTerm ref={xterm} options={{ cols: 35 }} />
             </div>
