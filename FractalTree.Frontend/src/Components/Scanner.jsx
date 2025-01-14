@@ -117,7 +117,7 @@ export default function Scanner() {
             </Button>
 
             <Webcam onUserMediaError={console.log} forceScreenshotSourceSize={true} screenshotQuality={1} screenshotFormat="image/png" ref={cameraRef} className="camera" audio={false} videoConstraints={{ facingMode: "environment" }} ></Webcam>
-            <img src="/Images/ScannerOverlayBackground.png" className="scannerOverlay"></img>
+            <img alt="Scanner" src="/Images/ScannerOverlayBackground.png" className="scannerOverlay"></img>
             <div ref={targetRef} className="scannerTarget"></div>
 
             <div className="scanButtonRow">

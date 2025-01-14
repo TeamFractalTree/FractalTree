@@ -52,7 +52,7 @@ export default function CodeEditor() {
             <div className="codeEditorScroller">
                 <Editor
                     value={codeState?.code || ""}
-                    className="codeEditor"
+                    className="codeEditor overrideFont"
                     onValueChange={updateCode}
                     padding={10}
                     highlight={() => highlight(codeState?.code || "", getLanguage())}

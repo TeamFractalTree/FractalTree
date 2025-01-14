@@ -36,7 +36,7 @@ function LessonCard(props) {
             <h2 className="lessonTitle">{props.name}</h2>
             <p className="lessonDescription">{props.description}</p>
             <div className="lessonIcon" style={props.icon == "JavaScript.webp" ? { backgroundColor: "#F0DB4F" } : {}}>
-                <img src={"/Images/LangIcons/" + props.icon}></img>
+                <img alt={props.icon + " Logo"} src={"/Images/LangIcons/" + props.icon}></img>
             </div>
             <ProgressBar value={50}></ProgressBar>
         </div>

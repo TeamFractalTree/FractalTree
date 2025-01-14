@@ -26,6 +26,7 @@
 }
 
 .codeEditor {
+    font-family: Code;
     width: 90%;
     min-height: 50vh;
     margin: auto;
