@@ -23,10 +23,10 @@ export default function BottomBar() {
 
     var barItemTemplate = (option) => {
         return (
-            <NavLink className="barItem" to={"/" + tabNames[option].toLowerCase()} viewTransition>
+            <div className="barItem" onClick={() => navigate("/" + tabNames[option].toLowerCase())} viewTransition>
                 {tabIcons[option]}
                 {t("SECTION_" + tabNames[option].toUpperCase())}
-            </NavLink>
+            </div>
         )
     }
 

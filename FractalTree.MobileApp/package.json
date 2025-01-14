@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "build": "npx tauri android build"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2"
