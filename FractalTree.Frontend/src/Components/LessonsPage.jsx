@@ -3,14 +3,11 @@ import Header from "./Header";
 import "../CSS/LessonsPage.css";
 import { Button } from 'primereact/button';
 import { useState } from "react";
+import { ProgressBar } from 'primereact/progressbar';
 
+window.lessonList = [];
 
 export default function LessonsPage() {
-    const lessons = [
-        { title: "Test", description: "" },
-        { title: "test", description: "" },
-        { title: "tse2", description: "" }
-    ];
 
 
     return (
@@ -19,7 +16,7 @@ export default function LessonsPage() {
 
             <div className="lessonsPage">
                 {
-                    lessons.map((lesson, i) => {
+                    lessonList.filter((l) => l.lang == localStorage.i18nextLng).map((lesson, i) => {
                         return (<LessonCard key={i} {...lesson}></LessonCard>)
                     })
                 }
@@ -33,7 +30,12 @@ export default function LessonsPage() {
 function LessonCard(props) {
     return (
         <div className="lessonCard">
-            <h2 className="lessonTitle">{props.title}</h2>
+            <h2 className="lessonTitle">{props.name}</h2>
+            <p className="lessonDescription">{props.description}</p>
+            <div className="lessonIcon" style={props.icon == "JavaScript.webp" ? { backgroundColor: "#F0DB4F" } : {}}>
+                <img src={"/Images/LangIcons/" + props.icon}></img>
+            </div>
+            <ProgressBar value={50}></ProgressBar>
         </div>
     )
 }
