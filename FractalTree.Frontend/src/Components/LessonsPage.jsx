@@ -5,7 +5,10 @@ import { Button } from 'primereact/button';
 import { useState } from "react";
 import { ProgressBar } from 'primereact/progressbar';
 
-window.lessonList = [];
+if (!window.lessonList) {
+    window.lessonList = [];
+}
+
 
 export default function LessonsPage() {
 
