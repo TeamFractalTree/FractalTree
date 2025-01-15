@@ -60,11 +60,11 @@
     color: var(--col-text-washed);
 }
 
-.segmentPickerContainer .p-sidebar-content {
+.segmentPickerContainer .p-sidebar-content, .segmentContainer .p-sidebar-content {
     padding: 0;
 }
 
-.segmentPickerContainer .p-sidebar-header {
+.segmentPickerContainer .p-sidebar-header, .segmentContainer .p-sidebar-header {
     display: none;
 }
 
@@ -92,4 +92,8 @@
     background-image: linear-gradient(90deg,#000000 0%, #000000 80%,rgba(0,0,0,0));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.segmentContainer .segmentViewer {
+    padding: 1rem;
 }

@@ -5,6 +5,7 @@ import "../CSS/LessonsPage.css";
 import { Button } from 'primereact/button';
 import { useState } from "react";
 import { ProgressBar } from 'primereact/progressbar';
+import Markdown from 'react-markdown'
 
 if (!window.lessonList) {
     window.lessonList = [];
@@ -32,17 +33,33 @@ export default function LessonsPage() {
                 <Header onBack={() => setSegmentPickerVisible(false)}>{selectedLesson?.name}</Header>
                 {
                     selectedLesson?.segments?.map((segment) => {
-                        return (
-                            <div className="lessonSegment">
-                                <h2>{segment.split("\n")[0].replace("# ", "")}</h2>
-                                <p>{segment.split("\n")[1]?.replace("# ", "")}</p>
-                            </div>
-                        )
+                        return <LessonSegment segment={segment}></LessonSegment>
                     })
                 }
             </Sidebar>
 
             <BottomBar></BottomBar>
+        </>
+    )
+}
+
+function LessonSegment(props) {
+
+    var [segmentVisible, setSegmentVisible] = useState(false);
+
+    return (
+        <>
+            <div className="lessonSegment" onClick={() => setSegmentVisible(true)}>
+                <h2>{props.segment.split("\n")[0].replace("# ", "")}</h2>
+                <p>{props.segment.split("\n")[1]?.replace("# ", "")}</p>
+            </div>
+
+            <Sidebar style={{ width: "100%" }} position="right" className="segmentContainer" visible={segmentVisible} onHide={() => setSegmentVisible(false)}>
+                <Header onBack={() => setSegmentVisible(false)}>{props.segment.split("\n")[0].replace("# ", "")}</Header>
+                <div className="segmentViewer">
+                    <Markdown>{props.segment.split("\n").toSpliced(0, 2).join("\n")}</Markdown>
+                </div>
+            </Sidebar>
         </>
     )
 }
