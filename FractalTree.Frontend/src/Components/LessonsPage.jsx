@@ -56,7 +56,7 @@ function LessonSegment(props) {
 
             <Sidebar style={{ width: "100%" }} position="right" className="segmentContainer" visible={segmentVisible} onHide={() => setSegmentVisible(false)}>
                 <Header onBack={() => setSegmentVisible(false)}>{props.segment.split("\n")[0].replace("# ", "")}</Header>
-                <div className="segmentViewer">
+                <div className="segmentViewer overrideFont">
                     <Markdown>{props.segment.split("\n").toSpliced(0, 2).join("\n")}</Markdown>
                 </div>
             </Sidebar>

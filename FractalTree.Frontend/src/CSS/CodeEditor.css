@@ -1,8 +1,4 @@
 
-@font-face {
-    font-family: Code;
-    src: url("/Fonts/JetBrains.woff2") format('woff2');
-}
 
 .codeEditorContainer .p-sidebar-header {
     display: none;

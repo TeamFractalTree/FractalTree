@@ -96,4 +96,9 @@
 
 .segmentContainer .segmentViewer {
     padding: 1rem;
+    font-family: Fancy;
+}
+
+code {
+    font-family: Code !important;
 }

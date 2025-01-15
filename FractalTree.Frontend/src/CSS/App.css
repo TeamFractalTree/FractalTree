@@ -3,6 +3,17 @@
     src: url("/Fonts/InterVariable.woff2") format('woff2');
 }
 
+@font-face {
+    font-family: Code;
+    src: url("/Fonts/JetBrains.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: Fancy;
+    src: url("/Fonts/RobotoSlab.ttf");
+}
+
+
 html {
     background: var(--col-bg) !important;
 }
