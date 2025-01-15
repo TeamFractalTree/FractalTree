@@ -5,7 +5,9 @@ import "../CSS/LessonsPage.css";
 import { Button } from 'primereact/button';
 import { useState } from "react";
 import { ProgressBar } from 'primereact/progressbar';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Markdown from 'react-markdown'
+import { IconPlayerPlayFilled } from "@tabler/icons-react";
 
 if (!window.lessonList) {
     window.lessonList = [];
@@ -57,7 +59,29 @@ function LessonSegment(props) {
             <Sidebar style={{ width: "100%" }} position="right" className="segmentContainer" visible={segmentVisible} onHide={() => setSegmentVisible(false)}>
                 <Header onBack={() => setSegmentVisible(false)}>{props.segment.split("\n")[0].replace("# ", "")}</Header>
                 <div className="segmentViewer overrideFont">
-                    <Markdown>{props.segment.split("\n").toSpliced(0, 2).join("\n")}</Markdown>
+                    <Markdown
+                        components={{
+                            code(props) {
+                              const {children, className, node, ...rest} = props
+                              const match = /language-(\w+)/.exec(className || '')
+                              return match ? (
+                                <div className="runnableCodeContainer">
+                                    <Button onClick={() => window.openCodeEditor({ code: children, language: className.replace("language-", "") }, null)} className="codeRunButton"><IconPlayerPlayFilled/>&nbsp;{t("ACTION_TRY")}</Button>
+                                    <SyntaxHighlighter
+                                        {...rest}
+                                        PreTag="div"
+                                        children={String(children).replace(/\n$/, '')}
+                                        language={match[1]}
+                                    />
+                                </div>
+                              ) : (
+                                <code {...rest} className={className}>
+                                  {children}
+                                </code>
+                              )
+                            }
+                          }}
+                    >{props.segment.split("\n").toSpliced(0, 2).join("\n")}</Markdown>
                 </div>
             </Sidebar>
         </>
