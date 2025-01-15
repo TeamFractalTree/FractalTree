@@ -14,7 +14,7 @@ export function HTMLHost() {
 
     return (
         <Sidebar className="htmlHost" style={{ height: "100vh" }} position="bottom" visible={websiteVisible} onHide={() => setWebsiteVisible(false)}>
-            <iframe src={"data:text/html;base64," + btoa(websiteCode)}></iframe>
+            <iframe src={"data:text/html;base64," + btoa(unescape(encodeURIComponent(websiteCode)))}></iframe>
         </Sidebar>
     )
 }
@@ -39,7 +39,7 @@ function FrameInjectedCode() {
         -webkit-tap-highlight-color: transparent;
     }
 
-    button {
+    button, input {
         border: none;
         padding: 1rem;
         padding-top: 0.5rem;
@@ -54,6 +54,10 @@ function FrameInjectedCode() {
     tailwind.rel = "stylesheet";
     tailwind.href = origin + "/Runtime/tailwind.css";
     document.head.append(tailwind);
+
+    var jquery = document.createElement('script');
+    jquery.src = origin + "/Runtime/jquery.js";
+    document.head.append(jquery);
 
     var style = document.createElement('style');
     style.textContent = injectedCSS;
