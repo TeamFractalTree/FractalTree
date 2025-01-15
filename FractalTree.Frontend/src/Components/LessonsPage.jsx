@@ -30,6 +30,16 @@ export default function LessonsPage() {
 
             <Sidebar style={{ width: "100%" }} position="right" className="segmentPickerContainer" visible={segmentPickerVisible} onHide={() => setSegmentPickerVisible(false)}>
                 <Header onBack={() => setSegmentPickerVisible(false)}>{selectedLesson?.name}</Header>
+                {
+                    selectedLesson?.segments?.map((segment) => {
+                        return (
+                            <div className="lessonSegment">
+                                <h2>{segment.split("\n")[0].replace("# ", "")}</h2>
+                                <p>{segment.split("\n")[1]?.replace("# ", "")}</p>
+                            </div>
+                        )
+                    })
+                }
             </Sidebar>
 
             <BottomBar></BottomBar>

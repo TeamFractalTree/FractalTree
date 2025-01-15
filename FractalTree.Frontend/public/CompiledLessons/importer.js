@@ -7,7 +7,7 @@ window.compiledCourse_python_intro_ar = {"id": "python_intro", "lang": "ar", "na
 
 window.lessonList.push(window.compiledCourse_python_intro_ar);
 
-window.compiledCourse_python_intro_en = {"id": "python_intro", "lang": "en", "name": "Intro To Python", "description": "Learn the very basics of Python 3, no prior coding knowledge required.", "icon": "Python.webp", "segments": ["", ""]};
+window.compiledCourse_python_intro_en = {"id": "python_intro", "lang": "en", "name": "Intro To Python", "description": "Learn the very basics of Python 3, no prior coding knowledge required.", "icon": "Python.webp", "segments": ["# Placeholder 1\nPineapple on pizza is very good, idk why ppl hate it", "# Placeholder 2\nCoke zero > regular coke > pepsi"]};
 
 window.lessonList.push(window.compiledCourse_python_intro_en);
 
