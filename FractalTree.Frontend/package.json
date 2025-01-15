@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build --emptyOutDir",
+    "lessons": "cd ../FractalTree.LessonCompiler && python mkall.py && cd ../FractalTree.Frontend",
     "lint": "eslint .",
     "preview": "vite preview"
   },
