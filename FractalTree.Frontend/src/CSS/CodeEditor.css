@@ -28,7 +28,7 @@
     border-radius: 5px;
     border: 2px solid var(--col-border);
     box-shadow: var(--col-shadow);
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .codeEditorContainer .editorRun {

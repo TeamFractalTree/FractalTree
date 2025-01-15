@@ -8,6 +8,7 @@ import { highlight, languages } from 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-markup';
 import 'prismjs/themes/prism.css';
 import '@xterm/xterm/css/xterm.css';
 import { XTerm } from "@pablo-lion/xterm-react";
@@ -43,6 +44,9 @@ export default function CodeEditor() {
 
         if (codeState.language == "python") {
             return languages.python;
+        }
+        else if (codeState.language == "html") {
+            return languages.markup;
         }
 
         return languages.js;
