@@ -10,6 +10,7 @@ import Vibrate from '../Helpers/Vibrator';
 import Image from "image-js"
 import IsDevMode from "../Helpers/DevModeDetector";
 import { createWorker } from 'tesseract.js';
+import jsQR from "jsqr";
 
 window.addEventListener("load", async () => {
     window.tesseractWorker = await createWorker("eng", 1, {
@@ -50,6 +51,7 @@ export default function Scanner() {
         Vibrate();
 
         setTimeout(async () => {
+            var callbackToRun = callback[0] || console.log;
             var screenshot = cameraRef.current.getScreenshot(); // Returns A WebP Data URL
             var image = await Image.load(screenshot);
 
@@ -66,6 +68,19 @@ export default function Scanner() {
                 width: targetDimensions.width * scale, 
                 height: targetDimensions.height * scale
             });
+
+            // Try to scan the image as a QR code incase the user is trying to scan a QR code
+            var pixelData = image.getRGBAData();
+            var code = jsQR(pixelData, image.width, image.height, { inversionAttempts: "dontInvert" });
+            
+            if (!!code && !!code.data) {
+                // We found some code!
+                // Use that instead of OCR
+                callbackToRun(code.data);
+                setScanState("none");
+                setTimeout(() => setScannerVisible(false), 0);
+                return;
+            }
 
             var savedImage = await image.toBlob("image/png");
             
@@ -101,7 +116,6 @@ export default function Scanner() {
             }
             
 
-            var callbackToRun = callback[0] || console.log;
             callbackToRun(result.body);
 
             setScanState("none");

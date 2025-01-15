@@ -20,6 +20,7 @@
     "i18next-http-backend": "^3.0.1",
     "image-js": "^0.36.0",
     "install": "^0.13.0",
+    "jsqr": "^1.4.0",
     "npm": "^11.0.0",
     "primereact": "^10.8.4",
     "prismjs": "^1.29.0",
