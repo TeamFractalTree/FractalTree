@@ -12,7 +12,7 @@
     "LANG_LUA": "Lua",
     "ERROR_BADSCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
     "SECTION_LESSONS": "Lessons",
-    "SECTION_SNIPPETS": "Snippets",
+    "SECTION_PROJECTS": "Projects",
     "SECTION_SANDBOX": "Sandbox",
     "SECTION_SANDBOX_DESCRIPTION": "Sandbox mode allows you to quickly scan and run code without saving it."
 }

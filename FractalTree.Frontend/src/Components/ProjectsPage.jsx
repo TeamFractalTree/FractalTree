@@ -1,9 +1,9 @@
 import BottomBar from "./BottomBar";
 
-export default function SnippetsPage() {
+export default function ProjectsPage() {
     return (
         <>
-            Snippets
+            Projects
             <BottomBar></BottomBar>
         </>
     )

@@ -2,7 +2,7 @@
 import { SelectButton } from 'primereact/selectbutton';
 import { useState } from 'react';
 import "../CSS/BottomBar.css"
-import { IconSandbox } from '@tabler/icons-react';
+import { IconPackage, IconSandbox } from '@tabler/icons-react';
 import { IconSchool } from '@tabler/icons-react';
 import { IconCode } from '@tabler/icons-react';
 import { Link, NavLink, useLocation } from 'react-router';
@@ -15,15 +15,15 @@ export default function BottomBar() {
     var navigate = useNavigate();
 
     var tabIndexes = [0, 1, 2]
-    var tabNames = ["Snippets", "Lessons", "Sandbox"];
-    var tabIcons = [<IconCode/>, <IconSchool/>, <IconSandbox/>]
+    var tabNames = ["Projects", "Lessons", "Sandbox"];
+    var tabIcons = [<IconPackage/>, <IconSchool/>, <IconSandbox/>]
 
     var isTabSelected = (tabName) => location.toLowerCase().replaceAll("/", "").endsWith(tabName.toLowerCase())
     var selectedTab = (tabNames.map(isTabSelected)).findIndex((t) => !!t);
 
     var barItemTemplate = (option) => {
         return (
-            <div className="barItem" onClick={() => navigate("/" + tabNames[option].toLowerCase())} viewTransition>
+            <div className="barItem" onClick={() => navigate("/" + tabNames[option].toLowerCase())}>
                 {tabIcons[option]}
                 {t("SECTION_" + tabNames[option].toUpperCase())}
             </div>

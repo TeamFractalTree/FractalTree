@@ -5,7 +5,6 @@ import App from './App.jsx'
 import { MemoryRouter, Route, Routes } from "react-router";
 import SandboxPage from "./Components/SandboxPage";
 import LessonsPage from "./Components/LessonsPage";
-import SnippetsPage from "./Components/SnippetsPage";
 import LanguageSelect from './Components/LanguageSelect.jsx';
 import Scanner from './Components/Scanner.jsx';
 import CodeEditor from './Components/CodeEditor.jsx';
@@ -15,6 +14,7 @@ import { initReactI18next, useTranslation } from 'react-i18next';
 import { registerSW } from "virtual:pwa-register";
 import IsDevMode from "./Helpers/DevModeDetector.js";
 import LanguageDetector from 'i18next-browser-languagedetector';
+import ProjectsPage from './Components/ProjectsPage.jsx';
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {
@@ -60,7 +60,7 @@ function Main() {
                 <Route path="/" element={<App />} />
                 <Route path="/sandbox" element={<SandboxPage />} />
                 <Route path="/lessons" element={<LessonsPage />} />
-                <Route path="/snippets" element={<SnippetsPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
             </Routes>
 
             <LanguageSelect></LanguageSelect>
