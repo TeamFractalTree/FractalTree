@@ -1,5 +1,6 @@
 import BottomBar from "./BottomBar";
 import Header from "./Header";
+import { Sidebar } from 'primereact/sidebar';
 import "../CSS/LessonsPage.css";
 import { Button } from 'primereact/button';
 import { useState } from "react";
@@ -12,6 +13,8 @@ if (!window.lessonList) {
 
 export default function LessonsPage() {
 
+    var [segmentPickerVisible, setSegmentPickerVisible] = useState(false);
+    var [selectedLesson, setSelectedLesson] = useState(null);
 
     return (
         <>
@@ -20,10 +23,14 @@ export default function LessonsPage() {
             <div className="lessonsPage">
                 {
                     lessonList.filter((l) => l.lang == localStorage.i18nextLng).map((lesson, i) => {
-                        return (<LessonCard key={i} {...lesson}></LessonCard>)
+                        return (<LessonCard onClick={() => { setSelectedLesson(lesson); setSegmentPickerVisible(true); }} key={i} {...lesson}></LessonCard>)
                     })
                 }
             </div>
+
+            <Sidebar style={{ width: "100%" }} position="right" className="segmentPickerContainer" visible={segmentPickerVisible} onHide={() => setSegmentPickerVisible(false)}>
+                <Header onBack={() => setSegmentPickerVisible(false)}>{selectedLesson?.name}</Header>
+            </Sidebar>
 
             <BottomBar></BottomBar>
         </>
@@ -32,7 +39,7 @@ export default function LessonsPage() {
 
 function LessonCard(props) {
     return (
-        <div className="lessonCard">
+        <div {...props} className="lessonCard">
             <h2 className="lessonTitle">{props.name}</h2>
             <p className="lessonDescription">{props.description}</p>
             <div className="lessonIcon" style={props.icon == "JavaScript.webp" ? { backgroundColor: "#F0DB4F" } : {}}>

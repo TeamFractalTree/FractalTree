@@ -1,10 +1,19 @@
+.header {
+    display: flex;
+    border-bottom: 1px solid var(--col-border);
+    justify-content: left;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1.5rem;
+}
+
 .header h1 {
-    margin-left: 1.5rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
-.header .p-divider {
-    background-color: var(--col-border);
+.header svg {
+    cursor: pointer;
 }
