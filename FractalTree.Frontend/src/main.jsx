@@ -15,6 +15,7 @@ import { registerSW } from "virtual:pwa-register";
 import IsDevMode from "./Helpers/DevModeDetector.js";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import ProjectsPage from './Components/ProjectsPage.jsx';
+import { HTMLHost } from './Helpers/HTMLEngine.jsx';
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {
@@ -66,6 +67,7 @@ function Main() {
             <LanguageSelect></LanguageSelect>
             <Scanner></Scanner>
             <CodeEditor></CodeEditor>
+            <HTMLHost></HTMLHost>
         </MemoryRouter>
     )
 }
