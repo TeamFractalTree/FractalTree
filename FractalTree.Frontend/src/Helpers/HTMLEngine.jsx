@@ -61,7 +61,7 @@ function FrameInjectedCode() {
 
     if (!!window.framework && window.framework == "react") {
         var babel = document.createElement('script');
-        babel.src = origin + "/Runtime/babel.js";
+        babel.src = origin + "/Runtime/reactlibs.js";
         babel.onload = () => {
             var output = Babel.transform(document.getElementById("ft_dispatch").innerHTML, {
                 presets: ["react"]

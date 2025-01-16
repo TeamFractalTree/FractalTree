@@ -15,6 +15,7 @@ export async function CompileApp(codeState) {
         }
 
         res = res.replaceAll("%APP_NAME%", codeState.name);
+        res = res.replaceAll("%APP_DESCRIPTION%", codeState.description || "No description.");
         res = res.replaceAll("%APP_CODE%", prepareCodeFunction(codeState.code));
 
         return res;
