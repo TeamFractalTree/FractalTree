@@ -1,4 +1,6 @@
 .projectsPage {
+    max-height: calc(100vh - 11.75rem);
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -24,6 +26,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: var(--col-shadow);
+    z-index: 9;
 }
 
 .projectsPage .createProjectButton svg {
