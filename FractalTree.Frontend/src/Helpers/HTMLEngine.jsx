@@ -59,12 +59,24 @@ function FrameInjectedCode() {
     jquery.src = origin + "/Runtime/jquery.js";
     document.head.append(jquery);
 
+    if (!!window.framework && window.framework == "react") {
+        var babel = document.createElement('script');
+        babel.src = origin + "/Runtime/babel.js";
+        babel.onload = () => {
+            var output = Babel.transform(document.getElementById("ft_dispatch").innerHTML, {
+                presets: ["react"]
+            });
+            eval(output.code);
+        }
+        document.head.append(babel);
+    }
+
     var style = document.createElement('style');
     style.textContent = injectedCSS;
     document.head.append(style);
 }
 
-export default function ExecuteHTML(code, stdOut) {
+export default function ExecuteHTML(code, stdOut, injectedCode) {
 
     // Wrap It In A Body
     if (!code.includes("<body")) {
@@ -87,7 +99,13 @@ export default function ExecuteHTML(code, stdOut) {
     // Inject Some Custom Code In The Body
     var onLoadCode = FrameInjectedCode.toString();
     onLoadCode = onLoadCode.slice(onLoadCode.indexOf("{") + 1, onLoadCode.lastIndexOf("}"));
+    onLoadCode = (injectedCode || "") + "\n" + onLoadCode;
     code = code.replace("<body", `<body onload="eval(atob('${btoa(onLoadCode)}'))"`)
 
     window.invokeHTMLHost(code);
+}
+
+export function ExecuteJSX(code, stdOut) {
+    code = code.replaceAll("</script>", "// Not allowed");
+    return ExecuteHTML(`<head><script id="ft_dispatch" type="text/stub">${code}</script></head><body><div id="root"></div></body>`, stdOut, "window.framework = 'react';");
 }

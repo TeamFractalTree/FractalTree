@@ -15,7 +15,7 @@ import { XTerm } from "@pablo-lion/xterm-react";
 import { IconPlayerPlay } from '@tabler/icons-react';
 import ExecutePython from '../Helpers/PythonEngine';
 import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
-import ExecuteHTML from '../Helpers/HTMLEngine';
+import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
 
 export default function CodeEditor() {
 
@@ -62,6 +62,9 @@ export default function CodeEditor() {
         }
         else if (codeState.language == "html") {
             ExecuteHTML(codeState.code, (d) => xterm.current.write(d));
+        }
+        else if (codeState.language == "jsx") {
+            ExecuteJSX(codeState.code, (d) => xterm.current.write(d));
         }
     }
 
