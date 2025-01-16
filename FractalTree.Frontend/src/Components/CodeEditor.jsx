@@ -16,6 +16,7 @@ import { IconPlayerPlay } from '@tabler/icons-react';
 import ExecutePython from '../Helpers/PythonEngine';
 import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
 import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
+import { CompileApp } from '../Helpers/AppCompiler';
 
 export default function CodeEditor() {
 
@@ -67,6 +68,11 @@ export default function CodeEditor() {
         else if (codeState.language == "jsx") {
             ExecuteJSX(codeState.code, (d) => xterm.current.write(d));
         }
+    }
+
+    var compile = async () => {
+        var result = await CompileApp(codeState);
+        console.log(result);
     }
 
     return (

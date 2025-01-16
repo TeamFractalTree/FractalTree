@@ -77,6 +77,18 @@ function FrameInjectedCode() {
 }
 
 export default function ExecuteHTML(code, stdOut, injectedCode) {
+    code = PrepareHTMLCode(code);
+
+    // Inject Some Custom Code In The Body
+    var onLoadCode = FrameInjectedCode.toString();
+    onLoadCode = onLoadCode.slice(onLoadCode.indexOf("{") + 1, onLoadCode.lastIndexOf("}"));
+    onLoadCode = (injectedCode || "") + "\n" + onLoadCode;
+    code = code.replace("<body", `<body onload="eval(atob('${btoa(onLoadCode)}'))"`)
+
+    window.invokeHTMLHost(code);
+}
+
+export function PrepareHTMLCode(code) {
 
     // Wrap It In A Body
     if (!code.includes("<body")) {
@@ -94,15 +106,9 @@ export default function ExecuteHTML(code, stdOut, injectedCode) {
     }
 
     // Inject A Tag Into The Head To Tell It The Host Origin
-    code = code.replace("<head", `<head hostOrigin="${window.location.origin}"`)
+    code = code.replace("<head", `<head hostOrigin="${window.location.origin}"`);
 
-    // Inject Some Custom Code In The Body
-    var onLoadCode = FrameInjectedCode.toString();
-    onLoadCode = onLoadCode.slice(onLoadCode.indexOf("{") + 1, onLoadCode.lastIndexOf("}"));
-    onLoadCode = (injectedCode || "") + "\n" + onLoadCode;
-    code = code.replace("<body", `<body onload="eval(atob('${btoa(onLoadCode)}'))"`)
-
-    window.invokeHTMLHost(code);
+    return code;
 }
 
 export function ExecuteJSX(code, stdOut) {
