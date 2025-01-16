@@ -13,6 +13,7 @@
     "LANG_JSX": "JSX (React)",
     "LANG_LUA": "Lua",
     "ERROR_BADSCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
+    "ERROR_REACT_NEEDSMAIN": "To run a React app, you must declare a Main() function.",
     "SECTION_LESSONS": "Lessons",
     "SECTION_PROJECTS": "Projects",
     "SECTION_SANDBOX": "Sandbox",

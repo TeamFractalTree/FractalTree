@@ -84,7 +84,7 @@ export default function Scanner() {
 
             var savedImage = await image.toBlob("image/png");
             
-            if (false) {
+            if (navigator.onLine) { // Use OpenAI online scanner
                 var formData = new FormData();
                 formData.append("image", savedImage);
     
@@ -108,7 +108,7 @@ export default function Scanner() {
                     return;
                 }
             }
-            else {
+            else { // Use offline scanner
                 var result = (await tesseractWorker.recognize(URL.createObjectURL(savedImage)));
                 result = {
                     body: result.data.text

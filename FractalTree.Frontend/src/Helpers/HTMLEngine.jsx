@@ -106,6 +106,14 @@ export default function ExecuteHTML(code, stdOut, injectedCode) {
 }
 
 export function ExecuteJSX(code, stdOut) {
+
+    if (!code.includes("function Main(")) {
+        alert(t("ERROR_REACT_NEEDSMAIN"));
+        return;
+    }
+
     code = code.replaceAll("</script>", "// Not allowed");
-    return ExecuteHTML(`<head><script id="ft_dispatch" type="text/stub">${code}</script></head><body><div id="root"></div></body>`, stdOut, "window.framework = 'react';");
+    code += "\nReactDOM.createRoot(document.getElementById('ft_root')).render(<Main/>);";
+
+    return ExecuteHTML(`<head><script id="ft_dispatch" type="text/stub">${code}</script></head><body><div id="ft_root"></div></body>`, stdOut, "window.framework = 'react';");
 }
