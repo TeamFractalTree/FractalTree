@@ -47,13 +47,9 @@
     </style>
     <script>
         var initCount = 4; // When this reaches 0 we start the app
+
         window.doneInitStep = () => {
             initCount--;
-
-            // Don't allow access on desktop devices
-            if (window.innerHeight / window.innerWidth < 1.45) {
-                window.location.href = "https://fractal-tree.org";
-            }
 
             if (initCount < 0) { return; }
             else if (initCount == 0) { 

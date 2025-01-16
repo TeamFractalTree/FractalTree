@@ -16,6 +16,7 @@ import IsDevMode from "./Helpers/DevModeDetector.js";
 import LanguageDetector from 'i18next-browser-languagedetector';
 import ProjectsPage from './Components/ProjectsPage.jsx';
 import { HTMLHost } from './Helpers/HTMLEngine.jsx';
+import PhoneWrapper from './Components/PhoneWrapper.jsx';
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {
@@ -37,7 +38,7 @@ i18n
 
 window.startReact = () => {
     createRoot(document.getElementById('root')).render(
-        <Main/>
+        window.innerHeight / window.innerWidth < 1.45 ? <PhoneWrapper/> : <Main/>
     )
 }
 window.doneInitStep();

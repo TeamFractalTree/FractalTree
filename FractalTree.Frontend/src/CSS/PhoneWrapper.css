@@ -1,0 +1,28 @@
+.phoneWrapper, .phoneWrapperFrame {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phoneWrapperFrame {
+    pointer-events: none;
+    z-index: 100000;
+}
+
+.phoneWrapper iframe {
+    margin-top: 3.5vh;
+    height: 82vh;
+    width: 40vh;
+    border: none;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    overflow: hidden;
+}
+
+.phoneWrapperFrame img {
+    height: 90vh;
+
+}
