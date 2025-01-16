@@ -10,6 +10,7 @@
     "LANG_PYTHON": "Python",
     "LANG_JAVASCRIPT": "JavaScript",
     "LANG_HTML": "HTML",
+    "LANG_JSX": "JSX (React)",
     "LANG_LUA": "Lua",
     "ERROR_BADSCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
     "SECTION_LESSONS": "Lessons",

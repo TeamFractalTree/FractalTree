@@ -2,7 +2,7 @@ import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
 import { useState } from 'react';
 import "../CSS/LanguageSelect.css"
-import { IconBrandHtml5, IconBrandPython, IconBrandJavascript } from '@tabler/icons-react';
+import { IconBrandHtml5, IconBrandPython, IconBrandJavascript, IconBrandReact } from '@tabler/icons-react';
 
 export default function LanguageSelect() {
 
@@ -23,6 +23,7 @@ export default function LanguageSelect() {
             <Button onClick={() => onLanguageSelected("html")} className="languageOption"><IconBrandHtml5/> &nbsp; {t("LANG_HTML")}</Button>
             <Button onClick={() => onLanguageSelected("python")} className="languageOption"><IconBrandPython/> &nbsp; {t("LANG_PYTHON")}</Button>
             <Button onClick={() => onLanguageSelected("javascript")} className="languageOption"><IconBrandJavascript/> &nbsp; {t("LANG_JAVASCRIPT")}</Button>
+            <Button onClick={() => onLanguageSelected("jsx")} className="languageOption"><IconBrandReact/> &nbsp; {t("LANG_JSX")}</Button>
         </Sidebar>
     )
 }
