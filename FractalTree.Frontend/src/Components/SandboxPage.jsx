@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function SandboxPage() {
 
     var onContinue = () => {
-        window.openLanguageSelector((lang) => {
+        window.openLanguageSelector("BEFORE_SCAN", (lang) => {
             window.openScanner({}, (code) => {
                 window.openCodeEditor({
                     language: lang,

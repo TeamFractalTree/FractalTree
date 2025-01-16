@@ -8,7 +8,8 @@ export default function LanguageSelect() {
 
     var [pickerVisible, setPickerVisible] = useState(false);
     var [callback, setCallback] = useState([]);
-    window.openLanguageSelector = (newCallback) => { setCallback([newCallback]); setPickerVisible(true); }
+    var [context, setContext] = useState([]);
+    window.openLanguageSelector = (newContext, newCallback) => { setContext(newContext); setCallback([newCallback]); setPickerVisible(true); }
 
     var onLanguageSelected = (lang) => {
         var callbackToRun = callback[0] || console.log;
@@ -19,7 +20,7 @@ export default function LanguageSelect() {
     return (
         <Sidebar style={{ height: "80vh" }} position="bottom" visible={pickerVisible} onHide={() => setPickerVisible(false)}>
             <h2>{t("ACTION_SELECTLANG")}</h2>
-            <p>{t("ACTION_SELECTLANG_DESCRIPTION")}</p>
+            <p>{t("ACTION_SELECTLANG_" + context + "_DESCRIPTION")}</p>
             <Button onClick={() => onLanguageSelected("html")} className="languageOption"><IconBrandHtml5/> &nbsp; {t("LANG_HTML")}</Button>
             <Button onClick={() => onLanguageSelected("python")} className="languageOption"><IconBrandPython/> &nbsp; {t("LANG_PYTHON")}</Button>
             <Button onClick={() => onLanguageSelected("javascript")} className="languageOption"><IconBrandJavascript/> &nbsp; {t("LANG_JAVASCRIPT")}</Button>
