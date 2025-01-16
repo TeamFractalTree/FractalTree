@@ -1,10 +1,11 @@
 .projectsPage {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 90%;
     margin: auto;
     align-items: center;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .projectsPage > p {
@@ -32,4 +33,17 @@
 
 .projectsPage .createProjectButton * {
     color: white;
+}
+
+.projectCard {
+    width: 100%;
+    padding: 1rem;
+    min-height: 15rem;
+    background-color: var(--col-tertiary);
+    border-radius: 10px;
+    border: 2px solid var(--col-border);
+    box-shadow: var(--col-shadow);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }

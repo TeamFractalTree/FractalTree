@@ -36,6 +36,7 @@ export default function CodeEditor() {
     }
 
     var updateCode = (newCode) => {
+        (callback[0] || console.log)(newCode);
         codeState.code = newCode;
         setCodeState(Object.assign({}, codeState)); // Sets codeState to a duplicated version of itself
     }
@@ -69,8 +70,8 @@ export default function CodeEditor() {
     }
 
     return (
-        <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible} onHide={() => setEditorVisible(false)}>
-            <Header onBack={() => setEditorVisible(false)}>{t("ACTION_EDITRUN")}</Header>
+        <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible}>
+            <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false) }}>{t("ACTION_EDITRUN")}</Header>
             <div className="codeEditorScroller">
                 <Editor
                     value={codeState?.code || ""}

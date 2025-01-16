@@ -19,6 +19,7 @@
     "TEMPLATE_GREETING": "Hello, World",
     "ERROR_BAD_SCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
     "ERROR_NO_PROJECTS": "No projects found, create your first one using the button below.",
+    "ERROR_NO_DESCRIPTION": "No description.",
     "ERROR_REACT_NEEDSMAIN": "To run a React app, you must declare a Main() function.",
     "SECTION_LESSONS": "Lessons",
     "SECTION_PROJECTS": "Projects",

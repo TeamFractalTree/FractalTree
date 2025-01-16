@@ -35,7 +35,9 @@ export default function ProjectsPage() {
                 "author": localStorage.displayName || "Anonymous",
                 "description": "",
                 "assets": [],
-                "code": CodeTemplates[lang]()
+                "language": lang,
+                "code": CodeTemplates[lang](),
+                "id": (localStorage.displayName || "Anonymous" + Math.random()) + new Date().getTime()
             }
 
             projects.push(newProject);
@@ -54,6 +56,12 @@ export default function ProjectsPage() {
                     projects.length == 0 ? (<p>{t("ERROR_NO_PROJECTS")}</p>) : ""
                 }
                 <Button onClick={createProject} className="createProjectButton"><IconPlus/></Button>
+
+                {
+                    projects.map((project, i) => {
+                        return (<ProjectCard setProjectLoadState={setProjectLoadState} key={i} {...project}></ProjectCard>)
+                    })
+                }
             </div>
 
             <Dialog draggable={false} closable={false} header={t("ACTION_SET_NAME")} visible={!localStorage.displayName} style={{ width: '90vw' }}>
@@ -65,5 +73,32 @@ export default function ProjectsPage() {
 
             <BottomBar></BottomBar>
         </>
+    )
+}
+
+function ProjectCard(props) {
+
+    var openProject = () => {
+        window.openCodeEditor(Object.assign({}, props), async (newCode, isHard) => {
+            // Update the code in the store
+            var projectStore = await localForage.getItem("projectStore", projectStore);
+            for (var i = 0; i < projectStore.projects.length; i++) {
+                if (projectStore.projects[i].id == props.id) {
+                    projectStore.projects[i].code = newCode;
+                }
+            }
+            await localForage.setItem("projectStore", Object.assign({}, projectStore));
+
+            if (!!isHard) {
+                props.setProjectLoadState("none"); // Reload projects
+            }
+        });
+    }
+
+    return (
+        <div onClick={openProject} {...props} className="projectCard">
+            <h2 className="projectTitle">{props.name}</h2>
+            <p className="projectDescription">{props.description || t("ERROR_NO_DESCRIPTION")}</p>
+        </div>
     )
 }
