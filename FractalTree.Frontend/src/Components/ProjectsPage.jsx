@@ -10,7 +10,6 @@ import { InputText } from 'primereact/inputtext';
 import CodeTemplates from "../Helpers/CodeTemplates";
 import LanguageIcon from "./LanguageIcon";
 
-
 export default function ProjectsPage() {
 
     var [projects, setProjects] = useState([]);
@@ -31,6 +30,25 @@ export default function ProjectsPage() {
 
     var createProject = () => {
         window.openLanguageSelector("BEFORE_PROJECT", async (lang) => {
+
+            // Generate an RSA keypair 
+            var keys = await window.crypto.subtle.generateKey(
+                {
+                    name: "RSASSA-PKCS1-v1_5",
+                    modulusLength: 1024,
+                    publicExponent: new Uint8Array([1, 0, 1]),
+                    hash: "SHA-256",
+                },
+                true,
+                ["sign", "verify"],
+            );
+            var publicKey = await window.crypto.subtle.exportKey("spki", keys.publicKey);
+            var privateKey = await window.crypto.subtle.exportKey("pkcs8", keys.privateKey);
+            publicKey = btoa(String.fromCharCode(...new Uint8Array(publicKey)));
+            privateKey = btoa(String.fromCharCode(...new Uint8Array(privateKey)));
+
+            await localForage.setItem("pk_" + publicKey, privateKey); // Store the private key for later
+
             var newProject = {
                 "name": "New Project (" + lang + ")",
                 "author": localStorage.displayName || "Anonymous",
@@ -38,7 +56,7 @@ export default function ProjectsPage() {
                 "assets": [],
                 "language": lang,
                 "code": CodeTemplates[lang](),
-                "id": (localStorage.displayName || "Anonymous" + Math.random()) + new Date().getTime()
+                "id": publicKey
             }
 
             projects.push(newProject);
@@ -60,7 +78,7 @@ export default function ProjectsPage() {
 
                 {
                     projects.map((project, i) => {
-                        return (<ProjectCard setProjectLoadState={setProjectLoadState} key={i} {...project}></ProjectCard>)
+                        return (<ProjectCard project={project} setProjectLoadState={setProjectLoadState} key={i}></ProjectCard>)
                     })
                 }
             </div>
@@ -80,10 +98,10 @@ export default function ProjectsPage() {
 function ProjectCard(props) {
 
     var openProject = () => {
-        window.openProjectPage(Object.assign({}, props), async (newState, isHard) => {
+        window.openProjectPage(Object.assign({}, props.project), async (newState, isHard) => {
             // Update the project state in the store
             var projectStore = await localForage.getItem("projectStore", projectStore);
-            projectStore.projects[projectStore.projects.findIndex((p) => p.id == props.id)] = newState;
+            projectStore.projects[projectStore.projects.findIndex((p) => p.id == props.project.id)] = newState;
 
             await localForage.setItem("projectStore", Object.assign({}, projectStore)); // Save
 
@@ -95,9 +113,9 @@ function ProjectCard(props) {
 
     return (
         <div onClick={openProject} {...props} className="projectCard">
-            <h2 className="projectTitle">{props.name}</h2>
-            <p className="projectDescription">{props.description || t("ERROR_NO_DESCRIPTION")}</p>
-            <LanguageIcon icon={props.language + ".webp"}></LanguageIcon>
+            <h2 className="projectTitle">{props.project.name}</h2>
+            <p className="projectDescription">{props.project.description || t("ERROR_NO_DESCRIPTION")}</p>
+            <LanguageIcon icon={props.project.language + ".webp"}></LanguageIcon>
         </div>
     )
 }

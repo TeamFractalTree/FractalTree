@@ -15,7 +15,7 @@ export default function ProjectPage() {
     
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectPageContainer" position="right" visible={pageVisible}>
-            <Header onBack={() => { (callback[0] || console.log)(Object.assign({}, projectState), true); setPageVisible(false) }}>{projectState.name || "Unknown Project"}</Header>
+            <Header onBack={() => { (callback[0] || console.log)((Object.assign({}, projectState)), true); setPageVisible(false) }}>{projectState.name || "Unknown Project"}</Header>
             
         </Sidebar>
     )
