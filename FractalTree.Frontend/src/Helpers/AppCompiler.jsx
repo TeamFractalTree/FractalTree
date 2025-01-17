@@ -14,10 +14,13 @@ export async function CompileApp(codeState) {
             prepareCodeFunction = PrepareHTMLCode;
         }
 
+        // Replace all dynamic variables
         res = res.replaceAll("%APP_NAME%", codeState.name);
         res = res.replaceAll("%APP_DESCRIPTION%", codeState.description || "No description.");
         res = res.replaceAll("%APP_CODE%", prepareCodeFunction(codeState.code));
         res = res.replaceAll("%REACT_LIB%", await fetch("/Runtime/reactlib.js"));
+        res = res.replaceAll("%JQUERY%", await fetch("/Runtime/jquery.js"));
+        res = res.replaceAll("%TAILWIND%", await fetch("/Runtime/tailwind.css"));
 
         return res;
     }

@@ -6,15 +6,17 @@ export function HTMLHost() {
 
     var [websiteVisible, setWebsiteVisible] = useState(false);
     var [websiteCode, setWebsiteCode] = useState("");
+    var [websiteNonce, setWebsiteNonce] = useState(0); // iframe will reload when this changes
 
     window.invokeHTMLHost = (code) => {
         setWebsiteCode(code);
+        setWebsiteNonce(websiteNonce + 1);
         setWebsiteVisible(true);
     }
 
     return (
         <Sidebar className="htmlHost" style={{ height: "100vh" }} position="bottom" visible={websiteVisible} onHide={() => setWebsiteVisible(false)}>
-            <iframe src={"data:text/html;base64," + btoa(unescape(encodeURIComponent(websiteCode)))}></iframe>
+            <iframe onLoad={(e) => e.target.contentWindow.replaceDOM(websiteCode)} src={"/Runtime/shim.html?" + websiteNonce.toString()}></iframe>
         </Sidebar>
     )
 }
