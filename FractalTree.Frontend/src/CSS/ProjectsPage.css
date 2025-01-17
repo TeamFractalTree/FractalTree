@@ -41,7 +41,7 @@
 .projectCard {
     width: 100%;
     padding: 1rem;
-    min-height: 15rem;
+    min-height: 8rem;
     background-color: var(--col-tertiary);
     border-radius: 10px;
     border: 2px solid var(--col-border);
@@ -49,4 +49,10 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+}
+
+.projectCard .languageIcon {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
 }

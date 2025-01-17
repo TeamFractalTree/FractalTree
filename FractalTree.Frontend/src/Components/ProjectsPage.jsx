@@ -8,6 +8,7 @@ import { IconPlus } from "@tabler/icons-react";
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import CodeTemplates from "../Helpers/CodeTemplates";
+import LanguageIcon from "./LanguageIcon";
 
 
 export default function ProjectsPage() {
@@ -99,6 +100,7 @@ function ProjectCard(props) {
         <div onClick={openProject} {...props} className="projectCard">
             <h2 className="projectTitle">{props.name}</h2>
             <p className="projectDescription">{props.description || t("ERROR_NO_DESCRIPTION")}</p>
+            <LanguageIcon icon={props.language + ".webp"}></LanguageIcon>
         </div>
     )
 }

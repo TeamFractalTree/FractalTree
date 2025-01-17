@@ -22,28 +22,10 @@
     cursor: pointer;
 }
 
-.lessonCard .lessonIcon {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 360px;
+.lessonCard .languageIcon {
     position: absolute;
     bottom: 2.5rem;
     right: 1rem;
-    background-color: var(--col-tertiary);
-    border: 2px solid var(--col-border);
-    box-shadow: var(--col-shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lessonCard .lessonIcon svg * {
-    color: var(--col-primary);
-}
-
-.lessonCard .lessonIcon img  {
-    width: 80%;
-    height: 80%;
 }
 
 .lessonCard .p-progressbar {

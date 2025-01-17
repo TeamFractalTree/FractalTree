@@ -8,6 +8,7 @@ import { ProgressBar } from 'primereact/progressbar';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import Markdown from 'react-markdown'
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
+import LanguageIcon from "./LanguageIcon";
 
 if (!window.lessonList) {
     window.lessonList = [];
@@ -93,9 +94,7 @@ function LessonCard(props) {
         <div {...props} className="lessonCard">
             <h2 className="lessonTitle">{props.name}</h2>
             <p className="lessonDescription">{props.description}</p>
-            <div className="lessonIcon" style={props.icon == "JavaScript.webp" ? { backgroundColor: "#F0DB4F" } : {}}>
-                <img alt={props.icon + " Logo"} src={"/Images/LangIcons/" + props.icon}></img>
-            </div>
+            <LanguageIcon {...props}/>
             <ProgressBar value={50}></ProgressBar>
         </div>
     )
