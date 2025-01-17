@@ -19,7 +19,7 @@ export async function CompileApp(codeState) {
         res = res.replaceAll("%APP_NAME%", codeState.name);
         res = res.replaceAll("%APP_DESCRIPTION%", codeState.description || "No description.");
         res = res.replaceAll("%APP_CODE%", prepareCodeFunction(codeState.code));
-        res = res.replaceAll("%REACT_LIB%", await getResource("/Runtime/reactlib.js"));
+        res = res.replaceAll("%REACT_LIB%", await getResource("/Runtime/reactlibs.js"));
         res = res.replaceAll("%JQUERY%", await getResource("/Runtime/jquery.js"));
         res = res.replaceAll("%TAILWIND%", await getResource("/Runtime/tailwind.css"));
 
