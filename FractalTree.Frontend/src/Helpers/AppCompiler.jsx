@@ -17,6 +17,7 @@ export async function CompileApp(codeState) {
         res = res.replaceAll("%APP_NAME%", codeState.name);
         res = res.replaceAll("%APP_DESCRIPTION%", codeState.description || "No description.");
         res = res.replaceAll("%APP_CODE%", prepareCodeFunction(codeState.code));
+        res = res.replaceAll("%REACT_LIB%", await fetch("/Runtime/reactlib.js"));
 
         return res;
     }
