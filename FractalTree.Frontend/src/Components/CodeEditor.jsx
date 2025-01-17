@@ -79,6 +79,13 @@ export default function CodeEditor() {
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible}>
             <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false) }}>{t("ACTION_EDITRUN")}</Header>
             <div className="codeEditorScroller">
+
+                <Button onClick={run} className="editorRunMini">
+                    <IconPlayerPlay/>
+                    &nbsp;
+                    {t("ACTION_RUN")}
+                </Button>
+
                 <Editor
                     value={codeState?.code || ""}
                     className="codeEditor overrideFont"

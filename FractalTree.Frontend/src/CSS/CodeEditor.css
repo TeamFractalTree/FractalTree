@@ -44,7 +44,20 @@
     margin-top: 1rem;
 }
 
-.codeEditorContainer .editorRun * {
+.codeEditorContainer .editorRunMini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    height: 2rem;
+    padding: 0;
+    margin-right: 5%;
+    float: right;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.codeEditorContainer .editorRun *, .editorRunMini * {
     color: white;
 }
 
