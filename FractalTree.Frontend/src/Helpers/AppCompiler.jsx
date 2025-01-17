@@ -4,9 +4,10 @@ import { PrepareHTMLCode } from "./HTMLEngine";
 export async function CompileApp(codeState) {
     var runtimePath = "/Runtime/runtime_" + codeState.language + ".html";
     
+    var getResource = async (path) => { return await (await fetch(path)).text(); }
+
     try {
-        var req = await fetch(runtimePath);
-        var res = await req.text();
+        var res = await getResource(runtimePath);
 
         var prepareCodeFunction = (c) => c;
 
@@ -18,9 +19,9 @@ export async function CompileApp(codeState) {
         res = res.replaceAll("%APP_NAME%", codeState.name);
         res = res.replaceAll("%APP_DESCRIPTION%", codeState.description || "No description.");
         res = res.replaceAll("%APP_CODE%", prepareCodeFunction(codeState.code));
-        res = res.replaceAll("%REACT_LIB%", await fetch("/Runtime/reactlib.js"));
-        res = res.replaceAll("%JQUERY%", await fetch("/Runtime/jquery.js"));
-        res = res.replaceAll("%TAILWIND%", await fetch("/Runtime/tailwind.css"));
+        res = res.replaceAll("%REACT_LIB%", await getResource("/Runtime/reactlib.js"));
+        res = res.replaceAll("%JQUERY%", await getResource("/Runtime/jquery.js"));
+        res = res.replaceAll("%TAILWIND%", await getResource("/Runtime/tailwind.css"));
 
         return res;
     }

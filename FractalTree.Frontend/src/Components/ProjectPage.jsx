@@ -4,8 +4,9 @@ import { useRef, useState } from 'react';
 import Header from './Header';
 import "../CSS/ProjectPage.css";
 import { CompileApp } from '../Helpers/AppCompiler';
-import { IconCode, IconPlayerPlay } from '@tabler/icons-react';
+import { IconBrandAndroid, IconCode, IconPlayerPlay } from '@tabler/icons-react';
 import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
+import CompileProjectForAndroid from '../Helpers/AndroidRuntimeCompiler';
 
 export default function ProjectPage() {
 
@@ -61,6 +62,12 @@ export default function ProjectPage() {
                         {t("ACTION_EDIT")}
                     </Button> : null
                 }
+
+                <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
+                    <IconBrandAndroid/>
+                    &nbsp;
+                    {t("ACTION_COMPILE")}
+                </Button>
 
 
             </div>
