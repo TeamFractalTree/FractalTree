@@ -51,6 +51,10 @@
     cursor: pointer;
 }
 
+.projectCard h2 {
+    width: calc(100% - 7.5rem);
+}
+
 .projectCard .languageIcon {
     position: absolute;
     right: 1rem;
