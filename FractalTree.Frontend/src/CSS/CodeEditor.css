@@ -37,14 +37,14 @@
     width: 350vw !important;
 }
 
-.codeEditorContainer .editorRun {
+.editorRun {
     display: flex;
     width: 90%;
     margin: auto;
     margin-top: 1rem;
 }
 
-.codeEditorContainer .editorRunMini {
+.editorRunMini {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +57,7 @@
     border-bottom-right-radius: 0;
 }
 
-.codeEditorContainer .editorRun *, .editorRunMini * {
+.editorRun *, .editorRunMini * {
     color: white;
 }
 

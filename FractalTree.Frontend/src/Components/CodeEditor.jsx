@@ -26,7 +26,15 @@ export default function CodeEditor() {
     var [callback, setCallback] = useState([]);
     var guiOutputRef = useRef(null);
 
-    window.openCodeEditor = (newCodeState, newCallback) => { setCodeState(newCodeState); setCallback([newCallback]); setEditorVisible(true); }
+    window.openCodeEditor = (newCodeState, newCallback) => { 
+        setCodeState(newCodeState);
+        setCallback([newCallback]);
+        setEditorVisible(true);
+
+        if (!!newCodeState.autoRun) { 
+            setTimeout(run, 0);
+        }
+    }
 
     window.enableGUIOutput = () => {
         guiOutputRef.current?.classList.add("enabledOutput");
@@ -77,27 +85,34 @@ export default function CodeEditor() {
 
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible}>
-            <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false) }}>{t("ACTION_EDITRUN")}</Header>
+            <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false) }}>{t(!codeState.readOnly ? "ACTION_EDITRUN" : "ACTION_RUN_PROJECT")}</Header>
             <div className="codeEditorScroller">
 
-                <Button onClick={run} className="editorRunMini">
-                    <IconPlayerPlay/>
-                    &nbsp;
-                    {t("ACTION_RUN")}
-                </Button>
+                {
+                    !codeState.readOnly ? (
+                        <>
+                            <Button onClick={run} className="editorRunMini">
+                                <IconPlayerPlay/>
+                                &nbsp;
+                                {t("ACTION_RUN")}
+                            </Button>
+            
+                            <Editor
+                                value={codeState?.code || ""}
+                                className="codeEditor overrideFont"
+                                onValueChange={updateCode}
+                                padding={10}
+                                highlight={() => highlight(codeState?.code || "", getLanguage())}
+                            />
+                        </>
+                    ) : null
+                }
 
-                <Editor
-                    value={codeState?.code || ""}
-                    className="codeEditor overrideFont"
-                    onValueChange={updateCode}
-                    padding={10}
-                    highlight={() => highlight(codeState?.code || "", getLanguage())}
-                />
 
                 <Button onClick={run} className="editorRun">
                     <IconPlayerPlay/>
                     &nbsp;
-                    {t("ACTION_RUN")}
+                    {t(!codeState.readOnly ? "ACTION_RUN" : "ACTION_RUN_PROJECT")}
                 </Button>
 
                 <div ref={guiOutputRef} id="guiOutputWindow" className="guiOutputWindow"></div>

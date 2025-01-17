@@ -14,6 +14,9 @@ export default function ProjectsPage() {
 
     var [projects, setProjects] = useState([]);
     var [projectLoadState, setProjectLoadState] = useState("none");
+    window.isProjectLocal = (project) => {
+        return projects.filter((p) => p.id == project.id).length > 0;
+    }
 
     if (projectLoadState == "none") {
         setProjectLoadState("loading");
