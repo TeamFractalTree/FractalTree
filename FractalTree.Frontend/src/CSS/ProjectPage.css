@@ -1,0 +1,11 @@
+.projectPageContainer .p-sidebar-header {
+    display: none;
+}
+
+.projectPageContainer .p-sidebar-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+}   

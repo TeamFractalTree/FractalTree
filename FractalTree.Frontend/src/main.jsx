@@ -17,6 +17,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ProjectsPage from './Components/ProjectsPage.jsx';
 import { HTMLHost } from './Helpers/HTMLEngine.jsx';
 import PhoneWrapper from './Components/PhoneWrapper.jsx';
+import ProjectPage from './Components/ProjectPage.jsx';
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {
@@ -69,6 +70,7 @@ function Main() {
             <Scanner></Scanner>
             <CodeEditor></CodeEditor>
             <HTMLHost></HTMLHost>
+            <ProjectPage></ProjectPage>
         </MemoryRouter>
     )
 }

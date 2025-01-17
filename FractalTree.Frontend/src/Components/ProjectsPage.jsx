@@ -80,15 +80,12 @@ export default function ProjectsPage() {
 function ProjectCard(props) {
 
     var openProject = () => {
-        window.openCodeEditor(Object.assign({}, props), async (newCode, isHard) => {
-            // Update the code in the store
+        window.openProjectPage(Object.assign({}, props), async (newState, isHard) => {
+            // Update the project state in the store
             var projectStore = await localForage.getItem("projectStore", projectStore);
-            for (var i = 0; i < projectStore.projects.length; i++) {
-                if (projectStore.projects[i].id == props.id) {
-                    projectStore.projects[i].code = newCode;
-                }
-            }
-            await localForage.setItem("projectStore", Object.assign({}, projectStore));
+            projectStore.projects[projectStore.projects.findIndex((p) => p.id == props.id)] = newState;
+
+            await localForage.setItem("projectStore", Object.assign({}, projectStore)); // Save
 
             if (!!isHard) {
                 props.setProjectLoadState("none"); // Reload projects
