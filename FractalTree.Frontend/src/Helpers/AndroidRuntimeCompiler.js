@@ -14,6 +14,15 @@ export default async function CompileProjectForAndroid(project) {
                 // Found it, now replace its contents with the compiled html file
                 zip.file(fileName, CompileApp(project));
             }
+            else if (fileName.endsWith("strings.xml")) { 
+                // Replace the strings.xml file
+                var newStringsFile = `
+                <resources>
+                    <string name="app_name">${project.name}</string>
+                </resources>
+                `;
+                zip.file(fileName, newStringsFile.trim());
+            }
         });
 
         var compiledFile = await zip.generateAsync({ type:"blob" });
