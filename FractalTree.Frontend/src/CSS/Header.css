@@ -6,6 +6,7 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     gap: 1.5rem;
+    width: 100%;
 }
 
 .header h1 {
@@ -16,4 +17,9 @@
 
 .header svg {
     cursor: pointer;
+}
+
+html[dir="rtl"] .header h1 {
+    float: right;
+    margin-left: auto;
 }

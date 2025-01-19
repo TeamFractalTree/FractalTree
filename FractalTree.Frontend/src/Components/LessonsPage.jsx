@@ -66,17 +66,18 @@ function LessonSegment(props) {
                               const {children, className, node, ...rest} = props
                               const match = /language-(\w+)/.exec(className || '')
                               return match ? (
-                                <div className="runnableCodeContainer">
+                                <div dir="ltr" className="runnableCodeContainer">
                                     <Button onClick={() => window.openCodeEditor({ code: children, language: className.replace("language-", "") }, null)} className="codeRunButton"><IconPlayerPlayFilled/>&nbsp;{t("ACTION_TRY")}</Button>
                                     <SyntaxHighlighter
                                         {...rest}
                                         PreTag="div"
+                                        codeTagProps={{ dir: "ltr" }}
                                         children={String(children).replace(/\n$/, '')}
                                         language={match[1]}
                                     />
                                 </div>
                               ) : (
-                                <code {...rest} className={className}>
+                                <code dir="ltr" {...rest} className={className}>
                                   {children}
                                 </code>
                               )
