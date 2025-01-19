@@ -1,0 +1,39 @@
+<style>
+  #dvd {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #f03a7a;
+  }
+</style>
+
+<div id="dvd"></div>
+
+<script>
+  let dvd = document.getElementById("dvd");
+  let ctx = document.documentElement;
+
+  let x = 100;
+  let y = 100;
+  let xVelocity = 3;
+  let yVelocity = 3;
+
+  function bounce() {
+    x += xVelocity;
+    y += yVelocity;
+
+    if (x + dvd.clientWidth >= ctx.clientWidth || x <= 0) {
+      xVelocity *= -1;
+    }
+    if (y + dvd.clientHeight >= ctx.clientHeight || y <= 0) {
+      yVelocity *= -1;
+    }
+
+    dvd.style.left = x + "px";
+    dvd.style.top = y + "px";
+
+    requestAnimationFrame(bounce);
+  }
+
+  bounce();
+</script>
