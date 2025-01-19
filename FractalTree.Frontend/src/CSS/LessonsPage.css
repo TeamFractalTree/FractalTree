@@ -24,7 +24,7 @@
 
 .lessonCard .languageIcon {
     position: absolute;
-    bottom: 2.5rem;
+    bottom: 1rem;
     right: 1rem;
 }
 
@@ -52,29 +52,21 @@
 
 .segmentPickerContainer .lessonSegment {
     width: 90%;
-    height: 6rem;
     margin: auto;
     margin-top: 1rem;
+    padding: 1rem;
+    min-height: 8rem;
     background-color: var(--col-tertiary);
+    border-radius: 10px;
     border: 2px solid var(--col-border);
     box-shadow: var(--col-shadow);
-    border-radius: 10px;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
 }
 
-.segmentPickerContainer .lessonSegment p {
-    text-wrap: nowrap;
-    overflow: hidden;
-    max-width: 80%;
-    display: inline-block;
-    margin: 0;
-    background-image: linear-gradient(90deg,#000000 0%, #000000 80%,rgba(0,0,0,0));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.segmentPickerContainer .lessonSegment h2, .segmentPickerContainer .lessonSegment p {
+    width: calc(100% - 7.5rem);
 }
 
 .segmentContainer .segmentViewer {

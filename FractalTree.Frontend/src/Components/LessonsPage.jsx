@@ -95,7 +95,6 @@ function LessonCard(props) {
             <h2 className="lessonTitle">{props.name}</h2>
             <p className="lessonDescription">{props.description}</p>
             <LanguageIcon {...props}/>
-            <ProgressBar value={50}></ProgressBar>
         </div>
     )
 }
