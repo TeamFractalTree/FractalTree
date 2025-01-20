@@ -14,8 +14,9 @@
 
 .bottomBar .p-button {
     padding: 0;
-    border: 5px solid white;
+    border: 5px solid var(--col-bg);
     border-radius: 10px;
+    background-color: var(--col-bg);
 }
 
 .bottomBar .p-selectbutton {
@@ -29,6 +30,7 @@
 
 .bottomBar .p-button.p-highlight * {
     color: white;
+    background-color: var(--col-primary);
 }
 
 .bottomBar .barItem {
