@@ -74,9 +74,16 @@ export default function ProjectsPage() {
             <Header>{t("SECTION_PROJECTS")}</Header>
 
             <div className="projectsPage">
+
+                <div className="projectCard projectHubCard">
+                    <h2>{t("SECTION_PROJECT_HUB")}</h2>
+                    <p>{t("SECTION_PROJECT_HUB_DESCRIPTION")}</p>
+                </div>
+
                 {
                     projects.length == 0 ? (<p>{t("ERROR_NO_PROJECTS")}</p>) : ""
                 }
+
                 <Button onClick={createProject} className="createProjectButton"><IconPlus/></Button>
 
                 {

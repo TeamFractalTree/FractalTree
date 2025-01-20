@@ -29,6 +29,8 @@
     "ERROR_NO_DESCRIPTION": "No description.",
     "ERROR_REACT_NEEDSMAIN": "To run a React app, you must declare a Main() function.",
     "SECTION_LESSONS": "Lessons",
+    "SECTION_PROJECT_HUB": "Project Hub",
+    "SECTION_PROJECT_HUB_DESCRIPTION": "Discover a variety of community-made projects and curated samples.",
     "SECTION_PROJECTS": "Projects",
     "SECTION_SANDBOX": "Sandbox",
     "SECTION_SANDBOX_DESCRIPTION": "Sandbox mode allows you to quickly scan and run code without saving it."

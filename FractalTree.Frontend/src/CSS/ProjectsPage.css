@@ -38,6 +38,22 @@
     color: white;
 }
 
+.projectHubCard {
+    background-image: url("/Images/ProjectHubBG.webp");
+    height: 16rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.projectHubCard * {
+    color: white;
+}
+
+.projectHubCard h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
 .projectCard {
     width: 100%;
     padding: 1rem;
