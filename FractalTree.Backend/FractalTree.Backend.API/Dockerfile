@@ -6,6 +6,10 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
+# Create The Data Folder
+RUN mkdir /ftdata
+RUN chmod 666 /ftdata
+
 RUN apt-get update -yq 
 RUN apt-get install -yq default-jre
 

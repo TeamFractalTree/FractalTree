@@ -12,6 +12,11 @@ namespace FractalTree.Backend.API
                 Directory.CreateDirectory("/home/app/scans");
             }
 
+            if (!Directory.Exists("/ftdata/projecthub"))
+            {
+                Directory.CreateDirectory("/ftdata/projecthub");
+            }
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
