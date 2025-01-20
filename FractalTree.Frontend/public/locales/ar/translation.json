@@ -1,4 +1,3 @@
-
 {
     "ACTION_TRY": "حاول",
     "ACTION_GO": "اذهب",
@@ -30,6 +29,8 @@
     "ERROR_NO_DESCRIPTION": "لا يوجد وصف.",
     "ERROR_REACT_NEEDSMAIN": "لتشغيل تطبيق React، يجب عليك إعلان دالة Main().",
     "SECTION_LESSONS": "دروس",
+    "SECTION_PROJECT_HUB": "مركز المشروع",
+    "SECTION_PROJECT_HUB_DESCRIPTION": "اكتشف مجموعة متنوعة من المشاريع التي صنعها المجتمع والعينات المنسقة.",
     "SECTION_PROJECTS": "مشاريع",
     "SECTION_SANDBOX": "صندوق الرمل",
     "SECTION_SANDBOX_DESCRIPTION": "يسمح لك وضع الحماية بفحص الكود وتشغيله بسرعة دون حفظه."
