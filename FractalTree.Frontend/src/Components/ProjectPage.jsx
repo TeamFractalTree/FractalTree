@@ -47,6 +47,20 @@ export default function ProjectPage() {
             <Header onBack={() => { (callback[0] || console.log)((Object.assign({}, projectState)), true); setPageVisible(false) }}>{projectState.name || "Unknown Project"}</Header>
             
             <div className="projectPage">
+
+                <div className="externalProjectCard">
+                    <div className="projectThumbnail" style={{ background: "url('" + (projectState.assets?.thumbnail || "/Images/DefaultThumbnailBG.png") + "')" }}>
+                        {
+                            // Show the language logo if no thumbnail is available
+                            !projectState.assets?.thumbnail ? (<img src={`/Images/LangIcons/${projectState.language}.webp`}></img>) : null
+                        }
+                    </div>
+                    <p>{t("PARAM_NAME")} {projectState.name}</p>
+                    <p>{t("PARAM_AUTHOR")} {projectState.author}</p>
+                    <p>{t("PARAM_DESCRIPTION")} {projectState.description || t("ERROR_NO_DESCRIPTION")}</p>
+                    <p>{t("PARAM_LANGUAGE")} {projectState.language}</p>
+                </div>
+
                 <Button onClick={runProject} className="projectAction">
                     <IconPlayerPlay/>
                     &nbsp;
@@ -63,11 +77,16 @@ export default function ProjectPage() {
                     </Button> : null
                 }
 
-                <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
-                    <IconBrandAndroid/>
-                    &nbsp;
-                    {t("ACTION_COMPILE")}
-                </Button>
+                {
+                    navigator.onLine ? 
+                    <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
+                        <IconBrandAndroid/>
+                        &nbsp;
+                        {t("ACTION_COMPILE")}
+                    </Button> : null
+                }
+
+
 
 
             </div>

@@ -8869,3 +8869,8 @@
         color: #030712;
     }
 }
+
+.p-sidebar-mask {
+    width: 100vw !important;
+    height: 100vh !important;
+}
