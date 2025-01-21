@@ -30,13 +30,20 @@
 }
 
 .externalProjectCard {
-    width: 90%;
+    width: 90% !important;
     min-height: 18rem;
+    height: min(fit-content, 18rem);
+    overflow: hidden;
     background-color: var(--col-tertiary);
     border-radius: 10px;
     border: 2px solid var(--col-border);
     box-shadow: var(--col-shadow);
     padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    animation: fadeIn 0.5s ease 0s 1 normal forwards;
 }
 
 .externalProjectCard .projectThumbnail {
@@ -62,5 +69,5 @@
 }
 
 .externalProjectCard p {
-    margin: 0.5rem;
+    margin: 0.2rem;
 }

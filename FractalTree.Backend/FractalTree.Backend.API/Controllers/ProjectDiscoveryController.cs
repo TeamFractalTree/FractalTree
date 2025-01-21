@@ -10,7 +10,7 @@ namespace FractalTree.Backend.API.Controllers
     public class ProjectDiscoveryController : ControllerBase
     {
 
-        [HttpPost("discover")]
+        [HttpGet("discover")]
         public async Task<IActionResult> Discover()
         {
             try

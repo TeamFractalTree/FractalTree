@@ -14,10 +14,12 @@
     color: var(--col-text-washed);
 }
 
-.projectsPage .createProjectButton {
-    position: absolute;
-    right: 1rem;
-    bottom: 6rem;
+.createProjectButton {
+    position: fixed;
+    right: 0.75rem;
+    top: 0.75rem;
+    background-color: transparent;
+    border: none;
     width: 4rem;
     height: 4rem;
     border-radius: 100%;
@@ -29,13 +31,13 @@
     z-index: 9;
 }
 
-.projectsPage .createProjectButton svg {
+.createProjectButton svg {
     width: 50%;
     height: 50%;
 }
 
-.projectsPage .createProjectButton * {
-    color: white;
+.createProjectButton * {
+    color: var(--col-text);
 }
 
 

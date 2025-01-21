@@ -24,7 +24,7 @@ export default function LessonsPage() {
         <>
             <Header>{t("SECTION_LESSONS")}</Header>
 
-            <div className="lessonsPage">
+            <div className="page lessonsPage">
                 {
                     lessonList.filter((l) => l.lang == localStorage.i18nextLng).map((lesson, i) => {
                         return (<LessonCard onClick={() => { setSelectedLesson(lesson); setSegmentPickerVisible(true); }} key={i} {...lesson}></LessonCard>)

@@ -24,7 +24,7 @@ export default function SandboxPage() {
         <>
             <Header>{t("SECTION_SANDBOX")}</Header>
 
-            <div className="sandboxPage">
+            <div className="page sandboxPage">
                 <div className="sandboxSplash">
                     <IconSandbox></IconSandbox>
                 </div>

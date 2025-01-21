@@ -20,6 +20,7 @@ import PhoneWrapper from './Components/PhoneWrapper.jsx';
 import ProjectPage from './Components/ProjectPage.jsx';
 import "./Helpers/ServerStatus.js";
 import { useState } from 'react';
+import ProjectHub from './Components/ProjectHub.jsx';
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {
@@ -78,6 +79,7 @@ function Main() {
             <CodeEditor></CodeEditor>
             <HTMLHost></HTMLHost>
             <ProjectPage></ProjectPage>
+            <ProjectHub></ProjectHub>
         </MemoryRouter>
     )
 }
