@@ -1,6 +1,7 @@
 import JSZip from "jszip";
 import { CompileApp } from "./AppCompiler";
 import { saveAs } from "file-saver";
+import BaseURL from "../BaseURL";
 
 export default async function CompileProjectForAndroid(project) {
     try {
@@ -35,7 +36,7 @@ export default async function CompileProjectForAndroid(project) {
             xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.response }));
             xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
             xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
-            xhr.open('POST', "https://api.fractal-tree.org/api/sign", true);
+            xhr.open('POST', BaseURL + "/api/sign", true);
             xhr.responseType = 'blob';
             xhr.send(formData);
         });

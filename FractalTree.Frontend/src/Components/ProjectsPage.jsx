@@ -9,6 +9,7 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import CodeTemplates from "../Helpers/CodeTemplates";
 import LanguageIcon from "./LanguageIcon";
+import ServerStatusText from "./ServerStatusText";
 
 export default function ProjectsPage() {
 
@@ -78,6 +79,7 @@ export default function ProjectsPage() {
                 <div className="projectCard projectHubCard">
                     <h2>{t("SECTION_PROJECT_HUB")}</h2>
                     <p>{t("SECTION_PROJECT_HUB_DESCRIPTION")}</p>
+                    <ServerStatusText></ServerStatusText>
                 </div>
 
                 {

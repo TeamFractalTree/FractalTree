@@ -11,6 +11,7 @@ import Image from "image-js"
 import IsDevMode from "../Helpers/DevModeDetector";
 import { createWorker } from 'tesseract.js';
 import jsQR from "jsqr";
+import BaseURL from '../BaseURL';
 
 window.addEventListener("load", async () => {
     window.tesseractWorker = await createWorker("eng", 1, {
@@ -84,7 +85,7 @@ export default function Scanner() {
 
             var savedImage = await image.toBlob("image/png");
             
-            if (navigator.onLine) { // Use OpenAI online scanner
+            if (window.serverStatus == "ONLINE") { // Use OpenAI online scanner
                 var formData = new FormData();
                 formData.append("image", savedImage);
     
@@ -93,7 +94,7 @@ export default function Scanner() {
                     xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.responseText }));
                     xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
                     xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
-                    xhr.open('POST', "https://api.fractal-tree.org/api/scan", true);
+                    xhr.open('POST', BaseURL + "/api/scan", true);
                     xhr.send(formData);
                 });
     

@@ -1,0 +1,21 @@
+.serverStatusText {
+    display: flex;
+    width: auto;
+    align-items: center;
+}
+
+.serverStatusText svg {
+    height: 1rem;
+}
+
+.serverStatusText svg.ONLINE {
+    fill: rgb(0, 204, 61);
+}
+
+.serverStatusText svg.OFFLINE {
+    fill: rgb(204, 0, 27);
+}
+
+.serverStatusText svg.PINGING {
+    fill: rgb(255, 166, 0);
+}
