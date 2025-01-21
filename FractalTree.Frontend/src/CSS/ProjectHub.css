@@ -20,9 +20,3 @@
     padding-top: 1rem;
     gap: 1rem;
 }
-
-.externalProjectCardSkeleton[enabled="false"] {
-    transition: opacity 0.3s;
-    opacity: 0;
-    pointer-events: none;
-}

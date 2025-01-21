@@ -18,9 +18,12 @@ namespace FractalTree.Backend.API.Controllers
                 Response.Headers.Append("Access-Control-Allow-Origin", "*");
 
                 var projectFileList = Directory.GetFiles("/ftdata/projecthub/", "*.json", SearchOption.AllDirectories);
-                var projectList = new Project[projectFileList.Length];
+                var projectList = new Project[10];
 
-                for (int i = 0; i < projectList.Length; i++) {
+                int i = 0;
+                foreach (var file in Directory.EnumerateFiles("/ftdata/projecthub/", "*.json", SearchOption.AllDirectories)) {
+                    if (i >= 10) { break; }
+                        
                     try
                     {
                         projectList[i] = JsonConvert.DeserializeObject<Project>(System.IO.File.ReadAllText(projectFileList[i]));
@@ -29,7 +32,10 @@ namespace FractalTree.Backend.API.Controllers
                     {
                         projectList[i] = null;
                     }
+
+                    i++;
                 }
+
 
                 return Ok(new ProjectDiscoveryResponse() { Projects = projectList });
             }

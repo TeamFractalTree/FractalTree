@@ -14,7 +14,7 @@ export default function ProjectHub() {
 
     window.openProjectHub = () => { setLoadingState("none"); setPageVisible(true); }
     
-    if (loadingState == "none") {
+    if (loadingState == "none" && pageVisible) {
         setLoadingState("loading");
         setTimeout(async () => {
             try {
@@ -41,7 +41,7 @@ export default function ProjectHub() {
                 }
                 {
                     // Show skeletons if still loading
-                    [...Array(5).keys()].map((i) => <Skeleton enabled={loadingState != "success"} key={i} className="externalProjectCard externalProjectCardSkeleton"></Skeleton>)
+                    loadingState != "success" ? [...Array(5).keys()].map((i) => <Skeleton key={i} className="externalProjectCard externalProjectCardSkeleton"></Skeleton>) : null
                 }
             </div>
         </Sidebar>
@@ -50,7 +50,7 @@ export default function ProjectHub() {
 
 export function ExternalProjectCard(props) {
     return (
-        <div className="externalProjectCard">
+        <div onClick={() => window.openProjectPage(Object.assign({}, props.projectState), () => {})} className="externalProjectCard">
             <div className="projectThumbnail" style={{ background: "url('" + (props.projectState.assets?.thumbnail || `/Images/LangThumbnails/${props.projectState?.language}.webp`) + "')" }}>
                 {
                     // Show the language logo if no thumbnail is available
