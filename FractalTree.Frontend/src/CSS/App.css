@@ -66,7 +66,7 @@ body {
 
 @media (prefers-color-scheme: dark) {
     * {
-        --col-bg: hsl(306 28% 7%);
+        --col-bg: #170d16;
         --col-overlay: hsl(306 12% 15%);
         --col-text: #F1ECF3;
         --col-text-washed: #d8d8d8;
