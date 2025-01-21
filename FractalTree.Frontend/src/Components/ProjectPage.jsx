@@ -49,7 +49,7 @@ export default function ProjectPage() {
             <div className="projectPage">
 
                 <div className="externalProjectCard">
-                    <div className="projectThumbnail" style={{ background: "url('" + (projectState.assets?.thumbnail || "/Images/DefaultThumbnailBG.png") + "')" }}>
+                    <div className="projectThumbnail" style={{ background: "url('" + (projectState.assets?.thumbnail || `/Images/LangThumbnails/${projectState?.language}.webp`) + "')" }}>
                         {
                             // Show the language logo if no thumbnail is available
                             !projectState.assets?.thumbnail ? (<img src={`/Images/LangIcons/${projectState.language}.webp`}></img>) : null

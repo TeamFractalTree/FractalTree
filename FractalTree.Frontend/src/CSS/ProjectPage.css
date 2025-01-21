@@ -50,11 +50,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .externalProjectCard .projectThumbnail img {
     width: auto;
     height: 50%;
+    object-position: center;
+    object-fit: cover;
 }
 
 .externalProjectCard p {
