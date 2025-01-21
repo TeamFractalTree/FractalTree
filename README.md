@@ -1,10 +1,24 @@
-# Fractal Tree
-Bridging the digital divide, dive into the world of coding with just a pen, paper, and a smartphone! 
+<div align="center">
+  <a href="https://github.com/TeamFractalTree/FractalTree">
+    <img src="./FractalTree.Frontend/public/Images/FractalTreeWordMark.png" alt="Fractal Tree Logo" height="80">
+  </a>
 
-![GitHub License](https://img.shields.io/github/license/TeamFractalTree/FractalTree)
-![GitHub repo size](https://img.shields.io/github/repo-size/TeamFractalTree/FractalTree)
-![Website](https://img.shields.io/website?url=https%3A%2F%2Fapp.fractal-tree.org)
+  <h3 align="center">Fractal Tree</h3>
+  <p align="center">
+    Bridging the digital divide, dive into the world of coding with just a pen, paper, and a smartphone! 
+    <br />
+    <br />
+    <a href="https://app.fractal-tree.org">Web Version</a>
+    ·
+    <a href="https://app.fractal-tree.org">Android App</a>
+    ·
+    <a href="https://app.fractal-tree.org">IOS App</a>
+  </p>
 
+  ![GitHub License](https://img.shields.io/github/license/TeamFractalTree/FractalTree)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/TeamFractalTree/FractalTree)
+  ![Website](https://img.shields.io/website?url=https%3A%2F%2Fapp.fractal-tree.org)
+</div>
 
 ## Compiling The Project
 
