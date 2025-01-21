@@ -12,7 +12,7 @@ import 'prismjs/components/prism-markup';
 import 'prismjs/themes/prism.css';
 import '@xterm/xterm/css/xterm.css';
 import { XTerm } from "@pablo-lion/xterm-react";
-import { IconPlayerPlay } from '@tabler/icons-react';
+import { IconPlayerPlay, IconTextScan2 } from '@tabler/icons-react';
 import ExecutePython from '../Helpers/PythonEngine';
 import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
 import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
@@ -78,9 +78,11 @@ export default function CodeEditor() {
         }
     }
 
-    var compile = async () => {
-        var result = await CompileApp(codeState);
-        console.log(result);
+    var appendScan = () => {
+        window.openScanner({}, (addedCode) => {
+            codeState.code += `\n${addedCode}`;
+            setCodeState(Object.assign({}, codeState));
+        });
     }
 
     return (
@@ -95,6 +97,10 @@ export default function CodeEditor() {
                                 <IconPlayerPlay/>
                                 &nbsp;
                                 {t("ACTION_RUN")}
+                            </Button>
+
+                            <Button onClick={appendScan} className="editorScanMini">
+                                <IconTextScan2/>
                             </Button>
             
                             <Editor
