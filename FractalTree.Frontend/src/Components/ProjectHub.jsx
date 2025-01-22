@@ -36,7 +36,7 @@ export default function ProjectHub() {
             <div className="projectHub">
                 {
                     discoveredProjects.projects?.map((project) => {
-                        return <ExternalProjectCard projectState={project}></ExternalProjectCard>
+                        return !!project ? <ExternalProjectCard projectState={project}></ExternalProjectCard> : null
                     })
                 }
                 {
