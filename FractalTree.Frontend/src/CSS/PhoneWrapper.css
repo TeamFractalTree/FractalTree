@@ -17,12 +17,9 @@
     height: 82vh;
     width: 40vh;
     border: none;
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
     overflow: hidden;
 }
 
 .phoneWrapperFrame img {
     height: 90vh;
-
 }
