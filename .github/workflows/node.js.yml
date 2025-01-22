@@ -21,13 +21,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - run: cd FractalTree.Frontend
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm run build
+      working-directory: ./FractalTree.Frontend
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
