@@ -25,6 +25,11 @@
 We have a hosted instance at [app.fractal-tree.org](https://app.fractal-tree.org), however if you want to compile it yourself here's how:
 
 ### Compile The Frontend
+
+> IMPORTANT: You must point the frontend to the URL of your backend, *your backend must use HTTPS*
+>
+> You can do this by modifying `FractalTree.Frontend/src/BaseURL.js` to `export default "https://api.example.com";` (do NOT add a trailing slash)
+
 ```bash
 cd FractalTree.Frontend
 npm i --force
@@ -49,9 +54,6 @@ cd FractalTree.Frontend
 npm run lessons
 ```
 
-### Compile The Android App
+### Compile The Mobile App
 
-```bash
-cd FractalTree.Frontend
-npm run build-android
-```
+Please refer to the [tauri docs](https://v2.tauri.app/develop/)
