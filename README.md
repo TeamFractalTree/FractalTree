@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/TeamFractalTree/FractalTree">
-    <img src="./FractalTree.Frontend/public/Images/FractalTreeWordMark.png" alt="Fractal Tree Logo" height="80">
+    <img src="https://github.com/user-attachments/assets/2bef1f57-14d4-482f-86fd-730f56efd545" alt="Fractal Tree Logo" width="100%">
   </a>
 
   <h3 align="center">Fractal Tree</h3>
@@ -20,18 +20,45 @@
   ![Website](https://img.shields.io/website?url=https%3A%2F%2Fapp.fractal-tree.org)
 </div>
 
-## Compiling The Project
+# Installation
+
+Fractal Tree was primarily designed for Android, we highly recommend trying it using an Android phone.
+
+*Remember, the entire point of Fractal Tree is for people who can't afford laptops (and subsequently can't afford iPhones) to be able to code.*
+However, we have released a version for web and for IOS so that you can try it out even without an Android device.
+
+> Note that the web and IOS versions do not support any offline functionality
+
+## Install On Android (Highly Recommended)
+1. Download the latest release of Fractal Tree, this will give you an installable .apk file
+2. Open the .apk file, a warning may pop up, you will have to allow installation from unknown sources
+3. Once you give permissions to your browser, you can follow the instructions on screen to install the app
+
+## Install On IOS Simulator
+TODO: Add instructions
+
+## Access From A Computer
+
+Simply go to https://app.fractal-tree.org/  
+Note that the app will run in a phone frame, since we don't support a horizontal layout.
+
+# Compiling The Project
 
 We have a hosted instance at [app.fractal-tree.org](https://app.fractal-tree.org), however if you want to compile it yourself here's how:
 
-### Compile The Frontend
+## Compile The Frontend
+
+> IMPORTANT: You must point the frontend to the URL of your backend, *your backend must use HTTPS*
+>
+> You can do this by modifying `FractalTree.Frontend/src/BaseURL.js` to `export default "https://api.example.com";` (do NOT add a trailing slash)
+
 ```bash
 cd FractalTree.Frontend
 npm i --force
 npm run dev
 ```
 
-### Compile The Backend
+## Compile The Backend
 
 > Note: This assumes you have Visual Studio 2022, linux and macOS users have to use dotnet cli and docker cli
 
@@ -40,7 +67,7 @@ npm run dev
 3. Now simply open the solution in VS and compile the docker container
 4. You must run the container behind an SSL proxy
 
-### Compile The Lessons
+## Compile The Lessons
 
 The lessons in FractalTree.Lessons must be compiled from markdown to JavaScript, here's how:
 
@@ -49,9 +76,6 @@ cd FractalTree.Frontend
 npm run lessons
 ```
 
-### Compile The Android App
+## Compile The Mobile App
 
-```bash
-cd FractalTree.Frontend
-npm run build-android
-```
+Please refer to the [tauri docs](https://v2.tauri.app/develop/)
