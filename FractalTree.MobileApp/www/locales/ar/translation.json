@@ -27,11 +27,15 @@
     "ERROR_BAD_SCAN": "لم نتمكن من مسح الكود الخاص بك، يرجى المحاولة مرة أخرى مع صورة أوضح أو خط يد أفضل.",
     "ERROR_NO_PROJECTS": "لا توجد مشاريع، قم بإنشاء أول مشروع لك باستخدام الزر أدناه.",
     "ERROR_NO_DESCRIPTION": "لا يوجد وصف.",
+    "ERROR_NO_CONNECTION_TO_HUB": "لم نتمكن من الاتصال بمركز المشروع. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى لاحقًا.",
     "ERROR_REACT_NEEDSMAIN": "لتشغيل تطبيق React، يجب عليك إعلان دالة Main().",
     "SECTION_LESSONS": "دروس",
     "SECTION_PROJECT_HUB": "مركز المشروع",
     "SECTION_PROJECT_HUB_DESCRIPTION": "اكتشف مجموعة متنوعة من المشاريع التي صنعها المجتمع والعينات المنسقة.",
     "SECTION_PROJECTS": "مشاريع",
     "SECTION_SANDBOX": "صندوق الرمل",
-    "SECTION_SANDBOX_DESCRIPTION": "يسمح لك وضع الحماية بفحص الكود وتشغيله بسرعة دون حفظه."
+    "SECTION_SANDBOX_DESCRIPTION": "يسمح لك وضع الحماية بفحص الكود وتشغيله بسرعة دون حفظه.",
+    "SERVER_STATUS_PINGING": "التحقق من الاتصال",
+    "SERVER_STATUS_ONLINE": "متصل",
+    "SERVER_STATUS_OFFLINE": "غير متصل"
 }
