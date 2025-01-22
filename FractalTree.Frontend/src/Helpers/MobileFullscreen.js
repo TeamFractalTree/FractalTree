@@ -2,11 +2,14 @@ import IsDevMode from "./DevModeDetector";
 
 var triedToEnterFullscreen = false;
 
-document.addEventListener("touchstart", () => {
+document.addEventListener("touchend", () => {
     if (triedToEnterFullscreen) { return; }
 
     if (!!document.body.requestFullscreen && !window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
-        document.body.requestFullscreen();
-        triedToEnterFullscreen = true;
+        try {
+            document.body.requestFullscreen();
+            triedToEnterFullscreen = true;
+        }
+        catch {}
     }
 });
