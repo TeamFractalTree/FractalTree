@@ -95,3 +95,6 @@ npm run lessons
 ## Compile The Mobile App
 
 Please refer to the [tauri docs](https://v2.tauri.app/develop/)
+
+![image](https://github.com/user-attachments/assets/25175d8d-8a52-4d28-969e-708b4f60a26b)
+
