@@ -36,5 +36,5 @@ jobs:
           body: |
              Compiled the code in FractalTree.Frontend 🔥🔥🔥
           title: 'Compile New Build'
-          branch: main
+          branch: frontend-build-ci
 
