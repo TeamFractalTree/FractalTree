@@ -7,5 +7,6 @@ document.addEventListener("touchstart", () => {
 
     if (!!document.body.requestFullscreen && !window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
         document.body.requestFullscreen();
+        triedToEnterFullscreen = true;
     }
 });
