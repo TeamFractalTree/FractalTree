@@ -22,6 +22,7 @@ import "./Helpers/ServerStatus.js";
 import { useState } from 'react';
 import ProjectHub from './Components/ProjectHub.jsx';
 import "./Helpers/AndroidBackHandler.js";
+import "./Helpers/MobileFullscreen.js";
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {

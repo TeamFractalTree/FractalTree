@@ -32,11 +32,6 @@ export default function Scanner() {
     var [scanOptions, setScanOptions] = useState({});
 
     window.openScanner = (newScanOptions, newCallback) => { 
-
-        if (!!document.body.requestFullscreen && !window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
-            document.body.requestFullscreen();
-        }
-
         setScanOptions(newScanOptions);
         setCallback([newCallback]);
         setScannerVisible(true);
@@ -53,8 +48,8 @@ export default function Scanner() {
 
         setTimeout(async () => {
 
-            if ((parseInt(localStorage.lastScan) || 0) + 60000 > Date.now()) { // 60 Seconds
-                alert(`You are rate limited to 1 scan per minute to prevent abuse. This only applies to the demo instance. You may try again later.`);
+            if ((parseInt(localStorage.lastScan) || 0) + 15000 > Date.now()) { // 15 Seconds
+                alert(`You are rate limited to 1 scan per 15 seconds to prevent abuse. This only applies to the demo instance. You may try again later.`);
                 setScanState("none");
                 return;
             }
