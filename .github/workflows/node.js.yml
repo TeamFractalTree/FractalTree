@@ -18,17 +18,13 @@ jobs:
       run:
         working-directory: './FractalTree.Frontend'
 
-    strategy:
-      matrix:
-        node-version: [22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: $22
+        cache-dependency-path: 'FractalTree.Frontend/package-lock.json'
         cache: 'npm'
     - run: npm run build
     - name: Create Pull Request
