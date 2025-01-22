@@ -20,7 +20,7 @@
   ![Website](https://img.shields.io/website?url=https%3A%2F%2Fapp.fractal-tree.org)
 </div>
 
-# Installation
+# Installation 🚀
 
 Fractal Tree was primarily designed for Android, we highly recommend trying it using an Android phone.
 
