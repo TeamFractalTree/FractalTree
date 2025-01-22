@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm run build
-      working-directory: ./FractalTree.Frontend
+      working-directory: './FractalTree.Frontend'
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
