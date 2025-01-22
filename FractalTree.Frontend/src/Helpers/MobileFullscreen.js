@@ -2,7 +2,7 @@ import IsDevMode from "./DevModeDetector";
 
 var triedToEnterFullscreen = false;
 
-document.addEventListener("touchend", () => {
+document.body.addEventListener("click", () => {
     if (triedToEnterFullscreen) { return; }
 
     if (!!document.body.requestFullscreen && !window.matchMedia('(display-mode: standalone)').matches && !IsDevMode()) {
