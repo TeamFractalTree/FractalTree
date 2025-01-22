@@ -19,7 +19,7 @@
     cursor: pointer;
 }
 
-html[dir="rtl"] .header h1 {
+*[dir="rtl"] .header h1 {
     float: right;
     margin-left: auto;
 }

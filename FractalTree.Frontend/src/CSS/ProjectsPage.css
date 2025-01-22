@@ -88,8 +88,13 @@
     margin-top: auto;
 }
 
-html[dir="rtl"] .projectCard .languageIcon {
+*[dir="rtl"] .projectCard .languageIcon {
     right: auto;
     left: 1rem;
     top: 1rem;
+}
+
+*[dir="rtl"] .createProjectButton { 
+    right: auto;
+    left: 0.75rem;
 }

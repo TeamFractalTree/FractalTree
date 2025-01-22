@@ -24,7 +24,7 @@ def compile_course_in_language(dir, lang):
         if (file.endswith(".md")):
             fullFilePath = os.path.join(dir, file)
             print("Adding Segment: " + file)
-            with open(fullFilePath, 'r') as f:
+            with open(fullFilePath, 'r', encoding="utf-8") as f:
                 courseInfo["segments"].insert(int(file.replace(".md", "")), f.read())
 
     jsFile += courseID + " = " + json.dumps(courseInfo) + ";\n\n" # Declare the course metadata

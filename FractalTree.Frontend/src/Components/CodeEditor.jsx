@@ -17,6 +17,7 @@ import ExecutePython from '../Helpers/PythonEngine';
 import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
 import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
 import { CompileApp } from '../Helpers/AppCompiler';
+import { saveAs } from 'file-saver';
 
 export default function CodeEditor() {
 
@@ -60,7 +61,14 @@ export default function CodeEditor() {
         return languages.js;
     }
 
-    var run = () => {
+    var run = (e) => {
+
+        // Hold the control and shift keys while clicking run to download the project file
+        // For debugging purposes
+        if (!!e && e.shiftKey && e.ctrlKey) {
+            saveAs(new Blob([JSON.stringify(codeState)]), `${codeState.name}.json`);
+            return;
+        }
 
         if (!xterm.current) {
             setTimeout(run, 500); // Try again in half a second
