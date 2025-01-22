@@ -26,7 +26,7 @@ jobs:
         node-version: 22
         cache-dependency-path: 'FractalTree.Frontend/package-lock.json'
         cache: 'npm'
-    - run: npm ci
+    - run: npm ci --force
     - run: npm run build
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
