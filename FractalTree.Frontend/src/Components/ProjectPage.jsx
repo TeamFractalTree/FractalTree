@@ -78,7 +78,7 @@ export default function ProjectPage() {
                 }
 
                 {
-                    navigator.onLine ? 
+                    navigator.onLine && false ? // Disabled for now because it's incomplete, remove "&& false" to enable
                     <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
                         <IconBrandAndroid/>
                         &nbsp;

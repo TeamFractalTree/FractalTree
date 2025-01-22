@@ -24,16 +24,14 @@ export default function CodeEditor() {
     var [editorVisible, setEditorVisible] = useState(false);
     var [codeState, setCodeState] = useState({});
     var [callback, setCallback] = useState([]);
+    var [didAutoRun, setDidAutoRun] = useState(true);
     var guiOutputRef = useRef(null);
 
     window.openCodeEditor = (newCodeState, newCallback) => { 
+        setDidAutoRun(false);
         setCodeState(newCodeState);
         setCallback([newCallback]);
         setEditorVisible(true);
-
-        if (!!newCodeState.autoRun) { 
-            setTimeout(run, 0);
-        }
     }
 
     window.enableGUIOutput = () => {
@@ -63,6 +61,12 @@ export default function CodeEditor() {
     }
 
     var run = () => {
+
+        if (!xterm.current) {
+            setTimeout(run, 500); // Try again in half a second
+            return;
+        }
+
         window.disableGUIOutput();
         if (codeState.language == "python") {
             ExecutePython(codeState.code, (d) => xterm.current.write(d));
@@ -76,6 +80,11 @@ export default function CodeEditor() {
         else if (codeState.language == "jsx") {
             ExecuteJSX(codeState.code, (d) => xterm.current.write(d));
         }
+    }
+
+    if (!!codeState.autoRun && !didAutoRun) { 
+        setDidAutoRun(true);
+        setTimeout(run, 0);
     }
 
     var appendScan = () => {
