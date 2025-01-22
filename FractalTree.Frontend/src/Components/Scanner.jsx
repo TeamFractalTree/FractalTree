@@ -52,6 +52,14 @@ export default function Scanner() {
         Vibrate();
 
         setTimeout(async () => {
+
+            if ((parseInt(localStorage.lastScan) || 0) + 60000 > Date.now()) { // 60 Seconds
+                alert(`You are rate limited to 1 scan per minute to prevent abuse. This only applies to the demo instance. You may try again later.`);
+                setScanState("none");
+                return;
+            }
+            localStorage.lastScan = Date.now();
+
             var callbackToRun = callback[0] || console.log;
             var screenshot = cameraRef.current.getScreenshot(); // Returns A WebP Data URL
             var image = await Image.load(screenshot);
