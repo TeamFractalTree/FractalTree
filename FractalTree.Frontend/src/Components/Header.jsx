@@ -4,10 +4,10 @@ import { Divider } from 'primereact/divider';
 
 export default function Header(props) {
     return (
-        <div className="header">
+        <div onDoubleClick={props.onBack || console.log} className="header">
             {
                 !!props.onBack ? 
-                <IconArrowLeft onClick={props.onBack}></IconArrowLeft> : null
+                <IconArrowLeft></IconArrowLeft> : null
             }
             <h1>{props.children}</h1>
         </div>
