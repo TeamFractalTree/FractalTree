@@ -1,5 +1,5 @@
 import { Sidebar } from "primereact/sidebar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../CSS/HTMLEngine.css";
 
 export function HTMLHost() {
@@ -7,6 +7,7 @@ export function HTMLHost() {
     var [websiteVisible, setWebsiteVisible] = useState(false);
     var [websiteCode, setWebsiteCode] = useState("");
     var [websiteNonce, setWebsiteNonce] = useState(0); // iframe will reload when this changes
+    var frameRef = useRef(null);
 
     window.invokeHTMLHost = (code) => {
         setWebsiteCode(code);
@@ -14,9 +15,15 @@ export function HTMLHost() {
         setWebsiteVisible(true);
     }
 
+    useRef(() => {
+        if (!!frameRef.current) {
+            frameRef.current.contentWindow.location.reload();
+        }
+    }, [websiteNonce]);
+
     return (
         <Sidebar className="htmlHost" style={{ height: "100vh" }} position="bottom" visible={websiteVisible} onHide={() => setWebsiteVisible(false)}>
-            <iframe onLoad={(e) => e.target.contentWindow.replaceDOM(websiteCode)} src={"/Runtime/shim.html?" + websiteNonce.toString()}></iframe>
+            <iframe ref={frameRef} onLoad={(e) => e.target.contentWindow.replaceDOM(websiteCode)} src={"/Runtime/shim.html"}></iframe>
         </Sidebar>
     )
 }
