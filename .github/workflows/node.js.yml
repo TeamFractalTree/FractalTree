@@ -30,8 +30,8 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
       with:
-          commit-message: 'New Build\nCo-Authored-By: Samarth Pradeep <79756986+SamarthMP@users.noreply.github.com>'
-          committer: Fractal Tree <194416362+TeamFractalTree@users.noreply.github.com>
+          commit-message: 'New Build'
+          committer: Samarth Pradeep <79756986+SamarthMP@users.noreply.github.com>
           body: |
              Compiled the code in FractalTree.Frontend 🔥🔥🔥
           title: 'Compile New Build'
