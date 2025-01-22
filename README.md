@@ -20,11 +20,11 @@
   ![Website](https://img.shields.io/website?url=https%3A%2F%2Fapp.fractal-tree.org)
 </div>
 
-# The Problem 🚨
+# The Problem
 
 In crisis-affected areas, millions of children lack access to quality education, especially in computer science—a critical skill for the future. Language barriers, bad internet, and limited access to laptops and computers make learning coding even more difficult.
 
-# The Solution 💡
+# The Solution
 
 Our platform fills this gap by providing a multilingual, offline-capable app teaching programming skills in dozens of languages and multiple coding languages to ensure no child is left behind. All you need is a pen, paper, and a smartphone.
 
@@ -36,7 +36,7 @@ Our platform bridges the digital divide with:
 Although people can run code on their phones already with existing solutions like replit, and typing using an on-screen keyboard, it is much more efficient to write down code on paper and scan it.
 The ability to use it offline ensures students can learn uninterrupted, even in low-connectivity areas.
 
-# Installation 🚀
+# Installation
 
 Fractal Tree was primarily designed for Android, we highly recommend trying it using an Android phone.
 
