@@ -57,7 +57,7 @@ export default function ProjectsPage() {
                 "name": "New Project (" + lang + ")",
                 "author": localStorage.displayName || "Anonymous",
                 "description": "",
-                "assets": [],
+                "assets": {},
                 "language": lang,
                 "code": CodeTemplates[lang](),
                 "id": publicKey
