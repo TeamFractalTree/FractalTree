@@ -11,8 +11,6 @@
     <a href="https://app.fractal-tree.org">Web Version</a>
     ·
     <a href="https://app.fractal-tree.org">Android App</a>
-    ·
-    <a href="https://app.fractal-tree.org">IOS App</a>
   </p>
 
   ![GitHub License](https://img.shields.io/github/license/TeamFractalTree/FractalTree)
@@ -38,22 +36,20 @@ The ability to use it offline ensures students can learn uninterrupted, even in 
 
 # Installation
 
-Fractal Tree was primarily designed for Android, we highly recommend trying it using an Android phone.
+Fractal Tree was primarily designed for Android, we highly recommend trying it using an Android phone, however you may access it using a laptop, tablet, or desktop.
+
+> Fractal Tree is **NOT** supported on iPhones
 
 *Remember, the entire point of Fractal Tree is for people who can't afford laptops (and subsequently can't afford iPhones) to be able to code.*
-However, we have released a version for web and for IOS so that you can try it out even without an Android device.
 
-> Note that the web and IOS versions do not support any offline functionality
+> Note that the web version does not support any offline functionality
 
 ## Install On Android (Highly Recommended)
 1. Download the latest release of Fractal Tree, this will give you an installable .apk file
 2. Open the .apk file, a warning may pop up, you will have to allow installation from unknown sources
 3. Once you give permissions to your browser, you can follow the instructions on screen to install the app
 
-## Install On IOS Simulator
-TODO: Add instructions
-
-## Access From A Computer
+## Access From A Laptop, Desktop, Or Tablet (**NOT** an iPhone)
 
 Simply go to https://app.fractal-tree.org/  
 Note that the app will run in a phone frame, since we don't support a horizontal layout.
