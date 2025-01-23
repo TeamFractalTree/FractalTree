@@ -61,12 +61,16 @@ export default function CodeEditor() {
         return languages.js;
     }
 
-    var run = (e) => {
+    var run = async (e) => {
 
         // Hold the control and shift keys while clicking run to download the project file
         // For debugging purposes
         if (!!e && e.shiftKey && e.ctrlKey) {
             saveAs(new Blob([JSON.stringify(codeState)]), `${codeState.name}.json`);
+            return;
+        }
+        else if (!!e && e.altKey) { // Hold alt to download the compiled HTMLfile
+            saveAs(new Blob([await CompileApp(codeState)]), `${codeState.name}.html`);
             return;
         }
 
