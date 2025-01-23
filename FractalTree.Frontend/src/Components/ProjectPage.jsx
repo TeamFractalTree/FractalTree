@@ -7,6 +7,7 @@ import { CompileApp } from '../Helpers/AppCompiler';
 import { IconBrandAndroid, IconCode, IconPlayerPlay } from '@tabler/icons-react';
 import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
 import CompileProjectForAndroid from '../Helpers/AndroidRuntimeCompiler';
+import { ExternalProjectCard } from './ProjectHub';
 
 export default function ProjectPage() {
 
@@ -48,18 +49,7 @@ export default function ProjectPage() {
             
             <div className="projectPage">
 
-                <div className="externalProjectCard">
-                    <div className="projectThumbnail" style={{ background: "url('" + (projectState.assets?.thumbnail || `/Images/LangThumbnails/${projectState?.language}.webp`) + "')" }}>
-                        {
-                            // Show the language logo if no thumbnail is available
-                            !projectState.assets?.thumbnail ? (<img src={`/Images/LangIcons/${projectState.language}.webp`}></img>) : null
-                        }
-                    </div>
-                    <p>{t("PARAM_NAME")} {projectState.name}</p>
-                    <p>{t("PARAM_AUTHOR")} {projectState.author}</p>
-                    <p>{t("PARAM_DESCRIPTION")} {projectState.description || t("ERROR_NO_DESCRIPTION")}</p>
-                    <p>{t("PARAM_LANGUAGE")} {projectState.language}</p>
-                </div>
+                <ExternalProjectCard projectState={projectState} />
 
                 <Button onClick={runProject} className="projectAction">
                     <IconPlayerPlay/>

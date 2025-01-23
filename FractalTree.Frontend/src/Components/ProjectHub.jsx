@@ -57,10 +57,10 @@ export function ExternalProjectCard(props) {
                     !props.projectState.assets?.thumbnail ? (<img src={`/Images/LangIcons/${props.projectState.language}.webp`}></img>) : null
                 }
             </div>
-            <p>{t("PARAM_NAME")} {props.projectState.name}</p>
-            <p>{t("PARAM_AUTHOR")} {props.projectState.author}</p>
-            <p>{t("PARAM_DESCRIPTION")} {props.projectState.description || t("ERROR_NO_DESCRIPTION")}</p>
-            <p>{t("PARAM_LANGUAGE")} {props.projectState.language}</p>
+            <p><b>{t("PARAM_NAME")}</b> {props.projectState.name}</p>
+            <p><b>{t("PARAM_AUTHOR")}</b> {props.projectState.author}</p>
+            <p><b>{t("PARAM_DESCRIPTION")}</b> {props.projectState.description || t("ERROR_NO_DESCRIPTION")}</p>
+            <p><b>{t("PARAM_LANGUAGE")}</b> {props.projectState.language}</p>
         </div>
     )
 }
