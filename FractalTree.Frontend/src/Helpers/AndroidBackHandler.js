@@ -8,4 +8,4 @@ window.tauriHandleBackButton = () => {
         cancelable: true,
     });
     virtualBackButton.dispatchEvent(event);
-}
+};

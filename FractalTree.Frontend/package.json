@@ -8,7 +8,7 @@
     "build": "vite build --emptyOutDir",
     "lessons": "cd ../FractalTree.LessonCompiler && python mkall.py && cd ../FractalTree.Frontend",
     "build-android": "cd ../FractalTree.MobileApp && npm run tauri android build && cd ../FractalTree.Frontend",
-    "lint": "eslint .",
+    "lint": "eslint --fix .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -44,8 +44,8 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
-    "eslint": "^9.13.0",
-    "eslint-plugin-react": "^7.37.2",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",

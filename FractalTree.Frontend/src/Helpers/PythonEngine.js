@@ -1,4 +1,4 @@
-import { loadPyodide } from "pyodide"
+import { loadPyodide } from "pyodide";
 
 // Used by turtle module
 function ElementFromProps(map) {
@@ -27,7 +27,7 @@ window.addEventListener("load", async () => {
 
     pyodide.registerJsModule("basthon", {
         kernel: {
-            display_event: (e) => { window.enableGUIOutput(); document.getElementById("guiOutputWindow").innerHTML = ElementFromProps(e.toJs().get("content")).outerHTML },
+            display_event: (e) => { window.enableGUIOutput(); document.getElementById("guiOutputWindow").innerHTML = ElementFromProps(e.toJs().get("content")).outerHTML; },
             locals: () => pyodide.runPython("globals()"),
         },
     });
@@ -49,7 +49,7 @@ if 'turtle' in sys.modules:
     basthon.kernel.display_event({ "display_type": "turtle", "content": svg_dict })
     turtle.restart()
     sys.modules.pop('turtle')
-`
+`;
 
 var injectedPythonLib = `
 import builtins

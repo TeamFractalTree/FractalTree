@@ -33,11 +33,11 @@ export default async function CompileProjectForAndroid(project) {
 
         var result = await new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.response }));
-            xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
-            xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
-            xhr.open('POST', BaseURL + "/api/sign", true);
-            xhr.responseType = 'blob';
+            xhr.addEventListener("load", () => resolve({ status: xhr.status, body: xhr.response }));
+            xhr.addEventListener("error", () => reject(new Error("File Upload Failed")));
+            xhr.addEventListener("abort", () => reject(new Error("File Upload Aborted")));
+            xhr.open("POST", BaseURL + "/api/sign", true);
+            xhr.responseType = "blob";
             xhr.send(formData);
         });
 

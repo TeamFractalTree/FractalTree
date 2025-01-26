@@ -17,7 +17,7 @@ import ExecutePython from '../Helpers/PythonEngine';
 import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
 import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
 import { CompileApp } from '../Helpers/AppCompiler';
-import { saveAs } from 'file-saver';
+import { saveAs } from 'file-saver'
 
 export default function CodeEditor() {
 
