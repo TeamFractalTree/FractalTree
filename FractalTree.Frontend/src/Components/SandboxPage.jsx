@@ -1,8 +1,8 @@
 import BottomBar from "./BottomBar";
 import Header from "./Header";
-import "../CSS/SandboxPage.css"
+import "../CSS/SandboxPage.css";
 import { IconSandbox } from "@tabler/icons-react";
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
 import { IconTextScan2 } from "@tabler/icons-react";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ export default function SandboxPage() {
                 });
             });
         });
-    }
+    };
 
     return (
         <>
@@ -40,5 +40,5 @@ export default function SandboxPage() {
 
             <BottomBar></BottomBar>
         </>
-    )
+    );
 }

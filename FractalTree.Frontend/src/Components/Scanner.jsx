@@ -1,23 +1,23 @@
-import { Button } from 'primereact/button';
-import { Sidebar } from 'primereact/sidebar';
-import { useState } from 'react';
-import "../CSS/Scanner.css"
-import { useRef } from 'react';
+import { Button } from "primereact/button";
+import { Sidebar } from "primereact/sidebar";
+import { useState } from "react";
+import "../CSS/Scanner.css";
+import { useRef } from "react";
 import Webcam from "react-webcam";
-import { IconCodeOff, IconFile, IconFileUpload, IconTextScan2, IconX } from '@tabler/icons-react';
-import { ProgressSpinner } from 'primereact/progressspinner';
-import Vibrate from '../Helpers/Vibrator';
-import Image from "image-js"
+import { IconCodeOff, IconFile, IconFileUpload, IconTextScan2, IconX } from "@tabler/icons-react";
+import { ProgressSpinner } from "primereact/progressspinner";
+import Vibrate from "../Helpers/Vibrator";
+import Image from "image-js";
 import IsDevMode from "../Helpers/DevModeDetector";
-import { createWorker } from 'tesseract.js';
+import { createWorker } from "tesseract.js";
 import jsQR from "jsqr";
-import BaseURL from '../BaseURL';
+import BaseURL from "../BaseURL";
 
 window.addEventListener("load", async () => {
     window.tesseractWorker = await createWorker("eng", 1, {
-        workerPath: '/Tesseract/worker.js',
+        workerPath: "/Tesseract/worker.js",
         langPath: "/Tesseract",
-        corePath: '/Tesseract',
+        corePath: "/Tesseract",
     });
 
     window.doneInitStep();
@@ -35,7 +35,7 @@ export default function Scanner() {
         setScanOptions(newScanOptions);
         setCallback([newCallback]);
         setScannerVisible(true);
-    }
+    };
 
     var cameraRef = useRef(null);
     var targetRef = useRef(null);
@@ -49,7 +49,7 @@ export default function Scanner() {
         setTimeout(async () => {
 
             if ((parseInt(localStorage.lastScan) || 0) + 15000 > Date.now()) { // 15 Seconds
-                alert(`You are rate limited to 1 scan per 15 seconds to prevent abuse. This only applies to the demo instance. You may try again later.`);
+                alert("You are rate limited to 1 scan per 15 seconds to prevent abuse. This only applies to the demo instance. You may try again later.");
                 setScanState("none");
                 return;
             }
@@ -94,10 +94,10 @@ export default function Scanner() {
     
                 var result = await new Promise((resolve, reject) => {
                     const xhr = new XMLHttpRequest();
-                    xhr.addEventListener('load', () => resolve({ status: xhr.status, body: xhr.responseText }));
-                    xhr.addEventListener('error', () => reject(new Error('File Upload Failed')));
-                    xhr.addEventListener('abort', () => reject(new Error('File Upload Aborted')));
-                    xhr.open('POST', BaseURL + "/api/scan", true);
+                    xhr.addEventListener("load", () => resolve({ status: xhr.status, body: xhr.responseText }));
+                    xhr.addEventListener("error", () => reject(new Error("File Upload Failed")));
+                    xhr.addEventListener("abort", () => reject(new Error("File Upload Aborted")));
+                    xhr.open("POST", BaseURL + "/api/scan", true);
                     xhr.send(formData);
                 });
     
@@ -116,7 +116,7 @@ export default function Scanner() {
                 var result = (await tesseractWorker.recognize(URL.createObjectURL(savedImage)));
                 result = {
                     body: result.data.text
-                }
+                };
             }
             
 
@@ -125,7 +125,7 @@ export default function Scanner() {
             setScanState("none");
             setTimeout(() => setScannerVisible(false), 0);
         });
-    }
+    };
 
     return (
         <Sidebar style={{ height: "100%" }} position="bottom" className="scannerContainer" visible={scannerVisible} onHide={() => setScannerVisible(false)}>
@@ -146,8 +146,8 @@ export default function Scanner() {
                     {
                         // Show Loading Wheel If Loading State Is Active
                         scanState == "loading" ?
-                        <ProgressSpinner strokeWidth="8"/> :
-                        <IconTextScan2/>
+                            <ProgressSpinner strokeWidth="8"/> :
+                            <IconTextScan2/>
                     }
                 </Button>
                 <Button onClick={() => { (callback[0] || console.log)(""); setScannerVisible(false); }} className="skipButton">
@@ -156,5 +156,5 @@ export default function Scanner() {
             </div>
 
         </Sidebar>
-    )
+    );
 }

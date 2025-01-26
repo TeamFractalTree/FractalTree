@@ -1,4 +1,4 @@
-import "../CSS/PhoneWrapper.css"
+import "../CSS/PhoneWrapper.css";
 
 // Loads a frame that looks like a phone where the app resides
 export default function PhoneWrapper() {
@@ -12,5 +12,5 @@ export default function PhoneWrapper() {
                 <img src="/Images/PhoneWrapperFrame.png"></img>
             </div>
         </>
-    )
+    );
 }

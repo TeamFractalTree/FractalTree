@@ -13,7 +13,7 @@ export function HTMLHost() {
         setWebsiteCode(code);
         setWebsiteNonce(websiteNonce + 1);
         setWebsiteVisible(true);
-    }
+    };
 
     useRef(() => {
         if (!!frameRef.current) {
@@ -25,7 +25,7 @@ export function HTMLHost() {
         <Sidebar className="htmlHost" style={{ height: "100vh" }} position="bottom" visible={websiteVisible} onHide={() => setWebsiteVisible(false)}>
             <iframe ref={frameRef} onLoad={(e) => e.target.contentWindow.replaceDOM(websiteCode)} src={"/Runtime/shim.html"}></iframe>
         </Sidebar>
-    )
+    );
 }
 
 // This function will be injected into the iframe and run on the document's load
@@ -59,28 +59,28 @@ function FrameInjectedCode() {
     }
     `;
 
-    var tailwind = document.createElement('link');
+    var tailwind = document.createElement("link");
     tailwind.rel = "stylesheet";
     tailwind.href = origin + "/Runtime/tailwind.css";
     document.head.append(tailwind);
 
-    var jquery = document.createElement('script');
+    var jquery = document.createElement("script");
     jquery.src = origin + "/Runtime/jquery.js";
     document.head.append(jquery);
 
     if (!!window.framework && window.framework == "react") {
-        var babel = document.createElement('script');
+        var babel = document.createElement("script");
         babel.src = origin + "/Runtime/reactlibs.js";
         babel.onload = () => {
             var output = Babel.transform(document.getElementById("ft_dispatch").innerHTML, {
                 presets: ["react"]
             });
             eval(output.code);
-        }
+        };
         document.head.append(babel);
     }
 
-    var style = document.createElement('style');
+    var style = document.createElement("style");
     style.textContent = injectedCSS;
     document.head.append(style);
 }
@@ -92,7 +92,7 @@ export default function ExecuteHTML(code, stdOut, injectedCode) {
     var onLoadCode = FrameInjectedCode.toString();
     onLoadCode = onLoadCode.slice(onLoadCode.indexOf("{") + 1, onLoadCode.lastIndexOf("}"));
     onLoadCode = (injectedCode || "") + "\n" + onLoadCode;
-    code = code.replace("<body", `<body onload="eval(atob('${btoa(onLoadCode)}'))"`)
+    code = code.replace("<body", `<body onload="eval(atob('${btoa(onLoadCode)}'))"`);
 
     window.invokeHTMLHost(code);
 }

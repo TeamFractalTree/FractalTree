@@ -1,12 +1,12 @@
 import * as localForage from "localforage";
 import BottomBar from "./BottomBar";
 import Header from "./Header";
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
 import { useState } from "react";
 import "../CSS/ProjectsPage.css";
 import { IconPlus } from "@tabler/icons-react";
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
+import { Dialog } from "primereact/dialog";
+import { InputText } from "primereact/inputtext";
 import CodeTemplates from "../Helpers/CodeTemplates";
 import LanguageIcon from "./LanguageIcon";
 import ServerStatusText from "./ServerStatusText";
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
     var [projectLoadState, setProjectLoadState] = useState("none");
     window.isProjectLocal = (project) => {
         return projects.filter((p) => p.id == project.id).length > 0;
-    }
+    };
 
     if (projectLoadState == "none") {
         setProjectLoadState("loading");
@@ -25,7 +25,7 @@ export default function ProjectsPage() {
             var projectStore = await localForage.getItem("projectStore");
             if (projectStore == null) {
                 projectStore = { projects: [] };
-                await localForage.setItem("projectStore", projectStore)
+                await localForage.setItem("projectStore", projectStore);
             }
 
             setProjects(projectStore.projects);
@@ -61,13 +61,13 @@ export default function ProjectsPage() {
                 "language": lang,
                 "code": CodeTemplates[lang](),
                 "id": publicKey
-            }
+            };
 
             projects.push(newProject);
             await localForage.setItem("projectStore", { projects: projects });
             setProjectLoadState("none"); // Reload Project List
         });
-    }
+    };
 
 
     return (
@@ -90,12 +90,12 @@ export default function ProjectsPage() {
 
                 {
                     projects.map((project, i) => {
-                        return (<ProjectCard project={project} setProjectLoadState={setProjectLoadState} key={i}></ProjectCard>)
+                        return (<ProjectCard project={project} setProjectLoadState={setProjectLoadState} key={i}></ProjectCard>);
                     })
                 }
             </div>
 
-            <Dialog draggable={false} closable={false} header={t("ACTION_SET_NAME")} visible={!localStorage.displayName} style={{ width: '90vw' }}>
+            <Dialog draggable={false} closable={false} header={t("ACTION_SET_NAME")} visible={!localStorage.displayName} style={{ width: "90vw" }}>
                 <p>{t("ACTION_SET_NAME_DESCRIPTION")}</p>
                 <InputText placeholder="New Username" value={localStorage.displayName} onChange={(e) => localStorage.displayName = e.target.value} />
                 <br></br>
@@ -104,7 +104,7 @@ export default function ProjectsPage() {
 
             <BottomBar></BottomBar>
         </>
-    )
+    );
 }
 
 function ProjectCard(props) {
@@ -121,7 +121,7 @@ function ProjectCard(props) {
                 props.setProjectLoadState("none"); // Reload projects
             }
         });
-    }
+    };
 
     return (
         <div onClick={openProject} {...props} className="projectCard">
@@ -129,5 +129,5 @@ function ProjectCard(props) {
             <p className="projectDescription">{props.project.description || t("ERROR_NO_DESCRIPTION")}</p>
             <LanguageIcon icon={props.project.language + ".webp"}></LanguageIcon>
         </div>
-    )
+    );
 }

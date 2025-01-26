@@ -1,12 +1,12 @@
 import BottomBar from "./BottomBar";
 import Header from "./Header";
-import { Sidebar } from 'primereact/sidebar';
+import { Sidebar } from "primereact/sidebar";
 import "../CSS/LessonsPage.css";
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
 import { useState } from "react";
-import { ProgressBar } from 'primereact/progressbar';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import Markdown from 'react-markdown'
+import { ProgressBar } from "primereact/progressbar";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import Markdown from "react-markdown";
 import { IconPlayerPlayFilled } from "@tabler/icons-react";
 import LanguageIcon from "./LanguageIcon";
 
@@ -27,7 +27,7 @@ export default function LessonsPage() {
             <div className="page lessonsPage">
                 {
                     lessonList.filter((l) => l.lang == localStorage.i18nextLng).map((lesson, i) => {
-                        return (<LessonCard onClick={() => { setSelectedLesson(lesson); setSegmentPickerVisible(true); }} key={i} {...lesson}></LessonCard>)
+                        return (<LessonCard onClick={() => { setSelectedLesson(lesson); setSegmentPickerVisible(true); }} key={i} {...lesson}></LessonCard>);
                     })
                 }
             </div>
@@ -36,14 +36,14 @@ export default function LessonsPage() {
                 <Header onBack={() => setSegmentPickerVisible(false)}>{selectedLesson?.name}</Header>
                 {
                     selectedLesson?.segments?.map((segment, i) => {
-                        return <LessonSegment key={i} segment={segment}></LessonSegment>
+                        return <LessonSegment key={i} segment={segment}></LessonSegment>;
                     })
                 }
             </Sidebar>
 
             <BottomBar></BottomBar>
         </>
-    )
+    );
 }
 
 function LessonSegment(props) {
@@ -63,31 +63,31 @@ function LessonSegment(props) {
                     <Markdown
                         components={{
                             code(props) {
-                              const {children, className, node, ...rest} = props
-                              const match = /language-(\w+)/.exec(className || '')
-                              return match ? (
-                                <div dir="ltr" className="runnableCodeContainer">
-                                    <Button onClick={() => window.openCodeEditor({ code: children, language: className.replace("language-", "") }, null)} className="codeRunButton"><IconPlayerPlayFilled/>&nbsp;{t("ACTION_TRY")}</Button>
-                                    <SyntaxHighlighter
-                                        {...rest}
-                                        PreTag="div"
-                                        codeTagProps={{ dir: "ltr" }}
-                                        children={String(children).replace(/\n$/, '')}
-                                        language={match[1]}
-                                    />
-                                </div>
-                              ) : (
-                                <code dir="ltr" {...rest} className={className}>
-                                  {children}
-                                </code>
-                              )
+                                const {children, className, node, ...rest} = props;
+                                const match = /language-(\w+)/.exec(className || "");
+                                return match ? (
+                                    <div dir="ltr" className="runnableCodeContainer">
+                                        <Button onClick={() => window.openCodeEditor({ code: children, language: className.replace("language-", "") }, null)} className="codeRunButton"><IconPlayerPlayFilled/>&nbsp;{t("ACTION_TRY")}</Button>
+                                        <SyntaxHighlighter
+                                            {...rest}
+                                            PreTag="div"
+                                            codeTagProps={{ dir: "ltr" }}
+                                            children={String(children).replace(/\n$/, "")}
+                                            language={match[1]}
+                                        />
+                                    </div>
+                                ) : (
+                                    <code dir="ltr" {...rest} className={className}>
+                                        {children}
+                                    </code>
+                                );
                             }
-                          }}
+                        }}
                     >{props.segment.split("\n").toSpliced(0, 2).join("\n")}</Markdown>
                 </div>
             </Sidebar>
         </>
-    )
+    );
 }
 
 function LessonCard(props) {
@@ -97,5 +97,5 @@ function LessonCard(props) {
             <p className="lessonDescription">{props.description}</p>
             <LanguageIcon {...props}/>
         </div>
-    )
+    );
 }

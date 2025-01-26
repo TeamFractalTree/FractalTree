@@ -1,23 +1,23 @@
-import { Button } from 'primereact/button';
-import { Sidebar } from 'primereact/sidebar';
-import { useRef, useState } from 'react';
-import Editor from 'react-simple-code-editor';
-import "../CSS/CodeEditor.css"
-import Header from './Header';
-import { highlight, languages } from 'prismjs/components/prism-core';
-import 'prismjs/components/prism-clike';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-python';
-import 'prismjs/components/prism-markup';
-import 'prismjs/themes/prism.css';
-import '@xterm/xterm/css/xterm.css';
+import { Button } from "primereact/button";
+import { Sidebar } from "primereact/sidebar";
+import { useRef, useState } from "react";
+import Editor from "react-simple-code-editor";
+import "../CSS/CodeEditor.css";
+import Header from "./Header";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-markup";
+import "prismjs/themes/prism.css";
+import "@xterm/xterm/css/xterm.css";
 import { XTerm } from "@pablo-lion/xterm-react";
-import { IconPlayerPlay, IconTextScan2 } from '@tabler/icons-react';
-import ExecutePython from '../Helpers/PythonEngine';
-import ExecuteJavaScript from '../Helpers/JavaScriptEngine';
-import ExecuteHTML, { ExecuteJSX } from '../Helpers/HTMLEngine';
-import { CompileApp } from '../Helpers/AppCompiler';
-import { saveAs } from 'file-saver'
+import { IconPlayerPlay, IconTextScan2 } from "@tabler/icons-react";
+import ExecutePython from "../Helpers/PythonEngine";
+import ExecuteJavaScript from "../Helpers/JavaScriptEngine";
+import ExecuteHTML, { ExecuteJSX } from "../Helpers/HTMLEngine";
+import { CompileApp } from "../Helpers/AppCompiler";
+import { saveAs } from "file-saver";
 
 export default function CodeEditor() {
 
@@ -33,21 +33,21 @@ export default function CodeEditor() {
         setCodeState(newCodeState);
         setCallback([newCallback]);
         setEditorVisible(true);
-    }
+    };
 
     window.enableGUIOutput = () => {
         guiOutputRef.current?.classList.add("enabledOutput");
-    }
+    };
 
     window.disableGUIOutput = () => {
         guiOutputRef.current?.setAttribute("class", "guiOutputWindow");
-    }
+    };
 
     var updateCode = (newCode) => {
         (callback[0] || console.log)(newCode);
         codeState.code = newCode;
         setCodeState(Object.assign({}, codeState)); // Sets codeState to a duplicated version of itself
-    }
+    };
 
     var getLanguage = () => {
 
@@ -59,7 +59,7 @@ export default function CodeEditor() {
         }
 
         return languages.js;
-    }
+    };
 
     var run = async (e) => {
 
@@ -92,7 +92,7 @@ export default function CodeEditor() {
         else if (codeState.language == "jsx") {
             ExecuteJSX(codeState.code, (d) => xterm.current.write(d));
         }
-    }
+    };
 
     if (!!codeState.autoRun && !didAutoRun) { 
         setDidAutoRun(true);
@@ -104,11 +104,11 @@ export default function CodeEditor() {
             codeState.code += `\n${addedCode}`;
             setCodeState(Object.assign({}, codeState));
         });
-    }
+    };
 
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible}>
-            <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false) }}>{t(!codeState.readOnly ? "ACTION_EDITRUN" : "ACTION_RUN_PROJECT")}</Header>
+            <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false); }}>{t(!codeState.readOnly ? "ACTION_EDITRUN" : "ACTION_RUN_PROJECT")}</Header>
             <div className="codeEditorScroller">
 
                 {
@@ -147,5 +147,5 @@ export default function CodeEditor() {
                 <XTerm ref={xterm} options={{ cols: 35 }} />
             </div>
         </Sidebar>
-    )
+    );
 }

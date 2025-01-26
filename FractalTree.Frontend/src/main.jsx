@@ -1,26 +1,26 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot } from "react-dom/client";
 import "./CSS/App.css";
 import "./CSS/PrimeReact.css";
-import App from './App.jsx'
+import App from "./App.jsx";
 import { MemoryRouter, Route, Routes } from "react-router";
 import SandboxPage from "./Components/SandboxPage";
 import LessonsPage from "./Components/LessonsPage";
-import LanguageSelect from './Components/LanguageSelect.jsx';
-import Scanner from './Components/Scanner.jsx';
-import CodeEditor from './Components/CodeEditor.jsx';
-import i18n from 'i18next';
-import Backend from 'i18next-http-backend';
-import { initReactI18next, useSSR, useTranslation } from 'react-i18next';
+import LanguageSelect from "./Components/LanguageSelect.jsx";
+import Scanner from "./Components/Scanner.jsx";
+import CodeEditor from "./Components/CodeEditor.jsx";
+import i18n from "i18next";
+import Backend from "i18next-http-backend";
+import { initReactI18next, useSSR, useTranslation } from "react-i18next";
 import { registerSW } from "virtual:pwa-register";
 import IsDevMode from "./Helpers/DevModeDetector.js";
-import LanguageDetector from 'i18next-browser-languagedetector';
-import ProjectsPage from './Components/ProjectsPage.jsx';
-import { HTMLHost } from './Helpers/HTMLEngine.jsx';
-import PhoneWrapper from './Components/PhoneWrapper.jsx';
-import ProjectPage from './Components/ProjectPage.jsx';
+import LanguageDetector from "i18next-browser-languagedetector";
+import ProjectsPage from "./Components/ProjectsPage.jsx";
+import { HTMLHost } from "./Helpers/HTMLEngine.jsx";
+import PhoneWrapper from "./Components/PhoneWrapper.jsx";
+import ProjectPage from "./Components/ProjectPage.jsx";
 import "./Helpers/ServerStatus.js";
-import { useState } from 'react';
-import ProjectHub from './Components/ProjectHub.jsx';
+import { useState } from "react";
+import ProjectHub from "./Components/ProjectHub.jsx";
 import "./Helpers/AndroidBackHandler.js";
 import "./Helpers/MobileFullscreen.js";
 
@@ -34,7 +34,7 @@ i18n
     .use(Backend)
     .use(initReactI18next)
     .init({
-        fallbackLng: 'en',
+        fallbackLng: "en",
         debug: true,
 
         interpolation: {
@@ -43,11 +43,11 @@ i18n
     });
 
 window.startReact = () => {
-    createRoot(document.getElementById('root')).render(
+    createRoot(document.getElementById("root")).render(
         window.innerHeight / window.innerWidth < 1.45 ? <PhoneWrapper/> : <Main/>
     );
     window.StartUpdateCycle();
-}
+};
 window.doneInitStep();
 
 
@@ -83,5 +83,5 @@ function Main() {
             <ProjectPage></ProjectPage>
             <ProjectHub></ProjectHub>
         </MemoryRouter>
-    )
+    );
 }

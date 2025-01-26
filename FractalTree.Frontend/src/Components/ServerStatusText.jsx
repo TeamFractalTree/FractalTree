@@ -7,5 +7,5 @@ export default function ServerStatusText() {
             <IconCircleFilled className={window.serverStatus}></IconCircleFilled>
             {t(`SERVER_STATUS_${window.serverStatus}`)}
         </div>
-    )
+    );
 }

@@ -1,37 +1,44 @@
 import react from "eslint-plugin-react";
 import globals from "globals";
 
-export default [{
-    plugins: {
-        react,
-    },
 
-    languageOptions: {
-        globals: {
-            ...globals.browser,
+export default [
+    react.configs.flat.recommended,
+    react.configs.flat["jsx-runtime"],
+
+    {
+        files: ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+        plugins: {
+            react,
         },
 
-        ecmaVersion: "latest",
-        sourceType: "module",
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+            },
 
-        parserOptions: {
-            ecmaFeatures: {
-                jsx: true,
-                experimentalObjectRestSpread: true,
+            ecmaVersion: "latest",
+            sourceType: "module",
+
+            parserOptions: {
+                ecmaFeatures: {
+                    jsx: true,
+                    experimentalObjectRestSpread: true,
+                },
             },
         },
-    },
 
-    rules: {
-        "react/react-in-jsx-scope": "off",
-        indent: ["error", 4],
-        quotes: ["error", "double"],
-        semi: ["error", "always"],
-        noEmpty: ["off", { "allowEmptyCatch": true }]
+        rules: {
+            indent: ["error", 4],
+            quotes: ["error", "double"],
+            semi: ["error", "always"],
+            "no-empty": ["off", { "allowEmptyCatch": true }],
+            "no-undef": ["off"],
+            "react/prop-types": 0,
+            "react/no-children-prop": 0
+        },
     },
-},
-
-{
-    ignores: ["**/public/*"],
-}
+    {
+        ignores: ["public/*"],
+    }
 ];

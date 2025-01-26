@@ -1,21 +1,21 @@
-import { Button } from 'primereact/button';
-import { Sidebar } from 'primereact/sidebar';
-import { useState } from 'react';
-import "../CSS/LanguageSelect.css"
-import LanguageIcon from "../Components/LanguageIcon"
+import { Button } from "primereact/button";
+import { Sidebar } from "primereact/sidebar";
+import { useState } from "react";
+import "../CSS/LanguageSelect.css";
+import LanguageIcon from "../Components/LanguageIcon";
 
 export default function LanguageSelect() {
 
     var [pickerVisible, setPickerVisible] = useState(false);
     var [callback, setCallback] = useState([]);
     var [context, setContext] = useState([]);
-    window.openLanguageSelector = (newContext, newCallback) => { setContext(newContext); setCallback([newCallback]); setPickerVisible(true); }
+    window.openLanguageSelector = (newContext, newCallback) => { setContext(newContext); setCallback([newCallback]); setPickerVisible(true); };
 
     var onLanguageSelected = (lang) => {
         var callbackToRun = callback[0] || console.log;
         callbackToRun(lang);
         setTimeout(() => setPickerVisible(false), 0);
-    }
+    };
 
     return (
         <Sidebar className='languageSelect' position="bottom" visible={pickerVisible} onHide={() => setPickerVisible(false)}>
@@ -28,7 +28,7 @@ export default function LanguageSelect() {
                 <LanguageSelectOption onLanguageSelected={onLanguageSelected} language={"python"} />
             </div>
         </Sidebar>
-    )
+    );
 }
 
 function LanguageSelectOption(props) {
@@ -37,5 +37,5 @@ function LanguageSelectOption(props) {
             <LanguageIcon icon={props.language + ".webp"}/>
             {t("LANG_" + props.language.toUpperCase())}
         </Button>
-    )
+    );
 }

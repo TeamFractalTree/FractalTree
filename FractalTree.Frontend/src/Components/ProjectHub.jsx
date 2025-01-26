@@ -1,10 +1,10 @@
-import { Button } from 'primereact/button';
-import { Sidebar } from 'primereact/sidebar';
-import { useRef, useState } from 'react';
-import Header from './Header';
+import { Button } from "primereact/button";
+import { Sidebar } from "primereact/sidebar";
+import { useRef, useState } from "react";
+import Header from "./Header";
 import "../CSS/ProjectHub.css";
-import { Skeleton } from 'primereact/skeleton';
-import BaseURL from '../BaseURL';
+import { Skeleton } from "primereact/skeleton";
+import BaseURL from "../BaseURL";
 
 export default function ProjectHub() {
 
@@ -12,7 +12,7 @@ export default function ProjectHub() {
     var [loadingState, setLoadingState] = useState("none");
     var [discoveredProjects, setDiscoveredProjects] = useState({ projects: [] });
 
-    window.openProjectHub = () => { setLoadingState("none"); setPageVisible(true); }
+    window.openProjectHub = () => { setLoadingState("none"); setPageVisible(true); };
     
     if (loadingState == "none" && pageVisible) {
         setLoadingState("loading");
@@ -36,7 +36,7 @@ export default function ProjectHub() {
             <div className="projectHub">
                 {
                     discoveredProjects.projects?.map((project) => {
-                        return !!project ? <ExternalProjectCard projectState={project}></ExternalProjectCard> : null
+                        return !!project ? <ExternalProjectCard projectState={project}></ExternalProjectCard> : null;
                     })
                 }
                 {
@@ -45,7 +45,7 @@ export default function ProjectHub() {
                 }
             </div>
         </Sidebar>
-    )
+    );
 }
 
 export function ExternalProjectCard(props) {
@@ -62,5 +62,5 @@ export function ExternalProjectCard(props) {
             <p><b>{t("PARAM_DESCRIPTION")}</b> {props.projectState.description || t("ERROR_NO_DESCRIPTION")}</p>
             <p><b>{t("PARAM_LANGUAGE")}</b> {props.projectState.language}</p>
         </div>
-    )
+    );
 }

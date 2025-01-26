@@ -4,7 +4,7 @@ import { PrepareHTMLCode } from "./HTMLEngine";
 export async function CompileApp(codeState) {
     var runtimePath = "/Runtime/runtime_" + codeState.language + ".html";
     
-    var getResource = async (path) => { return await (await fetch(path)).text(); }
+    var getResource = async (path) => { return await (await fetch(path)).text(); };
 
     try {
         var res = await getResource(runtimePath);
