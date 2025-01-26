@@ -1,6 +1,27 @@
+.languageSelect {
+    height: 80vh;
+}
+
+.languageSelect .languageGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 .languageOption {
     width: 100%;
-    margin-bottom: 1rem;
+    height: 12rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: none;
+    background-size: cover;
+    background-position: center;
+    font-size: 1.3rem;
 }
 
 .languageOption svg {

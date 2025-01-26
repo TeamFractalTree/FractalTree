@@ -2,7 +2,7 @@ import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
 import { useState } from 'react';
 import "../CSS/LanguageSelect.css"
-import { IconBrandHtml5, IconBrandPython, IconBrandJavascript, IconBrandReact } from '@tabler/icons-react';
+import LanguageIcon from "../Components/LanguageIcon"
 
 export default function LanguageSelect() {
 
@@ -18,13 +18,24 @@ export default function LanguageSelect() {
     }
 
     return (
-        <Sidebar style={{ height: "80vh" }} position="bottom" visible={pickerVisible} onHide={() => setPickerVisible(false)}>
+        <Sidebar className='languageSelect' position="bottom" visible={pickerVisible} onHide={() => setPickerVisible(false)}>
             <h2>{t("ACTION_SELECTLANG")}</h2>
             <p>{t("ACTION_SELECTLANG_" + context + "_DESCRIPTION")}</p>
-            <Button onClick={() => onLanguageSelected("html")} className="languageOption"><IconBrandHtml5/> &nbsp; {t("LANG_HTML")}</Button>
-            <Button onClick={() => onLanguageSelected("python")} className="languageOption"><IconBrandPython/> &nbsp; {t("LANG_PYTHON")}</Button>
-            <Button onClick={() => onLanguageSelected("javascript")} className="languageOption"><IconBrandJavascript/> &nbsp; {t("LANG_JAVASCRIPT")}</Button>
-            <Button onClick={() => onLanguageSelected("jsx")} className="languageOption"><IconBrandReact/> &nbsp; {t("LANG_JSX")}</Button>
+            <div className='languageGrid'>
+                <LanguageSelectOption onLanguageSelected={onLanguageSelected} language={"html"} />
+                <LanguageSelectOption onLanguageSelected={onLanguageSelected} language={"javascript"} />
+                <LanguageSelectOption onLanguageSelected={onLanguageSelected} language={"jsx"} />
+                <LanguageSelectOption onLanguageSelected={onLanguageSelected} language={"python"} />
+            </div>
         </Sidebar>
+    )
+}
+
+function LanguageSelectOption(props) {
+    return (
+        <Button style={{ backgroundImage: `url('/Images/LangThumbnails/${props.language}.webp')` }} onClick={() => props.onLanguageSelected(props.language)} className="languageOption">
+            <LanguageIcon icon={props.language + ".webp"}/>
+            {t("LANG_" + props.language.toUpperCase())}
+        </Button>
     )
 }
