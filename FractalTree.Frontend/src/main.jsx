@@ -23,6 +23,7 @@ import { useState } from "react";
 import ProjectHub from "./Components/ProjectHub.jsx";
 import "./Helpers/AndroidBackHandler.js";
 import "./Helpers/MobileFullscreen.js";
+import SettingsPage from "./Components/SettingsPage.jsx";
 
 localStorage.i18nextLng = navigator.language.split("-")[0];
 if (navigator.language.toLowerCase().startsWith("ar")) {
@@ -82,6 +83,7 @@ function Main() {
             <HTMLHost></HTMLHost>
             <ProjectPage></ProjectPage>
             <ProjectHub></ProjectHub>
+            <SettingsPage></SettingsPage>
         </MemoryRouter>
     );
 }

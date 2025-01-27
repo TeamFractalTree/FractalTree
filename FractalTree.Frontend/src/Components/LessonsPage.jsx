@@ -23,7 +23,7 @@ export default function LessonsPage() {
 
     return (
         <>
-            <Button className="settingsButton"><IconSettings/></Button>
+            <Button onClick={() => window.openSettingsPage()} className="settingsButton"><IconSettings/></Button>
 
             <Header>{t("SECTION_LESSONS")}</Header>
 
