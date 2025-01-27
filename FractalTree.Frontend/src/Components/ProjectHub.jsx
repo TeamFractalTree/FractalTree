@@ -5,6 +5,7 @@ import Header from "./Header";
 import "../CSS/ProjectHub.css";
 import { Skeleton } from "primereact/skeleton";
 import BaseURL from "../BaseURL";
+import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 
 export default function ProjectHub() {
 
@@ -31,7 +32,7 @@ export default function ProjectHub() {
     }
 
     return (
-        <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectHubContainer" position="right" visible={pageVisible}>
+        <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectHubContainer" position={GetSidebarPosition()} visible={pageVisible}>
             <Header onBack={() => setPageVisible(false)}>{t("SECTION_PROJECT_HUB")}</Header>
             <div className="projectHub">
                 {

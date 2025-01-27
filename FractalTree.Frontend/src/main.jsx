@@ -24,14 +24,9 @@ import ProjectHub from "./Components/ProjectHub.jsx";
 import "./Helpers/AndroidBackHandler.js";
 import "./Helpers/MobileFullscreen.js";
 import SettingsPage from "./Components/SettingsPage.jsx";
-
-localStorage.i18nextLng = navigator.language.split("-")[0];
-if (navigator.language.toLowerCase().startsWith("ar")) {
-    document.body.setAttribute("dir", "rtl"); // Make The Page Right-To-Left In Arabic
-}
+import { GetInterfaceLanguage, ReloadLanguageData } from "./Helpers/InterfaceLanguageManager.js";
 
 i18n
-    .use(LanguageDetector)
     .use(Backend)
     .use(initReactI18next)
     .init({
@@ -42,6 +37,8 @@ i18n
             escapeValue: false, // not needed for react!!
         },
     });
+    
+ReloadLanguageData();
 
 window.startReact = () => {
     createRoot(document.getElementById("root")).render(

@@ -8,6 +8,7 @@ import { IconBrandAndroid, IconCode, IconPlayerPlay } from "@tabler/icons-react"
 import ExecuteHTML, { ExecuteJSX } from "../Helpers/HTMLEngine";
 import CompileProjectForAndroid from "../Helpers/AndroidRuntimeCompiler";
 import { ExternalProjectCard } from "./ProjectHub";
+import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 
 export default function ProjectPage() {
 
@@ -44,7 +45,7 @@ export default function ProjectPage() {
     };
 
     return (
-        <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectPageContainer" position="right" visible={pageVisible}>
+        <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectPageContainer" position={GetSidebarPosition()} visible={pageVisible}>
             <Header onBack={() => { (callback[0] || console.log)((Object.assign({}, projectState)), true); setPageVisible(false); }}>{projectState.name || "Unknown Project"}</Header>
             
             <div className="projectPage">

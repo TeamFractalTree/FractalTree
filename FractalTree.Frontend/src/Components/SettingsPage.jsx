@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../CSS/SettingsPage.css";
 import { Sidebar } from "primereact/sidebar";
 import Header from "./Header";
+import { GetSidebarPosition, SwitchInterfaceLanguage } from "../Helpers/InterfaceLanguageManager";
 
 export default function SettingsPage() {
     var [pageVisible, setPageVisible] = useState(false);
@@ -12,7 +13,7 @@ export default function SettingsPage() {
         <Sidebar
             style={{ height: "100vh", width: "100vw" }}
             className="settingsPageContainer"
-            position="right"
+            position={GetSidebarPosition()}
             visible={pageVisible}
         >
             <Header onBack={() => setPageVisible(false)}>
@@ -41,13 +42,11 @@ function InterfaceLanguageSelect() {
         },
     ];
 
-    var setLanguage = (languageCode) => {};
-
     return (
         <div className="interfaceLanguageSelect">
             {supportedLanguages.map((lang) => {
                 return (
-                    <div key={lang.code} className="interfaceLanguageOption">
+                    <div onClick={() => SwitchInterfaceLanguage(lang.code)} key={lang.code} className="interfaceLanguageOption">
                         <h2>{lang.name}</h2>
                         <p className="secondaryText">{lang.english_name}</p>
                     </div>

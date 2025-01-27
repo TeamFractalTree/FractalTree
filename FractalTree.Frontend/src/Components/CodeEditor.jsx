@@ -18,6 +18,7 @@ import ExecuteJavaScript from "../Helpers/JavaScriptEngine";
 import ExecuteHTML, { ExecuteJSX } from "../Helpers/HTMLEngine";
 import { CompileApp } from "../Helpers/AppCompiler";
 import { saveAs } from "file-saver";
+import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 
 export default function CodeEditor() {
 
@@ -107,7 +108,7 @@ export default function CodeEditor() {
     };
 
     return (
-        <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position="right" visible={editorVisible}>
+        <Sidebar style={{ height: "100vh", width: "100vw" }} className="codeEditorContainer" position={GetSidebarPosition()} visible={editorVisible}>
             <Header onBack={() => { (callback[0] || console.log)(codeState.code, true); setEditorVisible(false); }}>{t(!codeState.readOnly ? "ACTION_EDITRUN" : "ACTION_RUN_PROJECT")}</Header>
             <div className="codeEditorScroller">
 

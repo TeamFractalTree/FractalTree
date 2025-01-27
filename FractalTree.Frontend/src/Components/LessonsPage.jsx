@@ -10,6 +10,7 @@ import Markdown from "react-markdown";
 import { IconPlayerPlayFilled, IconSettings } from "@tabler/icons-react";
 import LanguageIcon from "./LanguageIcon";
 import SettingsPage from "./SettingsPage";
+import { GetInterfaceLanguage, GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 
 if (!window.lessonList) {
     window.lessonList = [];
@@ -29,13 +30,13 @@ export default function LessonsPage() {
 
             <div className="page lessonsPage">
                 {
-                    lessonList.filter((l) => l.lang == localStorage.i18nextLng).map((lesson, i) => {
+                    lessonList.filter((l) => l.lang == GetInterfaceLanguage()).map((lesson, i) => {
                         return (<LessonCard onClick={() => { setSelectedLesson(lesson); setSegmentPickerVisible(true); }} key={i} {...lesson}></LessonCard>);
                     })
                 }
             </div>
 
-            <Sidebar style={{ width: "100%" }} position="right" className="segmentPickerContainer" visible={segmentPickerVisible} onHide={() => setSegmentPickerVisible(false)}>
+            <Sidebar style={{ width: "100%" }} position={GetSidebarPosition()} className="segmentPickerContainer" visible={segmentPickerVisible} onHide={() => setSegmentPickerVisible(false)}>
                 <Header onBack={() => setSegmentPickerVisible(false)}>{selectedLesson?.name}</Header>
                 {
                     selectedLesson?.segments?.map((segment, i) => {
@@ -60,7 +61,7 @@ function LessonSegment(props) {
                 <p>{props.segment.split("\n")[1]?.replace("# ", "")}</p>
             </div>
 
-            <Sidebar style={{ width: "100%" }} position="right" className="segmentContainer" visible={segmentVisible} onHide={() => setSegmentVisible(false)}>
+            <Sidebar style={{ width: "100%" }} position={GetSidebarPosition()} className="segmentContainer" visible={segmentVisible} onHide={() => setSegmentVisible(false)}>
                 <Header onBack={() => setSegmentVisible(false)}>{props.segment.split("\n")[0].replace("# ", "")}</Header>
                 <div className="segmentViewer overrideFont">
                     <Markdown
