@@ -11,7 +11,6 @@ import Image from "image-js";
 import IsDevMode from "../Helpers/DevModeDetector";
 import { createWorker } from "tesseract.js";
 import jsQR from "jsqr";
-import BaseURL from "../BaseURL";
 
 window.addEventListener("load", async () => {
     window.tesseractWorker = await createWorker("eng", 1, {

@@ -15,7 +15,7 @@ namespace FractalTree.Backend.API.Controllers
         public async Task<IActionResult> Ping()
         {
             Response.Headers.Append("Access-Control-Allow-Origin", "*");
-            return Ok("if you are reading this then you should get a LOW TAPER FADE"); // If you replace this line then ninja will haunt you
+            return Ok("Online (Operation TK)");
         }
     }
 }

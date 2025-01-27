@@ -9,6 +9,7 @@
         public string Language { get; set; }
         public string Code { get; set; }
         public string Id { get; set; }
+        public string HubId { get; set; }
         public Dictionary<string, string> Assets { get; set; }
     }
 }

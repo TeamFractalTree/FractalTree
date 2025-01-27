@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import "../CSS/ProjectHub.css";
 import { Skeleton } from "primereact/skeleton";
-import BaseURL from "../BaseURL";
 import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 
 export default function ProjectHub() {

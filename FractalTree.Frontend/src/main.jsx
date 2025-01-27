@@ -24,6 +24,7 @@ import ProjectHub from "./Components/ProjectHub.jsx";
 import "./Helpers/AndroidBackHandler.js";
 import "./Helpers/MobileFullscreen.js";
 import SettingsPage from "./Components/SettingsPage.jsx";
+import "./BaseURL.js";
 import { GetInterfaceLanguage, ReloadLanguageData } from "./Helpers/InterfaceLanguageManager.js";
 
 i18n

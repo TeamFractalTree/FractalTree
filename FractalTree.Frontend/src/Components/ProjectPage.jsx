@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import "../CSS/ProjectPage.css";
 import { CompileApp } from "../Helpers/AppCompiler";
-import { IconBrandAndroid, IconCode, IconPlayerPlay } from "@tabler/icons-react";
+import { IconBrandAndroid, IconCode, IconPlayerPlay, IconUpload } from "@tabler/icons-react";
 import ExecuteHTML, { ExecuteJSX } from "../Helpers/HTMLEngine";
 import CompileProjectForAndroid from "../Helpers/AndroidRuntimeCompiler";
 import { ExternalProjectCard } from "./ProjectHub";
@@ -44,6 +44,26 @@ export default function ProjectPage() {
         });
     };
 
+    var uploadProject = async () => {
+        try {
+            var req = await fetch(BaseURL + "/api/hub/upload", { method: "POST", body: JSON.stringify(projectState), headers: { "content-type": "application/json" } });
+
+            if (req.status == 201) {
+                alert(t("ACTION_UPLOAD_DESCRIPTION_CREATED"));
+            }
+            else if (req.status == 200) {
+                alert(t("ACTION_UPLOAD_DESCRIPTION_MODIFIED"));
+            }
+            else {
+                throw Error();
+            }
+            
+        }
+        catch {
+            alert(t("ACTION_UPLOAD_DESCRIPTION_FAIL"));
+        }
+    }
+
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectPageContainer" position={GetSidebarPosition()} visible={pageVisible}>
             <Header onBack={() => { (callback[0] || console.log)((Object.assign({}, projectState)), true); setPageVisible(false); }}>{projectState.name || "Unknown Project"}</Header>
@@ -68,8 +88,18 @@ export default function ProjectPage() {
                         </Button> : null
                 }
 
+                {               
+                    // Show upload button only if the user owns the current project
+                    window.serverStatus == "ONLINE" && isProjectLocal(projectState) ? 
+                        <Button onClick={uploadProject} className="projectAction">
+                            <IconUpload/>
+                        &nbsp;
+                            {t("ACTION_UPLOAD")}
+                        </Button> : null
+                }
+
                 {
-                    navigator.onLine && false ? // Disabled for now because it's incomplete, remove "&& false" to enable
+                    window.serverStatus == "ONLINE" && false ? // Disabled for now because it's incomplete, remove "&& false" to enable
                         <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
                             <IconBrandAndroid/>
                         &nbsp;

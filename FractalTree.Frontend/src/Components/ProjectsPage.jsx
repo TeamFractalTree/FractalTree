@@ -61,7 +61,8 @@ export default function ProjectsPage() {
                     "assets": {},
                     "language": lang,
                     "code": CodeTemplates[lang](),
-                    "id": publicKey
+                    "id": publicKey,
+                    "hubID": crypto.randomUUID()
                 };
 
                 projects.push(newProject);

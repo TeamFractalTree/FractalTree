@@ -1,4 +1,3 @@
-import BaseURL from "../BaseURL";
 
 window.StartUpdateCycle = () => {
     setInterval(UpdateStatus, 5000);
