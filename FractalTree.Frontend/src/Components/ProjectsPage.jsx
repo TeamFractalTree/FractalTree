@@ -35,37 +35,44 @@ export default function ProjectsPage() {
     var createProject = () => {
         window.openLanguageSelector("BEFORE_PROJECT", async (lang) => {
 
-            // Generate an RSA keypair 
-            var keys = await window.crypto.subtle.generateKey(
-                {
-                    name: "RSASSA-PKCS1-v1_5",
-                    modulusLength: 1024,
-                    publicExponent: new Uint8Array([1, 0, 1]),
-                    hash: "SHA-256",
-                },
-                true,
-                ["sign", "verify"],
-            );
-            var publicKey = await window.crypto.subtle.exportKey("spki", keys.publicKey);
-            var privateKey = await window.crypto.subtle.exportKey("pkcs8", keys.privateKey);
-            publicKey = btoa(String.fromCharCode(...new Uint8Array(publicKey)));
-            privateKey = btoa(String.fromCharCode(...new Uint8Array(privateKey)));
+            try {
+                // Generate an RSA keypair 
+                var keys = await window.crypto.subtle.generateKey(
+                    {
+                        name: "RSASSA-PKCS1-v1_5",
+                        modulusLength: 1024,
+                        publicExponent: new Uint8Array([1, 0, 1]),
+                        hash: "SHA-256",
+                    },
+                    true,
+                    ["sign", "verify"],
+                );
+                var publicKey = await window.crypto.subtle.exportKey("spki", keys.publicKey);
+                var privateKey = await window.crypto.subtle.exportKey("pkcs8", keys.privateKey);
+                publicKey = btoa(String.fromCharCode(...new Uint8Array(publicKey)));
+                privateKey = btoa(String.fromCharCode(...new Uint8Array(privateKey)));
 
-            await localForage.setItem("pk_" + publicKey, privateKey); // Store the private key for later
+                await localForage.setItem("pk_" + publicKey, privateKey); // Store the private key for later
 
-            var newProject = {
-                "name": "New Project (" + lang + ")",
-                "author": localStorage.displayName || "Anonymous",
-                "description": "",
-                "assets": {},
-                "language": lang,
-                "code": CodeTemplates[lang](),
-                "id": publicKey
-            };
+                var newProject = {
+                    "name": "New Project (" + lang + ")",
+                    "author": localStorage.displayName || "Anonymous",
+                    "description": "",
+                    "assets": {},
+                    "language": lang,
+                    "code": CodeTemplates[lang](),
+                    "id": publicKey
+                };
 
-            projects.push(newProject);
-            await localForage.setItem("projectStore", { projects: projects });
-            setProjectLoadState("none"); // Reload Project List
+                projects.push(newProject);
+                await localForage.setItem("projectStore", { projects: projects });
+                setProjectLoadState("none"); // Reload Project List
+            }
+            catch {
+                // Creating a project requires a secure origin, so it might fail
+                alert(t("ERROR_GENERIC"));
+            }
+
         });
     };
 

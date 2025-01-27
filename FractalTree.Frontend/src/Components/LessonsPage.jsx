@@ -7,8 +7,9 @@ import { useState } from "react";
 import { ProgressBar } from "primereact/progressbar";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import Markdown from "react-markdown";
-import { IconPlayerPlayFilled } from "@tabler/icons-react";
+import { IconPlayerPlayFilled, IconSettings } from "@tabler/icons-react";
 import LanguageIcon from "./LanguageIcon";
+import SettingsPage from "./SettingsPage";
 
 if (!window.lessonList) {
     window.lessonList = [];
@@ -22,6 +23,8 @@ export default function LessonsPage() {
 
     return (
         <>
+            <Button className="settingsButton"><IconSettings/></Button>
+
             <Header>{t("SECTION_LESSONS")}</Header>
 
             <div className="page lessonsPage">

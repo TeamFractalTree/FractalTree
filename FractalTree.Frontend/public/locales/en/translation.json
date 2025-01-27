@@ -25,6 +25,7 @@
     "PARAM_DESCRIPTION": "Description:",
     "TEMPLATE_GREETING": "Hello, World",
     "ERROR_BAD_SCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
+    "ERROR_GENERIC": "Something went wrong with Fractal Tree, please ensure you are using the official version on a secure connection.",
     "ERROR_NO_PROJECTS": "No projects found, create your first one using the button below.",
     "ERROR_NO_DESCRIPTION": "No description.",
     "ERROR_NO_CONNECTION_TO_HUB": "We couldn't connect to the project hub. Please check your internet connection and try again later.",
