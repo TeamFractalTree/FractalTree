@@ -30,6 +30,7 @@
     "PARAM_AUTHOR": "Author:",
     "PARAM_LANGUAGE": "Language:",
     "PARAM_DESCRIPTION": "Description:",
+    "PARAM_THUMBNAIL_BG": "Thumbnail Background:",
     "TEMPLATE_GREETING": "Hello, World",
     "ERROR_BAD_SCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
     "ERROR_GENERIC": "Something went wrong with Fractal Tree, please ensure you are using the official version on a secure connection.",

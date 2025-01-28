@@ -61,11 +61,9 @@ export function ExternalProjectCard(props) {
 
     return (
         <div onClick={navigateToProjectPage} className="externalProjectCard">
-            <div className="projectThumbnail" style={{ background: "url('" + (props.projectState.assets?.thumbnail || `/Images/LangThumbnails/${props.projectState?.language}.webp`) + "')" }}>
-                {
-                    // Show the language logo if no thumbnail is available
-                    !props.projectState.assets?.thumbnail ? (<img src={`/Images/LangIcons/${props.projectState.language}.webp`}></img>) : null
-                }
+            <div className="projectThumbnail" style={{ background: "url('" + (`/Images/LangThumbnails/${props.projectState?.assets?.thumbnail || props.projectState?.language}.webp`) + "')" }}>
+                
+                <img src={`/Images/LangIcons/${props.projectState?.assets?.icon || props.projectState?.language}.webp`}></img>
 
                 {
                     // Show edit button only if the user owns the current project
