@@ -56,7 +56,7 @@ export default function ProjectPage() {
         try {
             var req = await fetch(BaseURL + "/api/hub/upload", { method: "POST", body: JSON.stringify(projectState), headers: { "content-type": "application/json" } });
 
-            if (req.status == 201) {
+            if (req.status == 201 || req.status == 204) {
                 alert(t("ACTION_UPLOAD_DESCRIPTION_CREATED"));
             }
             else if (req.status == 200) {
@@ -78,7 +78,7 @@ export default function ProjectPage() {
             
             <div className="projectPage">
 
-                <ExternalProjectCard editProjectAssets={editProjectAssets} projectState={projectState} />
+                <ExternalProjectCard editProjectAssets={isProjectLocal(projectState) ? editProjectAssets : null} projectState={projectState} />
 
                 <Button onClick={runProject} className="projectAction">
                     <IconPlayerPlay/>

@@ -23,7 +23,7 @@ namespace FractalTree.Backend.API.Controllers
 
                 System.IO.File.WriteAllText(projectFilePath, JsonConvert.SerializeObject(projectToUpload));
     
-                return alreadyExists ? Ok() : Created();
+                return alreadyExists ? Ok(projectFilePath) : Created();
             }
             catch {
                 return BadRequest("error");

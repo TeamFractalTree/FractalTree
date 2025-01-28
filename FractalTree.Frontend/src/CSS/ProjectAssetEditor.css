@@ -20,3 +20,13 @@
     padding-top: 1rem;
     gap: 1rem;
 }
+
+.projectAssetEditor .projectProperty  {
+    width: 90%;
+}
+
+.projectAssetEditor label {
+    margin-left: 5%;
+    margin-right: 5%;
+    align-self: flex-start;
+}
