@@ -70,7 +70,7 @@ export default function ProjectPage() {
         catch {
             alert(t("ACTION_UPLOAD_DESCRIPTION_FAIL"));
         }
-    }
+    };
 
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectPageContainer" position={GetSidebarPosition()} visible={pageVisible}>

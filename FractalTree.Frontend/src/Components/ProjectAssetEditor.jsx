@@ -2,10 +2,10 @@ import { Sidebar } from "primereact/sidebar";
 import Header from "./Header";
 import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 import "../CSS/ProjectAssetEditor.css";
-import { InputText } from 'primereact/inputtext';
+import { InputText } from "primereact/inputtext";
 import { useState } from "react";
 import { Button } from "primereact/button";
-import { Carousel } from 'primereact/carousel';
+import { Carousel } from "primereact/carousel";
 import * as localForage from "localforage";
 
 export default function ProjectAssetEditor(props) {
@@ -22,24 +22,24 @@ export default function ProjectAssetEditor(props) {
         setProjectState(newState);
         setCallback([newCallback]);
         setPageVisible(true);
-    }
+    };
 
     var modifyProjectProperty = async (property, newValue) => {
         projectState[property] = newValue;
         setProjectState(Object.assign({}, projectState));
         await (callback[0])(Object.assign({}, projectState));
-    }
+    };
 
     var modifyThumbnail = async (newValue) => {
         projectState.assets.thumbnail = availableThumbnails[newValue.page];
         setProjectState(Object.assign({}, projectState));
         await (callback[0])(Object.assign({}, projectState));
-    }
+    };
 
     var saveProject = async () => {
         setProjectState(Object.assign({}, projectState));
         await (callback[0])(Object.assign({}, projectState), true);
-    }
+    };
 
     var deleteProject = async () => {
         if (confirm(t("ACTION_DELETE_PROJECT_DESCRIPTION"))) {
@@ -49,7 +49,7 @@ export default function ProjectAssetEditor(props) {
             await localForage.setItem("projectStore", Object.assign({}, projectStore)); // Save
             location.reload();
         }
-    }
+    };
 
     return (
         <Sidebar style={{ height: "100vh", width: "100vw" }} className="projectAssetEditorContainer" position={GetSidebarPosition()} visible={pageVisible}>
@@ -67,7 +67,7 @@ export default function ProjectAssetEditor(props) {
                 <Button onClick={deleteProject} severity="danger" className="projectProperty">{t("ACTION_DELETE_PROJECT")}</Button>
             </div>
         </Sidebar>
-    )
+    );
 }
 
 function ThumbnailCarouselTemplate(value) {

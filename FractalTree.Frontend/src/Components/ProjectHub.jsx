@@ -56,8 +56,8 @@ export function ExternalProjectCard(props) {
 
     var navigateToProjectPage = () => {
         if (!!props.editProjectAssets) { return; } // Prevents opening it from deleting the project state
-        window.openProjectPage(Object.assign({}, props.projectState), () => {})
-    }
+        window.openProjectPage(Object.assign({}, props.projectState), () => {});
+    };
 
     return (
         <div onClick={navigateToProjectPage} className="externalProjectCard">
@@ -68,9 +68,9 @@ export function ExternalProjectCard(props) {
                 {
                     // Show edit button only if the user owns the current project
                     !!props.editProjectAssets ? 
-                    <Button onClick={props.editProjectAssets || console.log} className="projectAssetEditButton">
-                        <IconPencil/>
-                    </Button> : null
+                        <Button onClick={props.editProjectAssets || console.log} className="projectAssetEditButton">
+                            <IconPencil/>
+                        </Button> : null
                 }
 
             </div>
