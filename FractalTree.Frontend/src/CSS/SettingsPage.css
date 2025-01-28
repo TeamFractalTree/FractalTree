@@ -73,9 +73,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    border-radius: 7px;
-    border: 2px solid var(--col-border);
-    box-shadow: var(--col-shadow);
     cursor: pointer;
 }
 

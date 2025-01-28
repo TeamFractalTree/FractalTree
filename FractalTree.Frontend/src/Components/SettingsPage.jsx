@@ -40,6 +40,11 @@ function InterfaceLanguageSelect() {
             english_name: "Arabic",
             code: "ar",
         },
+        {
+            name: "Ukrainian",
+            english_name: "Ukrainian",
+            code: "ua",
+        },
     ];
 
     return (
