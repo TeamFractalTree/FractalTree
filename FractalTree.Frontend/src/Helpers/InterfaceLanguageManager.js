@@ -17,5 +17,5 @@ export function ReloadLanguageData() {
 }
 
 export function GetSidebarPosition() {
-    return (GetInterfaceLanguage() == "ar") ? "left" : "right";
+    return (GetInterfaceLanguage() == "ar") ? "left" : "right"; // Makes Pages Slide In From The Left Instead Of The Right If Arabic Mode
 }

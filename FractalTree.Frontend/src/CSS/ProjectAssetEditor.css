@@ -1,0 +1,22 @@
+.projectAssetEditorContainer .p-sidebar-header {
+    display: none;
+}
+
+.projectAssetEditorContainer .p-sidebar-content {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+}   
+
+.projectAssetEditor {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    gap: 1rem;
+}

@@ -26,6 +26,7 @@ import "./Helpers/MobileFullscreen.js";
 import SettingsPage from "./Components/SettingsPage.jsx";
 import "./BaseURL.js";
 import { GetInterfaceLanguage, ReloadLanguageData } from "./Helpers/InterfaceLanguageManager.js";
+import ProjectAssetEditor from "./Components/ProjectAssetEditor.jsx";
 
 i18n
     .use(Backend)
@@ -82,6 +83,7 @@ function Main() {
             <ProjectPage></ProjectPage>
             <ProjectHub></ProjectHub>
             <SettingsPage></SettingsPage>
+            <ProjectAssetEditor></ProjectAssetEditor>
         </MemoryRouter>
     );
 }

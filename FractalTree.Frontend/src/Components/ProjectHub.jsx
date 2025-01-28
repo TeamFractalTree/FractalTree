@@ -5,6 +5,8 @@ import Header from "./Header";
 import "../CSS/ProjectHub.css";
 import { Skeleton } from "primereact/skeleton";
 import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
+import { IconPencil } from "@tabler/icons-react";
+import ProjectAssetEditor from "./ProjectAssetEditor";
 
 export default function ProjectHub() {
 
@@ -49,13 +51,30 @@ export default function ProjectHub() {
 }
 
 export function ExternalProjectCard(props) {
+
+    var [isEditingProject, setIsEditingProject] = useState(false);
+
+    var navigateToProjectPage = () => {
+        if (!!props.editProjectAssets) { return; } // Prevents opening it from deleting the project state
+        window.openProjectPage(Object.assign({}, props.projectState), () => {})
+    }
+
     return (
-        <div onClick={() => window.openProjectPage(Object.assign({}, props.projectState), () => {})} className="externalProjectCard">
+        <div onClick={navigateToProjectPage} className="externalProjectCard">
             <div className="projectThumbnail" style={{ background: "url('" + (props.projectState.assets?.thumbnail || `/Images/LangThumbnails/${props.projectState?.language}.webp`) + "')" }}>
                 {
                     // Show the language logo if no thumbnail is available
                     !props.projectState.assets?.thumbnail ? (<img src={`/Images/LangIcons/${props.projectState.language}.webp`}></img>) : null
                 }
+
+                {
+                    // Show edit button only if the user owns the current project
+                    !!props.editProjectAssets ? 
+                    <Button onClick={props.editProjectAssets || console.log} className="projectAssetEditButton">
+                        <IconPencil/>
+                    </Button> : null
+                }
+
             </div>
             <p><b>{t("PARAM_NAME")}</b> {props.projectState.name}</p>
             <p><b>{t("PARAM_AUTHOR")}</b> {props.projectState.author}</p>

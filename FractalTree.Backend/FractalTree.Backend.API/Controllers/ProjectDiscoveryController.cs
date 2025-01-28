@@ -27,6 +27,7 @@ namespace FractalTree.Backend.API.Controllers
                     try
                     {
                         projectList[i] = JsonConvert.DeserializeObject<Project>(System.IO.File.ReadAllText(projectFileList[i]));
+                        projectList[i].Id = "public"; // Redact the ID before sending to the client (it will use HubId instead)
                     }
                     catch (Exception ex)
                     {

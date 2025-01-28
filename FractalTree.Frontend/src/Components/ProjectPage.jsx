@@ -44,6 +44,14 @@ export default function ProjectPage() {
         });
     };
 
+    var editProjectAssets = () => {
+        window.openProjectAssetEditor(Object.assign({}, projectState), (newState, isHard) => {
+            projectState = Object.assign({}, newState);
+            setProjectState(projectState);
+            (callback[0] || console.log)(projectState, isHard);
+        });
+    };
+
     var uploadProject = async () => {
         try {
             var req = await fetch(BaseURL + "/api/hub/upload", { method: "POST", body: JSON.stringify(projectState), headers: { "content-type": "application/json" } });
@@ -70,7 +78,7 @@ export default function ProjectPage() {
             
             <div className="projectPage">
 
-                <ExternalProjectCard projectState={projectState} />
+                <ExternalProjectCard editProjectAssets={editProjectAssets} projectState={projectState} />
 
                 <Button onClick={runProject} className="projectAction">
                     <IconPlayerPlay/>
