@@ -82,6 +82,12 @@
     align-items: center;
 }
 
+*[dir="rtl"]  .externalProjectCard .projectAssetEditButton {
+    right: unset;
+    left: 1rem;
+}
+
+
 .externalProjectCard p {
     margin: 0.2rem;
 }

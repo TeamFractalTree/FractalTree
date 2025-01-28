@@ -28,6 +28,14 @@
     right: 1rem;
 }
 
+
+*[dir="rtl"]  .lessonCard .languageIcon {
+    position: absolute;
+    bottom: 1rem;
+    right: unset;
+    left: 1rem;
+}
+
 .lessonCard .p-progressbar {
     position: absolute;
     width: 100%;
