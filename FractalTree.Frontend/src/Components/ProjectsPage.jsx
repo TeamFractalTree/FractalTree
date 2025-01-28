@@ -10,6 +10,7 @@ import { InputText } from "primereact/inputtext";
 import CodeTemplates from "../Helpers/CodeTemplates";
 import LanguageIcon from "./LanguageIcon";
 import ServerStatusText from "./ServerStatusText";
+import ProjectIcon from "./ProjectIcon";
 
 export default function ProjectsPage() {
 
@@ -135,7 +136,7 @@ function ProjectCard(props) {
         <div onClick={openProject} {...props} className="projectCard">
             <h2 className="projectTitle">{props.project.name}</h2>
             <p className="projectDescription">{props.project.description || t("ERROR_NO_DESCRIPTION")}</p>
-            <LanguageIcon icon={props.project.language + ".webp"}></LanguageIcon>
+            <ProjectIcon projectState={props.project}/>
         </div>
     );
 }

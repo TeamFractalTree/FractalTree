@@ -58,7 +58,7 @@
     width: calc(100% - 7.5rem);
 }
 
-.projectCard .languageIcon {
+.projectCard .projectIcon {
     position: absolute;
     right: 1rem;
     top: 1rem;
@@ -88,7 +88,7 @@
     margin-top: auto;
 }
 
-*[dir="rtl"] .projectCard .languageIcon {
+*[dir="rtl"] .projectCard .projectIcon {
     right: auto;
     left: 1rem;
     top: 1rem;

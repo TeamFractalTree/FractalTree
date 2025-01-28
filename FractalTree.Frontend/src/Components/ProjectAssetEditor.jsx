@@ -15,6 +15,7 @@ export default function ProjectAssetEditor(props) {
     var [callback, setCallback] = useState([]);
 
     var availableThumbnails = ["html", "javascript", "jsx", "python"];
+    [...Array(6).keys()].forEach((i) => availableThumbnails.push("variant" + (i+1))); // Add variantx.webp files
     var selectedThumbnail = projectState.assets?.thumbnail || projectState.language;
 
     window.openProjectAssetEditor = (newState, newCallback) => {
@@ -71,6 +72,6 @@ export default function ProjectAssetEditor(props) {
 
 function ThumbnailCarouselTemplate(value) {
     return (
-        <div className="thumbnailCarouselTemplate" style={{ backgroundImage: "url('" + `/Images/LangThumbnails/${value}.webp` + "')" }}/>
+        <div className="thumbnailCarouselTemplate" style={{ backgroundImage: "url('" + `/Images/Thumbnails/${value}.webp` + "')" }}/>
     );
 }

@@ -33,7 +33,7 @@ export default function LanguageSelect() {
 
 function LanguageSelectOption(props) {
     return (
-        <Button style={{ backgroundImage: `url('/Images/LangThumbnails/${props.language}.webp')` }} onClick={() => props.onLanguageSelected(props.language)} className="languageOption">
+        <Button style={{ backgroundImage: `url('/Images/Thumbnails/${props.language}.webp')` }} onClick={() => props.onLanguageSelected(props.language)} className="languageOption">
             <LanguageIcon icon={props.language + ".webp"}/>
             {t("LANG_" + props.language.toUpperCase())}
         </Button>

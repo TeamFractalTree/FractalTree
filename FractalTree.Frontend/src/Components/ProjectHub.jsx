@@ -61,7 +61,7 @@ export function ExternalProjectCard(props) {
 
     return (
         <div onClick={navigateToProjectPage} className="externalProjectCard">
-            <div className="projectThumbnail" style={{ background: "url('" + (`/Images/LangThumbnails/${props.projectState?.assets?.thumbnail || props.projectState?.language}.webp`) + "')" }}>
+            <div className="projectThumbnail" style={{ background: "url('" + (`/Images/Thumbnails/${props.projectState?.assets?.thumbnail || props.projectState?.language}.webp`) + "')" }}>
                 
                 <img src={`/Images/LangIcons/${props.projectState?.assets?.icon || props.projectState?.language}.webp`}></img>
 
