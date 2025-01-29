@@ -1,13 +1,13 @@
-import { Button } from 'primereact/button';
-import * as tabler from "@tabler/icons-react" 
-import { Dialog } from 'primereact/dialog';
-import { VirtualScroller } from 'primereact/virtualscroller';
+import { Button } from "primereact/button";
+import * as tabler from "@tabler/icons-react"; 
+import { Dialog } from "primereact/dialog";
+import { VirtualScroller } from "primereact/virtualscroller";
 import "../CSS/IconPicker.css";
-import { useState } from 'react';
+import { useState } from "react";
 import RemToPixels from "../Helpers/RemToPixels.js";
-import { Sidebar } from 'primereact/sidebar';
-import { GetSidebarPosition } from '../Helpers/InterfaceLanguageManager.js';
-import Header from './Header.jsx';
+import { Sidebar } from "primereact/sidebar";
+import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager.js";
+import Header from "./Header.jsx";
 
 export default function IconPicker(props) {
     var [isPickerOpen, setIsPickerOpen] = useState(false);
@@ -19,12 +19,12 @@ export default function IconPicker(props) {
         setCallback([newCallback]);
         setIconLoadingState("none");
         setIsPickerOpen(true);
-    }
+    };
 
     var onSelect = (iconData) => {
         (callback[0] || console.log)(iconData);
         setIsPickerOpen(false);
-    }
+    };
 
     if (iconLoadingState == "none") {
         setIconLoadingState("loading");
@@ -80,12 +80,12 @@ export default function IconPicker(props) {
                 <Header onBack={() => setIsPickerOpen(false)}>{t("ACTION_SELECT_ICON")}</Header>
                 {
                     iconLoadingState == "success" ? 
-                    <VirtualScroller className="iconList" items={iconMetaList} itemTemplate={IconPickerItemTemplate} itemSize={RemToPixels(4)}></VirtualScroller>
-                    : null
+                        <VirtualScroller className="iconList" items={iconMetaList} itemTemplate={IconPickerItemTemplate} itemSize={RemToPixels(4)}></VirtualScroller>
+                        : null
                 }
             </Sidebar>
         </>
-    )
+    );
 }
 
 export function IconPickerItemTemplate(item, options) {
@@ -112,11 +112,11 @@ export function IconPickerItemTemplate(item, options) {
                         <Button key={icon.name} severity="secondary" className="iconListItem" onClick={() => icon.onSelect(icon.svg)}>
                             <IconToRender></IconToRender>
                         </Button>
-                    )
+                    );
                 })
             }
         </div>
-    )
+    );
 }
 
 // Converts Icons In The Format "foo-bar" Into "IconFooBar"
