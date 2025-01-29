@@ -10,22 +10,22 @@ function ReplaceBytes(fileData, dataFrom, dataTo) {
         if(dataFrom[checksComplete] === fileData[loc++])
             checksComplete++;
         else checksComplete = 0;
-        }
+    }
     if(checksComplete === totalChecks) {
         // Match found -- creates a new (regular) array to return
         Array.prototype.splice.apply(
             fileData = Array.prototype.slice.call(fileData),
             [loc - totalChecks, totalChecks].concat(dataTo)
-            );
-        }
+        );
+    }
     return fileData;
 };
 
 function* utf16Bytes(str) {
     for (let i = 0; i < str.length; i++) {
-      const charCode = str.charCodeAt(i);
-      yield (charCode & 0xff00) >> 8;
-      yield charCode & 0x00ff;
+        const charCode = str.charCodeAt(i);
+        yield (charCode & 0xff00) >> 8;
+        yield charCode & 0x00ff;
     }
 }
 
@@ -74,8 +74,8 @@ export default async function CompileProjectForAndroid(project) {
                     width: 428, 
                     height: 428
                 });
-                image = image.resize({ width: 462, height: 462 })
-                image = image.multiply(0.85)
+                image = image.resize({ width: 462, height: 462 });
+                image = image.multiply(0.85);
 
                 zip.file(fileName, image.toBuffer());
             }
@@ -83,7 +83,7 @@ export default async function CompileProjectForAndroid(project) {
                 // Replace the icon foreground
                 var foregroundPath = (project.assets?.icon || `/Images/LangIcons/${project.language}.webp`);
 
-                var canvas = document.createElement('canvas');
+                var canvas = document.createElement("canvas");
 
                 canvas.id = "TempImageExport";
                 canvas.width = 432;
@@ -93,7 +93,7 @@ export default async function CompileProjectForAndroid(project) {
                 
                 document.body.appendChild(canvas);
 
-                var ctx = canvas.getContext('2d');
+                var ctx = canvas.getContext("2d");
                 var img = new Image();
 
                 await new Promise((resolve, _) => {
