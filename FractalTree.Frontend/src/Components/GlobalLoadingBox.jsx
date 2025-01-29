@@ -2,7 +2,7 @@ import { Button } from "primereact/button";
 import { Sidebar } from "primereact/sidebar";
 import { useState } from "react";
 import "../CSS/GlobalLoadingBox.css";
-import { ProgressSpinner } from 'primereact/progressspinner';
+import { ProgressSpinner } from "primereact/progressspinner";
 
 export default function GlobalLoadingBox() {
 
