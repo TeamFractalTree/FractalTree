@@ -20,6 +20,8 @@ namespace FractalTree.Backend.API.Controllers
             // TODO: Verify that the client has possesion of the project's private key
             // This makes sure that only the client that created the project can publish it
 
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+
             try {
                 var projectFilePath = "/ftdata/projecthub/" + projectToUpload.HubId + ".json";
                 var alreadyExists = System.IO.File.Exists(projectFilePath);
