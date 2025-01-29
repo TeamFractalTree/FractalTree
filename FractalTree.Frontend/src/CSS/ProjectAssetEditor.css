@@ -37,6 +37,10 @@
     margin-right: 5%;
 }
 
+.projectAssetEditor .thumbnailCarousel .p-carousel-indicator button {
+    border-radius: 3px;
+}
+
 .projectAssetEditor .thumbnailCarousel .p-carousel-container {
     border-radius: 7px;
     overflow: hidden;
