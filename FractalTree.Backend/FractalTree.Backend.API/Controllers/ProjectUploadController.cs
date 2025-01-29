@@ -11,6 +11,9 @@ namespace FractalTree.Backend.API.Controllers
     public class ProjectUploadController : ControllerBase
     {
 
+        [HttpOptions("upload")]
+        public void FixCors() { Response.Headers.Append("Access-Control-Allow-Origin", "*"); }
+
         [HttpPost("upload")]
         public async Task<IActionResult> Upload([FromBody] Project projectToUpload)
         {
