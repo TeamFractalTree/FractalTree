@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "org.fractal_tree.my_"
+        applicationId = "org.fractal_tree.my____________________________________________________________________________________________________________"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -23,7 +23,8 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            isShrinkResources = false
+            proguardFiles("proguard-rules.pro")
         }
     }
     compileOptions {

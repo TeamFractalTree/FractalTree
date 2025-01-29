@@ -107,7 +107,7 @@ export default function ProjectPage() {
                 }
 
                 {
-                    window.serverStatus == "ONLINE" && false ? // Disabled for now because it's incomplete, remove "&& false" to enable
+                    window.serverStatus == "ONLINE" ? // Disabled for now because it's incomplete, remove "&& false" to enable
                         <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
                             <IconBrandAndroid/>
                         &nbsp;
