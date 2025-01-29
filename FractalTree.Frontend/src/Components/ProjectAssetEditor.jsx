@@ -7,6 +7,8 @@ import { useState } from "react";
 import { Button } from "primereact/button";
 import { Carousel } from "primereact/carousel";
 import * as localForage from "localforage";
+import { IconPencil, IconTrash } from "@tabler/icons-react";
+import ProjectIcon from "./ProjectIcon";
 
 export default function ProjectAssetEditor(props) {
 
@@ -14,8 +16,9 @@ export default function ProjectAssetEditor(props) {
     var [projectState, setProjectState] = useState({});
     var [callback, setCallback] = useState([]);
 
+    // Configure thumbnail selection
     var availableThumbnails = ["html", "javascript", "jsx", "python"];
-    [...Array(6).keys()].forEach((i) => availableThumbnails.push("variant" + (i+1))); // Add variantx.webp files
+    [...Array(8).keys()].forEach((i) => availableThumbnails.push("variant" + (i+1))); // Add variantx.webp files
     var selectedThumbnail = projectState.assets?.thumbnail || projectState.language;
 
     window.openProjectAssetEditor = (newState, newCallback) => {
@@ -63,8 +66,15 @@ export default function ProjectAssetEditor(props) {
 
                 <label>{t("PARAM_THUMBNAIL_BG")}</label>
                 <Carousel onPageChange={modifyThumbnail} page={availableThumbnails.findIndex((t) => t == selectedThumbnail)} className="thumbnailCarousel" value={availableThumbnails} numVisible={1} numScroll={1} itemTemplate={ThumbnailCarouselTemplate} />
+        
+                <label>{t("PARAM_ICON")}</label>
+                <div className="iconModifyContainer">
+                    <ProjectIcon projectState={projectState}></ProjectIcon>
+                    <p className="secondaryText">{t("DISCLAIMER_LICENSE_TABLER")}</p>
+                    <Button className="editIconButton"><IconPencil/></Button>
+                </div>
 
-                <Button onClick={deleteProject} severity="danger" className="projectProperty">{t("ACTION_DELETE_PROJECT")}</Button>
+                <Button onClick={deleteProject} severity="danger" className="projectProperty"><IconTrash/> &nbsp; {t("ACTION_DELETE_PROJECT")}</Button>
             </div>
         </Sidebar>
     );

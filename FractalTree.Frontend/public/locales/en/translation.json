@@ -31,6 +31,7 @@
     "PARAM_LANGUAGE": "Language:",
     "PARAM_DESCRIPTION": "Description:",
     "PARAM_THUMBNAIL_BG": "Thumbnail Background:",
+    "PARAM_ICON": "Icon:",
     "TEMPLATE_GREETING": "Hello, World",
     "ERROR_BAD_SCAN": "We couldn't scan your code, please try again with a clearer picture or better handwriting.",
     "ERROR_GENERIC": "Something went wrong with Fractal Tree, please ensure you are using the official version on a secure connection.",
@@ -49,5 +50,6 @@
     "SECTION_SANDBOX_DESCRIPTION": "Sandbox mode allows you to quickly scan and run code without saving it.",
     "SERVER_STATUS_PINGING": "Pinging...",
     "SERVER_STATUS_ONLINE": "Online",
-    "SERVER_STATUS_OFFLINE": "Offline"
+    "SERVER_STATUS_OFFLINE": "Offline",
+    "DISCLAIMER_LICENSE_TABLER": "Icons provided by tabler-icons.io under the MIT license."
 }
