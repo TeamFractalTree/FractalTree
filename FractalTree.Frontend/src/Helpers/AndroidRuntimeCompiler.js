@@ -12,6 +12,7 @@ function ReplaceBytes(fileData, dataFrom, dataTo) {
         else checksComplete = 0;
     }
     if(checksComplete === totalChecks) {
+        console.log("Replaced Sequence")
         // Match found -- creates a new (regular) array to return
         Array.prototype.splice.apply(
             fileData = Array.prototype.slice.call(fileData),
@@ -29,16 +30,27 @@ function* utf16Bytes(str) {
     }
 }
 
+function utf8Bytes(str) {
+    return new TextEncoder().encode(str);
+}
+
 // Replaces UTF-16 values that identify the app
 async function ReplaceValues(zip, fileName, project) {
     // Replace the AndroidManifest.xml file
     var newManifestFile = await zip.file(fileName).async("uint8array");
+    var appID = ("org.fractal_tree.my_" + project.hubID.replaceAll("-", "_")).padEnd(127, "_");
 
     // Replace the app name (must be padded to exactly 64 length (128 bytes))
-    newManifestFile = ReplaceBytes(newManifestFile, [...utf16Bytes("%APP_NAME%______________________________________________________")], [...utf16Bytes(project.name.padEnd(64, " "))]);
+    for (let i = 0; i < 10; i++) {
+        newManifestFile = ReplaceBytes(newManifestFile, [...utf16Bytes("%APP_NAME%______________________________________________________")], [...utf16Bytes(project.name.padEnd(64, " "))]);
+    }
+
+
     // Replace the app ID (must be padded to exactly 127 length (254 bytes))
-    var appID = ("org.fractal_tree.my_" + project.hubID.replaceAll("-", "_")).padEnd(127, "_");
-    newManifestFile = ReplaceBytes(newManifestFile, [...utf16Bytes("org.fractal_tree.my____________________________________________________________________________________________________________")], [...utf16Bytes(appID)]);
+    for (let i = 0; i < 10; i++) {
+        newManifestFile = ReplaceBytes(newManifestFile, [...utf16Bytes("org.fractal_tree.my____________________________________________________________________________________________________________")], [...utf16Bytes(appID)]);
+    }
+
     zip.file(fileName, newManifestFile);
 }
 
@@ -54,13 +66,13 @@ export default async function CompileProjectForAndroid(project) {
         var zipContents = Object.keys(zip.files);
         for (var i = 0; i < zipContents.length; i++) {
             var fileName = zipContents[i];
+
+            await ReplaceValues(zip, fileName, project);
+
             // There is only 1 html resource file, find it
             if (fileName.startsWith("res/") && fileName.endsWith(".html")) {
                 // Found it, now replace its contents with the compiled html file
                 zip.file(fileName, CompileApp(project));
-            }
-            else if (fileName.endsWith("AndroidManifest.xml") || fileName.endsWith("resources.arsc")) { 
-                await ReplaceValues(zip, fileName, project);
             }
             else if (fileName.endsWith("ic_launcher_background.png")) { 
                 // Replace the icon background
