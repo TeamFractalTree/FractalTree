@@ -1,18 +1,18 @@
 .projectIcon {
     width: 6rem;
     height: 6rem;
-    border-radius: 22px;
     background-color: var(--col-tertiary);
     border: 2px solid var(--col-border);
     box-shadow: var(--col-shadow);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: 500%;
+    background-size: cover;
     background-position: center;
+    mask: url("/Images/AppIconMask.svg") center/90% 90% no-repeat
 }
 
 .projectIcon img  {
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
 }
