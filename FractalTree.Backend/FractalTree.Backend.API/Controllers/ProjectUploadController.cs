@@ -12,7 +12,10 @@ namespace FractalTree.Backend.API.Controllers
     {
 
         [HttpOptions("upload")]
-        public void FixCors() { Response.Headers.Append("Access-Control-Allow-Origin", "*"); }
+        public void FixCors() { 
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+            Response.Headers.Append("Access-Control-Allow-Headers", "*");
+        }
 
         [HttpPost("upload")]
         public async Task<IActionResult> Upload([FromBody] Project projectToUpload)
@@ -21,6 +24,7 @@ namespace FractalTree.Backend.API.Controllers
             // This makes sure that only the client that created the project can publish it
 
             Response.Headers.Append("Access-Control-Allow-Origin", "*");
+            Response.Headers.Append("Access-Control-Allow-Headers", "*");
 
             try {
                 var projectFilePath = "/ftdata/projecthub/" + projectToUpload.HubId + ".json";
