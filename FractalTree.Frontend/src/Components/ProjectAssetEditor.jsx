@@ -39,6 +39,14 @@ export default function ProjectAssetEditor(props) {
         await (callback[0])(Object.assign({}, projectState));
     };
 
+    var modifyIcon = async (newValue) => {
+        newValue = newValue.replaceAll("currentColor", "white");
+        newValue = "data:image/svg+xml," + encodeURIComponent(newValue);
+        projectState.assets.icon = newValue;
+        setProjectState(Object.assign({}, projectState));
+        await (callback[0])(Object.assign({}, projectState));
+    };
+
     var saveProject = async () => {
         setProjectState(Object.assign({}, projectState));
         await (callback[0])(Object.assign({}, projectState), true);
@@ -71,7 +79,7 @@ export default function ProjectAssetEditor(props) {
                 <div className="iconModifyContainer">
                     <ProjectIcon projectState={projectState}></ProjectIcon>
                     <p className="secondaryText">{t("DISCLAIMER_LICENSE_TABLER")}</p>
-                    <Button className="editIconButton"><IconPencil/></Button>
+                    <Button className="editIconButton" onClick={() => window.openIconPicker(modifyIcon)}><IconPencil/></Button>
                 </div>
 
                 <Button onClick={deleteProject} severity="danger" className="projectProperty"><IconTrash/> &nbsp; {t("ACTION_DELETE_PROJECT")}</Button>

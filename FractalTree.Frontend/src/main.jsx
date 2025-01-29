@@ -27,6 +27,7 @@ import SettingsPage from "./Components/SettingsPage.jsx";
 import "./BaseURL.js";
 import { GetInterfaceLanguage, ReloadLanguageData } from "./Helpers/InterfaceLanguageManager.js";
 import ProjectAssetEditor from "./Components/ProjectAssetEditor.jsx";
+import IconPicker from "./Components/IconPicker.jsx";
 
 i18n
     .use(Backend)
@@ -84,6 +85,7 @@ function Main() {
             <ProjectHub></ProjectHub>
             <SettingsPage></SettingsPage>
             <ProjectAssetEditor></ProjectAssetEditor>
+            <IconPicker></IconPicker>
         </MemoryRouter>
     );
 }
