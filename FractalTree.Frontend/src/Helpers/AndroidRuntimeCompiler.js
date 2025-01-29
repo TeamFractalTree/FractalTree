@@ -43,6 +43,9 @@ async function ReplaceValues(zip, fileName, project) {
 }
 
 export default async function CompileProjectForAndroid(project) {
+
+    var quitLoading = window.startGlobalLoading();
+
     try {
         var req = await fetch("/Runtime/runtime.apk");
         var res = await req.arrayBuffer();
@@ -129,4 +132,6 @@ export default async function CompileProjectForAndroid(project) {
     catch (ex) {
         console.log(ex);
     }
+
+    quitLoading();
 }

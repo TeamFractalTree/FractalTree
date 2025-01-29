@@ -53,6 +53,8 @@ export default function ProjectPage() {
     };
 
     var uploadProject = async () => {
+        var quitLoading = window.startGlobalLoading();
+
         try {
             var req = await fetch(BaseURL + "/api/hub/upload", { method: "POST", body: JSON.stringify(projectState), headers: { "content-type": "application/json" } });
 
@@ -70,6 +72,8 @@ export default function ProjectPage() {
         catch {
             alert(t("ACTION_UPLOAD_DESCRIPTION_FAIL"));
         }
+
+        quitLoading();
     };
 
     return (

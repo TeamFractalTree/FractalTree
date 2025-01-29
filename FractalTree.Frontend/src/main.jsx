@@ -28,6 +28,7 @@ import "./BaseURL.js";
 import { GetInterfaceLanguage, ReloadLanguageData } from "./Helpers/InterfaceLanguageManager.js";
 import ProjectAssetEditor from "./Components/ProjectAssetEditor.jsx";
 import IconPicker from "./Components/IconPicker.jsx";
+import GlobalLoadingBox from "./Components/GlobalLoadingBox.jsx";
 
 i18n
     .use(Backend)
@@ -86,6 +87,7 @@ function Main() {
             <SettingsPage></SettingsPage>
             <ProjectAssetEditor></ProjectAssetEditor>
             <IconPicker></IconPicker>
+            <GlobalLoadingBox></GlobalLoadingBox>
         </MemoryRouter>
     );
 }

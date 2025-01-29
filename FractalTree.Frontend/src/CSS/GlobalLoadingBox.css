@@ -1,0 +1,19 @@
+.globalLoadingBox {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.185);
+}
+
+.globalLoadingBox .p-sidebar-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.globalLoadingBox  .p-sidebar-header {
+    display: none;
+}
+
+.globalLoadingBox svg, .globalLoadingBox svg * {
+    color: var(--col-primary);
+    stroke: var(--col-primary) !important;
+}
