@@ -1,6 +1,7 @@
 import JSZip, { file } from "jszip";
 import { CompileApp } from "./AppCompiler";
 import { saveAs } from "file-saver";
+import { Image as ImageJS } from "image-js";
 
 function ReplaceBytes(fileData, dataFrom, dataTo) {
     var loc = 0, sz = fileData.length;
@@ -57,6 +58,54 @@ export default async function CompileProjectForAndroid(project) {
             }
             else if (fileName.endsWith("AndroidManifest.xml") || fileName.endsWith("resources.arsc")) { 
                 await ReplaceValues(zip, fileName, project);
+            }
+            else if (fileName.endsWith("ic_launcher_background.png")) { 
+                // Replace the icon background
+                var foregroundPath = (`/Images/Thumbnails/${project.assets?.thumbnail || project.language}.webp`);
+
+                // Crop the image now
+                var image = await ImageJS.load(foregroundPath);
+                image = image.crop({
+                    x: (image.width / 2) - 214, 
+                    y: 0, 
+                    width: 428, 
+                    height: 428
+                });
+                image = image.resize({ width: 462, height: 462 })
+                image = image.multiply(0.85)
+
+                zip.file(fileName, image.toBuffer());
+            }
+            else if (fileName.endsWith("ic_launcher_foreground.png")) { 
+                // Replace the icon foreground
+                var foregroundPath = (project.assets?.icon || `/Images/LangIcons/${project.language}.webp`);
+
+                var canvas = document.createElement('canvas');
+
+                canvas.id = "TempImageExport";
+                canvas.width = 432;
+                canvas.height = 432;
+                canvas.style.zIndex = -100;
+                canvas.style.position = "absolute";
+                
+                document.body.appendChild(canvas);
+
+                var ctx = canvas.getContext('2d');
+                var img = new Image();
+
+                await new Promise((resolve, _) => {
+                    img.onload = function () {
+                        ctx.drawImage(img, 96, 96);
+                        resolve();
+                    };
+
+                    img.src = foregroundPath;
+                });
+
+                var image = await ImageJS.fromCanvas(canvas);
+                zip.file(fileName, image.toBuffer());
+
+                canvas.remove();
             }
         }
 
