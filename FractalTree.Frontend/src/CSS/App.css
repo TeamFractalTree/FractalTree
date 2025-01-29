@@ -16,6 +16,8 @@
 
 html {
     background: var(--col-bg) !important;
+    overflow: hidden;
+    position: relative;
 }
 
 body {
