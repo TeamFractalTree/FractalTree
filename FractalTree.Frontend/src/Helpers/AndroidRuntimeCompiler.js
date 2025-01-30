@@ -156,11 +156,14 @@ export default async function CompileProjectForAndroid(project) {
             xhr.addEventListener("error", () => reject(new Error("File Upload Failed")));
             xhr.addEventListener("abort", () => reject(new Error("File Upload Aborted")));
             xhr.open("POST", BaseURL + "/api/sign", true);
-            xhr.responseType = "blob";
+            xhr.responseType = "text";
             xhr.send(formData);
         });
 
-        saveAs(result.body, project.name + ".apk");
+        var apkID = result.body;
+        var apkRequest = await fetch(BaseURL + "/api/sign?apkID=" + apkID);
+
+        saveAs(await apkRequest.blob(), project.name + ".apk");
     }
     catch (ex) {
         console.log(ex);
