@@ -3,6 +3,7 @@ import { CompileApp } from "./AppCompiler";
 import { saveAs } from "file-saver";
 import { Image as ImageJS } from "image-js";
 
+// Replaces the bytes in a UInt8Array with other bytes
 function ReplaceBytes(fileData, dataFrom, dataTo) {
     var loc = 0, sz = fileData.length;
     var checksComplete = 0, totalChecks = dataFrom.length;
@@ -12,8 +13,6 @@ function ReplaceBytes(fileData, dataFrom, dataTo) {
         else checksComplete = 0;
     }
     if(checksComplete === totalChecks) {
-        console.log("Replaced Sequence")
-        // Match found -- creates a new (regular) array to return
         Array.prototype.splice.apply(
             fileData = Array.prototype.slice.call(fileData),
             [loc - totalChecks, totalChecks].concat(dataTo)
@@ -22,6 +21,7 @@ function ReplaceBytes(fileData, dataFrom, dataTo) {
     return fileData;
 };
 
+// Converts a string to UTF-16 bytes, which are used inside the android APK file
 function* utf16Bytes(str) {
     for (let i = 0; i < str.length; i++) {
         const charCode = str.charCodeAt(i);
@@ -30,9 +30,6 @@ function* utf16Bytes(str) {
     }
 }
 
-function utf8Bytes(str) {
-    return new TextEncoder().encode(str);
-}
 
 // Replaces UTF-16 values that identify the app
 async function ReplaceValues(zip, fileName, project) {
@@ -54,6 +51,60 @@ async function ReplaceValues(zip, fileName, project) {
     zip.file(fileName, newManifestFile);
 }
 
+async function GetProjectBackgroundImage(project) {
+    // Replace the icon background
+    var backgroundPath = (`/Images/Thumbnails/${project.assets?.thumbnail || project.language}.webp`);
+
+    // Crop the image now
+    var image = await ImageJS.load(backgroundPath);
+    image = image.crop({
+        x: (image.width / 2) - 214, 
+        y: 0, 
+        width: 428, 
+        height: 428
+    });
+    image = image.resize({ width: 462, height: 462 });
+    image = image.multiply(0.85);
+
+    return image;
+}
+
+async function GetProjectIconImage(project) {
+    var foregroundPath = (project.assets?.icon || `/Images/LangIcons/${project.language}.webp`);
+
+    var canvas = document.createElement("canvas");
+
+    canvas.id = "TempImageExport";
+    canvas.width = 432;
+    canvas.height = 432;
+    canvas.style.zIndex = -100;
+    canvas.style.position = "absolute";
+    
+    document.body.appendChild(canvas);
+
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+
+    await new Promise((resolve, _) => {
+        img.onload = function () {
+            ctx.drawImage(img, 96, 96);
+            resolve();
+        };
+
+        img.src = foregroundPath;
+    });
+
+    setTimeout(() => canvas.remove(), 5000);
+
+    return await ImageJS.fromCanvas(canvas);
+}
+
+// Very long and complex function
+// TLDR: 
+// Fetches a precompiled APK for the runtime
+// Modifies it by carefully replacing the bytes inside, without changing the length
+// Sending it to the server to sign the APK and make it installable
+// Downloads the APK
 export default async function CompileProjectForAndroid(project) {
 
     var quitLoading = window.startGlobalLoading();
@@ -72,55 +123,25 @@ export default async function CompileProjectForAndroid(project) {
             // There is only 1 html resource file, find it
             if (fileName.startsWith("res/") && fileName.endsWith(".html")) {
                 // Found it, now replace its contents with the compiled html file
-                zip.file(fileName, CompileApp(project));
+                var compiledApp = await CompileApp(project);
+                var androidShim = await (await fetch("/Runtime/shim_android.html")).text();
+
+                // Fill in params in the shim
+                androidShim = androidShim.replaceAll("%APP_CODE_B64%", btoa(compiledApp));
+                androidShim = androidShim.replaceAll("%APP_BACKGROUND%", ((await GetProjectBackgroundImage(project)).toDataURL()));
+                androidShim = androidShim.replaceAll("%APP_ICON%", ((await GetProjectIconImage(project)).toDataURL()));
+
+                zip.file(fileName, androidShim);
             }
             else if (fileName.endsWith("ic_launcher_background.png")) { 
                 // Replace the icon background
-                var foregroundPath = (`/Images/Thumbnails/${project.assets?.thumbnail || project.language}.webp`);
-
-                // Crop the image now
-                var image = await ImageJS.load(foregroundPath);
-                image = image.crop({
-                    x: (image.width / 2) - 214, 
-                    y: 0, 
-                    width: 428, 
-                    height: 428
-                });
-                image = image.resize({ width: 462, height: 462 });
-                image = image.multiply(0.85);
-
+                var image = await GetProjectBackgroundImage(project);
                 zip.file(fileName, image.toBuffer());
             }
             else if (fileName.endsWith("ic_launcher_foreground.png")) { 
                 // Replace the icon foreground
-                var foregroundPath = (project.assets?.icon || `/Images/LangIcons/${project.language}.webp`);
-
-                var canvas = document.createElement("canvas");
-
-                canvas.id = "TempImageExport";
-                canvas.width = 432;
-                canvas.height = 432;
-                canvas.style.zIndex = -100;
-                canvas.style.position = "absolute";
-                
-                document.body.appendChild(canvas);
-
-                var ctx = canvas.getContext("2d");
-                var img = new Image();
-
-                await new Promise((resolve, _) => {
-                    img.onload = function () {
-                        ctx.drawImage(img, 96, 96);
-                        resolve();
-                    };
-
-                    img.src = foregroundPath;
-                });
-
-                var image = await ImageJS.fromCanvas(canvas);
+                var image = await GetProjectIconImage(project);
                 zip.file(fileName, image.toBuffer());
-
-                canvas.remove();
             }
         }
 
