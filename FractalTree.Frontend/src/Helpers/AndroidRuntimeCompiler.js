@@ -2,6 +2,7 @@ import JSZip, { file } from "jszip";
 import { CompileApp } from "./AppCompiler";
 import { saveAs } from "file-saver";
 import { Image as ImageJS } from "image-js";
+import { openUrl } from '@tauri-apps/plugin-opener';
 
 // Replaces the bytes in a UInt8Array with other bytes
 function ReplaceBytes(fileData, dataFrom, dataTo) {
@@ -161,9 +162,16 @@ export default async function CompileProjectForAndroid(project) {
         });
 
         var apkID = result.body;
-        var apkRequest = await fetch(BaseURL + "/api/sign?apkID=" + apkID);
+        var apkURL = BaseURL + "/api/sign?apkID=" + apkID;
 
-        saveAs(await apkRequest.blob(), project.name + ".apk");
+        if (window.__TAURI__) {
+            await openUrl(apkURL);
+        }
+        else {
+            var apkRequest = await fetch(apkURL);
+            saveAs(await apkRequest.blob(), project.name + ".apk");
+        }
+
     }
     catch (ex) {
         console.log(ex);
