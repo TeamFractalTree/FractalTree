@@ -37,5 +37,20 @@
     "SECTION_SANDBOX_DESCRIPTION": "يسمح لك وضع الحماية بفحص الكود وتشغيله بسرعة دون حفظه.",
     "SERVER_STATUS_PINGING": "التحقق من الاتصال",
     "SERVER_STATUS_ONLINE": "متصل",
-    "SERVER_STATUS_OFFLINE": "غير متصل"
+    "SERVER_STATUS_OFFLINE": "غير متصل",
+    "ACTION_SELECT_ICON": "اختر أيقونة",
+    "PARAM_THUMBNAIL_BG": "خلفية الصورة المصغرة:",
+    "PARAM_ICON": "رمز:",
+    "ERROR_GENERIC": "حدث خطأ ما في Fractal Tree، يرجى التأكد من أنك تستخدم الإصدار الرسمي عبر اتصال آمن.",
+    "SECTION_PROJECT_ASSET_EDITOR": "تحرير المشروع",
+    "SECTION_SETTINGS": "إعدادات", 
+    "ACTION_UPLOAD_DESCRIPTION_CREATED": "تم تحميل مشروعك إلى مركز المشروع وهو الآن متاح للآخرين لرؤيته!",
+    "ACTION_UPLOAD_DESCRIPTION_MODIFIED": "تم تحديث مشروعك في مركز المشروع، يرجى الانتظار بعض الوقت حتى يدخل الإصدار الجديد حيز التنفيذ.",
+    "ACTION_UPLOAD_DESCRIPTION_FAIL": "تعذر تحميل مشروعك إلى مركز المشروع. يرجى التأكد من أن لديك اتصال مستقر بالإنترنت.",
+    "DISCLAIMER_LICENSE_TABLER": "الرموز المقدمة من tabler-icons.io بموجب ترخيص MIT.",
+    "ACTION_SELECTLANG_INTERFACE": "حدد لغة الواجهة",
+    "ACTION_UPLOAD": "تحميل إلى مركز المشروع",
+    "ACTION_DELETE_PROJECT": "حذف المشروع",
+    "ACTION_DELETE_PROJECT_DESCRIPTION": "هل أنت متأكد أنك تريد حذف هذا المشروع؟ لا يمكن التراجع عن هذا الإجراء. لن يؤدي هذا إلى إزالة مشروعك من المركز إذا تم نشره.",
+    "SECTION_ABOUT": "حول شجرة كسورية"
 }
