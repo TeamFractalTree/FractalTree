@@ -40,8 +40,10 @@ export default function ProjectAssetEditor(props) {
     };
 
     var modifyIcon = async (newValue) => {
-        newValue = newValue.replaceAll("currentColor", "white");
-        newValue = "data:image/svg+xml," + encodeURIComponent(newValue);
+        if (!newValue.startsWith("http") && !newValue.startsWith("data")) {
+            newValue = newValue.replaceAll("currentColor", "white");
+            newValue = "data:image/svg+xml," + encodeURIComponent(newValue);
+        }
         projectState.assets.icon = newValue;
         setProjectState(Object.assign({}, projectState));
         await (callback[0])(Object.assign({}, projectState));
@@ -67,10 +69,10 @@ export default function ProjectAssetEditor(props) {
             <Header onBack={() => { saveProject(); setPageVisible(false); }}>{t("SECTION_PROJECT_ASSET_EDITOR")}</Header>
             <div className="projectAssetEditor">
                 <label>{t("PARAM_NAME")}</label>
-                <InputText className="projectProperty" value={projectState.name} onChange={(e) => modifyProjectProperty("name", e.target.value)} />
+                <InputText maxLength={64} className="projectProperty" value={projectState.name} onChange={(e) => modifyProjectProperty("name", e.target.value)} />
 
                 <label>{t("PARAM_DESCRIPTION")}</label>
-                <InputText className="projectProperty" value={projectState.description} onChange={(e) => modifyProjectProperty("description", e.target.value)} />
+                <InputText maxLength={512} className="projectProperty" value={projectState.description} onChange={(e) => modifyProjectProperty("description", e.target.value)} />
 
                 <label>{t("PARAM_THUMBNAIL_BG")}</label>
                 <Carousel onPageChange={modifyThumbnail} page={availableThumbnails.findIndex((t) => t == selectedThumbnail)} className="thumbnailCarousel" value={availableThumbnails} numVisible={1} numScroll={1} itemTemplate={ThumbnailCarouselTemplate} />
