@@ -18,11 +18,12 @@ namespace FractalTree.Backend.API.Controllers
                 Response.Headers.Append("Access-Control-Allow-Origin", "*");
 
                 var projectFileList = Directory.GetFiles("/ftdata/projecthub/", "*.json", SearchOption.AllDirectories);
-                var projectList = new Project[10];
+                var returnCount = 100; // TODO: Implement pagination instead of returning the first 100 entries
+                var projectList = new Project[returnCount];
 
                 int i = 0;
                 foreach (var file in Directory.EnumerateFiles("/ftdata/projecthub/", "*.json", SearchOption.AllDirectories)) {
-                    if (i >= 10) { break; }
+                    if (i >= returnCount) { break; }
                         
                     try
                     {
