@@ -16,7 +16,7 @@ export async function CompileApp(codeState) {
                 var injectedHead = res;
 
                 code = PrepareHTMLCode(code);
-                code = code.replace("</head>", injectedHead + "\n</head>")
+                code = code.replace("</head>", injectedHead + "\n</head>");
 
                 res = "%APP_CODE%";
                 return code;
