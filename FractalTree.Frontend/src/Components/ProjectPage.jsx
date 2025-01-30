@@ -46,6 +46,7 @@ export default function ProjectPage() {
             (callback[0] || console.log)(projectState, isHard);
         });
     };
+    
 
     var editProjectAssets = () => {
         window.openProjectAssetEditor(Object.assign({}, projectState), (newState, isHard) => {

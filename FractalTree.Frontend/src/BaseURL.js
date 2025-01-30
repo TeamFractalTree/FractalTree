@@ -4,5 +4,5 @@ import IsDevMode from "./Helpers/DevModeDetector";
 window.BaseURL = "https://api.fractal-tree.org";
 
 if (IsDevMode()) {
-    //window.BaseURL = "";
+    window.BaseURL = "";
 }
