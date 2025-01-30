@@ -29,6 +29,7 @@ import { GetInterfaceLanguage, ReloadLanguageData } from "./Helpers/InterfaceLan
 import ProjectAssetEditor from "./Components/ProjectAssetEditor.jsx";
 import IconPicker from "./Components/IconPicker.jsx";
 import GlobalLoadingBox from "./Components/GlobalLoadingBox.jsx";
+import CodePeek from "./Components/CodePeek.jsx";
 
 i18n
     .use(Backend)
@@ -81,6 +82,7 @@ function Main() {
             <LanguageSelect></LanguageSelect>
             <Scanner></Scanner>
             <CodeEditor></CodeEditor>
+            <CodePeek></CodePeek>
             <HTMLHost></HTMLHost>
             <ProjectPage></ProjectPage>
             <ProjectHub></ProjectHub>

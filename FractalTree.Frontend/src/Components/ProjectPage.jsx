@@ -94,13 +94,17 @@ export default function ProjectPage() {
                 </Button>
 
                 {
-                    // Show edit button only if the user owns the current project
+                    // Show edit button only if the user owns the current project, otherwise show peek code
                     isProjectLocal(projectState) ? 
                         <Button onClick={editProject} className="projectAction">
                             <IconCode/>
-                        &nbsp;
+                            &nbsp;
                             {t("ACTION_EDIT")}
-                        </Button> : null
+                        </Button> : <Button onClick={() => window.openCodePeek(Object.assign({}, projectState))} className="projectAction">
+                            <IconCode/>
+                            &nbsp;
+                            {t("ACTION_PEEK_CODE")}
+                        </Button> 
                 }
 
                 {               
