@@ -41,12 +41,26 @@ namespace FractalTree.Backend.API.Controllers
 
                 Response.Headers.Append("Access-Control-Allow-Origin", "*");
 
-                return File(System.IO.File.OpenRead(newFilePath), "application/vnd.android.package-archive");
+                return Ok(apkID);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
+        }
+
+        [HttpGet("sign")]
+        public async Task<IActionResult> DownloadSignedAPK([FromQuery] string apkID)
+        {
+            Response.Headers.Append("Access-Control-Allow-Origin", "*");
+            var scanPath = Path.Join("/home/app/scans/", apkID);
+
+            if (!System.IO.File.Exists(scanPath))
+            {
+                return NotFound();
+            }
+
+            return File(new FileStream(scanPath, FileMode.Open), "application/vnd.android.package-archive");
         }
     }
 }
