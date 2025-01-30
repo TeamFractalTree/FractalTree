@@ -34,7 +34,7 @@ export async function CompileApp(codeState) {
 
         return res;
     }
-    catch {
-        alert("Failed to compile your app");
+    catch (ex) {
+        console.log(ex);
     }
 }

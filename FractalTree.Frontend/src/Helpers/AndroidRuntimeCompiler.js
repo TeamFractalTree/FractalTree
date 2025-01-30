@@ -35,7 +35,7 @@ function* utf16Bytes(str) {
 async function ReplaceValues(zip, fileName, project) {
     // Replace the AndroidManifest.xml file
     var newManifestFile = await zip.file(fileName).async("uint8array");
-    var appID = ("org.fractal_tree.my_" + project.hubID.replaceAll("-", "_")).padEnd(127, "_");
+    var appID = ("org.fractal_tree.my_" + project.hubId.replaceAll("-", "_")).padEnd(127, "_");
 
     // Replace the app name (must be padded to exactly 64 length (128 bytes))
     for (let i = 0; i < 10; i++) {
