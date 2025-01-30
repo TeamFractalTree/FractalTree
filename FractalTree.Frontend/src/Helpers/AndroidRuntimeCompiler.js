@@ -2,7 +2,7 @@ import JSZip, { file } from "jszip";
 import { CompileApp } from "./AppCompiler";
 import { saveAs } from "file-saver";
 import { Image as ImageJS } from "image-js";
-import { openUrl } from '@tauri-apps/plugin-opener';
+import { openUrl } from "@tauri-apps/plugin-opener";
 
 // Replaces the bytes in a UInt8Array with other bytes
 function ReplaceBytes(fileData, dataFrom, dataTo) {
