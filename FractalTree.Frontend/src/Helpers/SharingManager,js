@@ -1,5 +1,33 @@
-export default function Share(name, content) {
+import { writeTextFile, BaseDirectory } from '@tauri-apps/plugin-fs';
+
+
+export default async function Share(name, content) {
+
+
     try {
+
+        
+        // Share using tauri
+        if (!!window.__TAURI__) {
+
+            // Write the file to disk
+            await writeTextFile('share.fractal.shtm', content, {
+                baseDir: BaseDirectory.Download,
+            });
+
+            // Prompt for wuick share
+            await window.__TAURI__.core.invoke("plugin:sharesheet|share_file", {
+                file: "/storage/emulated/0/Android/data/org.fractal_tree.mobile/files/Download/share.fractal.shtm",
+                options: {
+                    mimeType: "text/html",
+                    title: `${name}.fractal.shtm`
+                },
+            });
+
+            return;
+        }
+
+        // Share using web API
         navigator.share({
             files: [
                 // Browsers won't allow sharing JSON files, so we have to disguise it as a SHTM file
@@ -9,7 +37,7 @@ export default function Share(name, content) {
             text: name + ", Powered by Fractal Tree"
         });
     }
-    catch {
-        alert(t("ERROR_GENERIC"));
+    catch (ex) {
+        alert(t("ERROR_GENERIC") + ex.toString());
     }
 }
