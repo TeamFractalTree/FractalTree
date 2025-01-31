@@ -1,9 +1,8 @@
-# Testing Turtle Python 
-What is Turtle?
+# سلحفاة بايثون الاختبار 
+ما هي السلحفاة؟
 
-Turtle Python or Turtle Graphics are vector graphics that provide a physical representation using a relative cursor upon a Cartesian plane. They are a key feature of the Logo programming language.
+سلحفاة بايثون أو رسومات السلحفاة هي رسومات متجهة توفر تمثيلاً فيزيائياً باستخدام فهرس نسبي على المستوى الديكارتي. وهي ميزة أساسية في لغة البرمجة لوجو.
 
-Here are he various commands that use string, int, or float values depending on the command to move or create designs to specific units.
 
 ## Commands that utilize parameters
 forward() - Moves the turtle forward a specified amount of units
