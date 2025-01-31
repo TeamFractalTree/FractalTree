@@ -1,0 +1,15 @@
+export default function Share(name, content) {
+    try {
+        navigator.share({
+            files: [
+                // Browsers won't allow sharing JSON files, so we have to disguise it as a TXT file
+                new File([new Blob([content], { type: "text/plain" })], `${name}.fractal.txt`, { type: "text/plain" })
+            ],
+            title: name,
+            text: name + ", Powered by Fractal Tree"
+        });
+    }
+    catch {
+        alert(t("ERROR_GENERIC"));
+    }
+}

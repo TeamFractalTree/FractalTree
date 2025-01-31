@@ -58,6 +58,14 @@
     display: none;
 }
 
+.segmentPickerContainer .lessonShareButton {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-top: 1rem;
+    aspect-ratio: 1;
+    padding: 0.5rem;
+}
+
 .segmentPickerContainer .lessonSegment {
     width: 90%;
     margin: auto;

@@ -7,6 +7,7 @@ import { Skeleton } from "primereact/skeleton";
 import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
 import { IconPencil, IconShare } from "@tabler/icons-react";
 import ProjectAssetEditor from "./ProjectAssetEditor";
+import Share from "../Helpers/SharingManager,js";
 
 export default function ProjectHub() {
 
@@ -60,19 +61,7 @@ export function ExternalProjectCard(props) {
     };
 
     var shareProject = () => {
-        try {
-            navigator.share({
-                files: [
-                    // Browsers won't allow sharing JSON files, so we have to disguise it as a TXT file
-                    new File([new Blob([JSON.stringify(props.projectState)], { type: "text/plain" })], `${props.projectState.name}.fractalproj.txt`, { type: "text/plain" })
-                ],
-                title: props.projectState.name,
-                text: props.projectState.description
-            });
-        }
-        catch {
-            alert(t("ERROR_GENERIC"));
-        }
+        Share(props.projectState.name, JSON.stringify(props.projectState));
     };
 
     return (

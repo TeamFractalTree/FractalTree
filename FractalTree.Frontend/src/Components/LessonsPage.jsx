@@ -7,10 +7,11 @@ import { useState } from "react";
 import { ProgressBar } from "primereact/progressbar";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import Markdown from "react-markdown";
-import { IconPlayerPlayFilled, IconSettings } from "@tabler/icons-react";
+import { IconPlayerPlayFilled, IconSettings, IconShare } from "@tabler/icons-react";
 import LanguageIcon from "./LanguageIcon";
 import SettingsPage from "./SettingsPage";
 import { GetInterfaceLanguage, GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
+import Share from "../Helpers/SharingManager,js";
 
 if (!window.lessonList) {
     window.lessonList = [];
@@ -21,6 +22,10 @@ export default function LessonsPage() {
 
     var [segmentPickerVisible, setSegmentPickerVisible] = useState(false);
     var [selectedLesson, setSelectedLesson] = useState(null);
+
+    var shareLesson = (lessonToShare) => {
+        Share(lessonToShare.name, JSON.stringify(lessonToShare));
+    }
 
     return (
         <>
@@ -38,6 +43,7 @@ export default function LessonsPage() {
 
             <Sidebar style={{ width: "100%" }} position={GetSidebarPosition()} className="segmentPickerContainer" visible={segmentPickerVisible} onHide={() => setSegmentPickerVisible(false)}>
                 <Header onBack={() => setSegmentPickerVisible(false)}>{selectedLesson?.name}</Header>
+                <Button className="lessonShareButton" onClick={() => shareLesson(selectedLesson)}><IconShare/></Button>
                 {
                     selectedLesson?.segments?.map((segment, i) => {
                         return <LessonSegment key={i} segment={segment}></LessonSegment>;
