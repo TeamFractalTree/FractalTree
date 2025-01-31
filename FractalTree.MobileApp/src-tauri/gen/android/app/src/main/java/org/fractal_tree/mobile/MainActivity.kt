@@ -9,9 +9,9 @@ import androidx.core.view.WindowInsetsControllerCompat
 import android.webkit.WebView
 import android.annotation.SuppressLint
 
-class MainActivity : TauriActivity() {
+abstract class MainActivity : TauriActivity() {
 
-    private lateinit var webView: WebView
+    public lateinit var webView: WebView
 
     override fun onWebViewCreate(newWebView: WebView) {
         webView = newWebView
@@ -26,6 +26,7 @@ class MainActivity : TauriActivity() {
         }
     }
 
+      
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

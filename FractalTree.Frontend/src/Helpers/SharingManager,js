@@ -15,7 +15,7 @@ export default async function Share(name, content) {
                 baseDir: BaseDirectory.Download,
             });
 
-            // Prompt for wuick share
+            // Prompt for quick share
             await window.__TAURI__.core.invoke("plugin:sharesheet|share_file", {
                 file: "/storage/emulated/0/Android/data/org.fractal_tree.mobile/files/Download/share.fractal.shtm",
                 options: {
