@@ -11,6 +11,7 @@
     "ACTION_UPLOAD_DESCRIPTION_MODIFIED": "Your project was updated on the project hub, please allow some time for the new version to take effect.",
     "ACTION_UPLOAD_DESCRIPTION_FAIL": "Your project couldn't be uploaded to the project hub. Please ensure you have a stable internet connection. ",
     "ACTION_EDIT": "Edit Code",
+    "ACTION_PEEK_CODE": "Peek Code",
     "ACTION_SELECT_ICON": "Select Icon",
     "ACTION_DELETE_PROJECT": "Delete Project",
     "ACTION_DELETE_PROJECT_DESCRIPTION": "Are you sure you want to delete this project? This action cannot be undone. This will not remove your project from the hub if it was published.",
