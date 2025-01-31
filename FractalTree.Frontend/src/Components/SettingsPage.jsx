@@ -41,7 +41,7 @@ function InterfaceLanguageSelect() {
             code: "ar",
         },
         {
-            name: "Ukrainian",
+            name: "українець",
             english_name: "Ukrainian",
             code: "ua",
         },
