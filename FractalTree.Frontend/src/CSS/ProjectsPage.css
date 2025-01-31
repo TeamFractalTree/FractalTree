@@ -44,7 +44,11 @@
 .projectCard {
     width: 100%;
     padding: 1rem;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 8rem;
+    height: min(max-content, 8rem);
+    flex-shrink: 0;
     background-color: var(--col-tertiary);
     border-radius: 10px;
     border: 2px solid var(--col-border);
