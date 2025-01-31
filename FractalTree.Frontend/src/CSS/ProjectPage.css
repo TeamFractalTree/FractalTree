@@ -88,11 +88,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--col-overlay-transparent);
+    border: none;
+}
+
+.externalProjectCard .projectShareButton {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    border-radius: 100%;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--col-overlay-transparent);
+    border: none;
 }
 
 *[dir="rtl"]  .externalProjectCard .projectAssetEditButton {
     right: unset;
     left: 1rem;
+}
+
+
+*[dir="rtl"]  .externalProjectCard .projectShareButton {
+    right: 1rem;
+    left: unset;
 }
 
 

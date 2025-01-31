@@ -37,6 +37,7 @@ body {
 
     --col-bg: white;
     --col-overlay: white;
+    --col-overlay-transparent: rgba(255, 255, 255, 0.493);
     --col-text: #111111;
     --col-text-washed: #4b001b;
     --col-text-overlay: white;
@@ -70,6 +71,7 @@ body {
     * {
         --col-bg: #170d16;
         --col-overlay: hsl(306 12% 15%);
+        --col-overlay-transparent: rgba(0, 0, 0, 0.267);
         --col-text: #F1ECF3;
         --col-text-washed: #d8d8d8;
         --col-text-overlay: rgb(255, 255, 255);

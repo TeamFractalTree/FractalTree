@@ -5,7 +5,7 @@ import Header from "./Header";
 import "../CSS/ProjectHub.css";
 import { Skeleton } from "primereact/skeleton";
 import { GetSidebarPosition } from "../Helpers/InterfaceLanguageManager";
-import { IconPencil } from "@tabler/icons-react";
+import { IconPencil, IconShare } from "@tabler/icons-react";
 import ProjectAssetEditor from "./ProjectAssetEditor";
 
 export default function ProjectHub() {
@@ -59,11 +59,30 @@ export function ExternalProjectCard(props) {
         window.openProjectPage(Object.assign({}, props.projectState), () => {});
     };
 
+    var shareProject = () => {
+        try {
+            navigator.share({
+                files: [
+                    new File([new Blob([JSON.stringify(props.projectState)], { type: "text/plain" })], `${props.projectState.name}.fractalproj`, { type: "application/octet-stream" })
+                ],
+                title: props.projectState.name,
+                text: props.projectState.description
+            });
+        }
+        catch {
+            alert(t("ERROR_GENERIC"));
+        }
+    }
+
     return (
         <div onClick={navigateToProjectPage} className="externalProjectCard">
             <div className="projectThumbnail" style={{ background: "url('" + (`/Images/Thumbnails/${props.projectState?.assets?.thumbnail || props.projectState?.language}.webp`) + "')" }}>
                 
                 <img src={props.projectState?.assets?.icon || `/Images/LangIcons/${props.projectState?.language}.webp`}></img>
+
+                <Button onClick={shareProject} className="projectShareButton">
+                    <IconShare/>
+                </Button>
 
                 {
                     // Show edit button only if the user owns the current project
