@@ -29,6 +29,13 @@
     color: white;
 }
 
+.projectPage .projectView {
+    position: relative;
+    top: -40px;
+    width: 90%;
+    color: white;
+}
+
 .externalProjectCard {
     width: 90% !important;
     min-height: 18rem;
