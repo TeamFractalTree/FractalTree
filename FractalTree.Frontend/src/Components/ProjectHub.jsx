@@ -73,7 +73,7 @@ export function ExternalProjectCard(props) {
         catch {
             alert(t("ERROR_GENERIC"));
         }
-    }
+    };
 
     return (
         <div onClick={navigateToProjectPage} className="externalProjectCard">
