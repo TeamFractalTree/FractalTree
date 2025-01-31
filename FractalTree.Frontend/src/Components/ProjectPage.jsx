@@ -19,6 +19,9 @@ export default function ProjectPage() {
     window.openProjectPage = (newprojectState, newCallback) => { setProjectState(newprojectState); setCallback([newCallback]); setPageVisible(true); };
     
     var isProjectLocal = window.isProjectLocal || (() => false);
+    var isAvailableForInstall = (project) => {
+        return isProjectLocal(project) && window.serverStatus == "ONLINE" && (project.language == "html" || project.language == "jsx")
+    }
 
     var runProject = () => {
 
@@ -111,7 +114,7 @@ export default function ProjectPage() {
                 }
 
                 {
-                    window.serverStatus == "ONLINE" ? // Disabled for now because it's incomplete, remove "&& false" to enable
+                    isAvailableForInstall(projectState) ?
                         <Button onClick={() => CompileProjectForAndroid(projectState)} className="projectAction">
                             <IconBrandAndroid/>
                         &nbsp;
