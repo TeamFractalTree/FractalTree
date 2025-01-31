@@ -7,7 +7,7 @@ namespace FractalTree.Backend.API.Controllers
     [Route("api")]
     public class ScanDownloadController : Controller
     {
-        [HttpGet("scan")]
+        [HttpGet("dscan")]
         public async Task<IActionResult> DownloadScan([FromQuery] string scanID)
         {
             var scanPath = Path.Join("/home/app/scans/", scanID);

@@ -162,7 +162,7 @@ export default async function CompileProjectForAndroid(project) {
         });
 
         var apkID = result.body;
-        var apkURL = BaseURL + "/api/sign?apkID=" + apkID;
+        var apkURL = BaseURL + "/api/dsign?apkID=" + apkID;
 
         if (window.__TAURI__) {
             await openUrl(apkURL);

@@ -49,11 +49,13 @@ namespace FractalTree.Backend.API.Controllers
             }
         }
 
-        [HttpGet("sign")]
+        [HttpGet("dsign")]
         public async Task<IActionResult> DownloadSignedAPK([FromQuery] string apkID)
         {
             Response.Headers.Append("Access-Control-Allow-Origin", "*");
             var scanPath = Path.Join("/home/app/scans/", apkID);
+
+            Response.Headers.Append("Content-Disposition", "attachment; filename=\"" + apkID.Replace("\"", "_") + "\"");
 
             if (!System.IO.File.Exists(scanPath))
             {
