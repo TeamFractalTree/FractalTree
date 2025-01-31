@@ -1,7 +1,7 @@
 {
     "id": "python_turtle",
-    "lang": "en",
-    "name": "Create with Turtle Python",
-    "description": "Learn how to create drawings and designs with Turtle Python, no prior coding knowledge required..",
+    "lang": "ar",
+    "name": "إنشاء باستخدام السلاحف بيثون",
+    "description": "تعلم كيفية إنشاء الرسومات والتصميمات باستخدام Turtle Python، دون الحاجة إلى معرفة مسبقة بالبرمجة.",
     "icon": "python.webp"
 }
