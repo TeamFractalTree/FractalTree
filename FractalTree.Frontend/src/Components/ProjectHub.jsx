@@ -63,7 +63,8 @@ export function ExternalProjectCard(props) {
         try {
             navigator.share({
                 files: [
-                    new File([new Blob([JSON.stringify(props.projectState)], { type: "text/plain" })], `${props.projectState.name}.fractalproj`, { type: "application/octet-stream" })
+                    // Browsers won't allow sharing JSON files, so we have to disguise it as a TXT file
+                    new File([new Blob([JSON.stringify(props.projectState)], { type: "text/plain" })], `${props.projectState.name}.fractalproj.txt`, { type: "text/plain" })
                 ],
                 title: props.projectState.name,
                 text: props.projectState.description
