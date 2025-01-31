@@ -25,7 +25,7 @@ export default function LessonsPage() {
 
     var shareLesson = (lessonToShare) => {
         Share(lessonToShare.name, JSON.stringify(lessonToShare));
-    }
+    };
 
     return (
         <>
