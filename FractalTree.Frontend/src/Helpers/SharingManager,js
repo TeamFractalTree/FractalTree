@@ -1,5 +1,41 @@
 import { writeTextFile, BaseDirectory } from '@tauri-apps/plugin-fs';
+import * as localForage from "localforage";
 
+async function ImportSharedFile() {
+    if (!localStorage.tryToImport) { return; }
+    var dataToImport = JSON.parse(atob(localStorage.tryToImport));
+    localStorage.removeItem("tryToImport");
+
+    // Detect the type of data to import 
+    if (!!dataToImport.hubId) {
+        // Import project
+
+        // First check if the project already exists
+        var projectStore = await localForage.getItem("projectStore");
+        if (projectStore == null) {
+            projectStore = { projects: [] };
+            await localForage.setItem("projectStore", projectStore);
+        }
+
+        var projectExists = false;
+
+        projectStore.projects.forEach((proj) => {
+            if (JSON.stringify(proj) == JSON.stringify(dataToImport)) {
+                projectExists = true;
+            }
+        })
+
+        if (projectExists) { return; } // Return if it already exists
+
+        projectStore.projects.push(dataToImport);
+        await localForage.setItem("projectStore", Object.assign({}, projectStore));
+    }
+    else if (!!dataToImport.lang) {
+        // Import lesson
+    }
+}
+
+setInterval(ImportSharedFile, 1000);
 
 export default async function Share(name, content) {
 
