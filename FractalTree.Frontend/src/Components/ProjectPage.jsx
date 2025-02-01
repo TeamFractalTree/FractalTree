@@ -20,7 +20,7 @@ export default function ProjectPage() {
     
     var isProjectLocal = window.isProjectLocal || (() => false);
     var isAvailableForInstall = (project) => {
-        return isProjectLocal(project) && window.serverStatus == "ONLINE" && (project.language == "html" || project.language == "jsx");
+        return window.serverStatus == "ONLINE" && (project.language == "html" || project.language == "jsx");
     };
 
     var runProject = () => {
