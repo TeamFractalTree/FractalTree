@@ -10,7 +10,7 @@
     <br />
     <a href="https://app.fractal-tree.org">Web Version</a>
     ·
-    <a href="https://app.fractal-tree.org">Android App</a>
+    <a href="https://github.com/TeamFractalTree/FractalTree/releases/download/1.0.0/Fractal.Tree.apk">Android App</a>
   </p>
 
   ![GitHub License](https://img.shields.io/github/license/TeamFractalTree/FractalTree)
