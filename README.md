@@ -1,4 +1,4 @@
-Made for Carnegie Mellon Qatar LifeLines hackathon 2025
+Made for the Carnegie Mellon Qatar LifeLines hackathon 2025
 
 <div align="center">
   <a href="https://github.com/TeamFractalTree/FractalTree">
