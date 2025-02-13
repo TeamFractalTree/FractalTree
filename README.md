@@ -1,3 +1,5 @@
+Made for Carnegie Mellon Qatar LifeLines hackathon 2025
+
 <div align="center">
   <a href="https://github.com/TeamFractalTree/FractalTree">
     <img src="https://github.com/user-attachments/assets/2bef1f57-14d4-482f-86fd-730f56efd545" alt="Fractal Tree Logo" width="100%">
